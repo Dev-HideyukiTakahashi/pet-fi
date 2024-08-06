@@ -3,11 +3,15 @@ package com.petfi.track.services;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 
 import com.petfi.track.entities.User;
 import com.petfi.track.repositories.UserRepository;
+import com.petfi.track.services.exceptions.DatabaseException;
+import com.petfi.track.services.exceptions.ResourceNotFoundException;
 
+import jakarta.persistence.EntityNotFoundException;
 import jakarta.transaction.Transactional;
 
 @Service
@@ -21,7 +25,7 @@ public class UserService {
   }
 
   public User findById(Long id) {
-    return userRepository.findById(id).get();
+    return userRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException(id));
   }
 
   public User insert(User entity) {
@@ -30,9 +34,13 @@ public class UserService {
 
   @Transactional
   public User update(Long id, User entity) {
-    User user = userRepository.getReferenceById(id);
-    updateEntity(user, entity);
-    return userRepository.save(user);
+    try {
+      User user = userRepository.getReferenceById(id);
+      updateEntity(user, entity);
+      return userRepository.save(user);
+    } catch (EntityNotFoundException e) {
+      throw new ResourceNotFoundException(id);
+    }
   }
 
   private void updateEntity(User user, User entity) {
@@ -41,6 +49,13 @@ public class UserService {
   }
 
   public void deleteById(Long id) {
-    userRepository.deleteById(id);
+    if (!userRepository.existsById(id)) {
+      throw new ResourceNotFoundException(id);
+    }
+    try {
+      userRepository.deleteById(id);
+    } catch (DataIntegrityViolationException e) {
+      throw new DatabaseException(e.getMessage());
+    }
   }
 }

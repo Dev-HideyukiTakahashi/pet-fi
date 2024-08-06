@@ -3,11 +3,15 @@ package com.petfi.track.services;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 
 import com.petfi.track.entities.Dog;
 import com.petfi.track.repositories.DogRepository;
+import com.petfi.track.services.exceptions.DatabaseException;
+import com.petfi.track.services.exceptions.ResourceNotFoundException;
 
+import jakarta.persistence.EntityNotFoundException;
 import jakarta.transaction.Transactional;
 
 @Service
@@ -21,7 +25,7 @@ public class DogService {
   }
 
   public Dog findById(Long id) {
-    return dogRepository.findById(id).get();
+    return dogRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException(id));
   }
 
   public Dog insert(Dog entity) {
@@ -30,9 +34,14 @@ public class DogService {
 
   @Transactional
   public Dog update(Long id, Dog entity) {
-    Dog dog = dogRepository.getReferenceById(id);
-    updateEntity(dog, entity);
-    return dogRepository.save(dog);
+    try {
+      Dog dog = dogRepository.getReferenceById(id);
+      updateEntity(dog, entity);
+      return dogRepository.save(dog);
+    } catch (EntityNotFoundException e) {
+      throw new ResourceNotFoundException(id);
+    }
+
   }
 
   private void updateEntity(Dog dog, Dog entity) {
@@ -43,6 +52,13 @@ public class DogService {
   }
 
   public void deleteById(Long id) {
-    dogRepository.deleteById(id);
+    if (!dogRepository.existsById(id)) {
+      throw new ResourceNotFoundException(id);
+    }
+    try {
+      dogRepository.deleteById(id);
+    } catch (DataIntegrityViolationException e) {
+      throw new DatabaseException(e.getMessage());
+    }
   }
 }

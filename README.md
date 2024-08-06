@@ -138,8 +138,10 @@
         </s></li>
         <li><s>Database seeding para testes.</s>
         </li>
-        <li>Controller/Service com CRUD completo para entidades pet, cliente.
+        <li><s>Controller/Service com CRUD completo para entidades user, pet, cliente.</s>
         </li>
+        <li><s>Exceptions configuradas.</s>
+       </li>
         <li>Upload de foto de perfil do pet, salvando no banco de dados.
         </li>
         <li>Geração de link url para qr code.

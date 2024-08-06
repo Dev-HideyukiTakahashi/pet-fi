@@ -12,9 +12,7 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "tb_dog")
-public class Dog implements Serializable {
-
-  private static final long serialVersionUID = 1L;
+public class Dog {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
