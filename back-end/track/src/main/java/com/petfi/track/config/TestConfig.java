@@ -34,10 +34,10 @@ public class TestConfig implements CommandLineRunner {
     Client client2 = new Client(null, "João", "1199999999", "www.facebook.com", "@joao", "São Bernardo do Campo");
     Client client3 = new Client(null, "José", "1199999999", "www.facebook.com", "@jose", "Santo André");
 
-    Dog dog1 = new Dog(null, "Banzé", "", client1);
-    Dog dog2 = new Dog(null, "Totó", "", client1);
-    Dog dog3 = new Dog(null, "Carabina", "", client2);
-    Dog dog4 = new Dog(null, "Mel", "", client3);
+    Dog dog1 = new Dog(null, "Banzé", "Castrado", "dogs/1", client1);
+    Dog dog2 = new Dog(null, "Totó", "Agressivo", "dogs/2", client1);
+    Dog dog3 = new Dog(null, "Carabina", "", "dogs/3", client2);
+    Dog dog4 = new Dog(null, "Mel", "Esperando filhote", "dogs/4", client3);
 
     client1.addDog(dog1);
     client1.addDog(dog2);
