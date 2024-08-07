@@ -75,7 +75,7 @@
           <ul>
             <li>Página home: registrar, buscar, alterar e excluir dados de um pet/dono no banco de dados.
             <ol><u>Entrada esperada:</u></ol>
-            <ol>-Pet: id, nome, qr code, informacões adicionais 
+            <ol>-Pet: id, nome, qr code, informacões adicionais, sexo, foto, procurado
             </ol>
             <ol>-Cliente: id, nome, telefone, facebook, instagram, cidade </ol>
             <ol><u>Saída esperada:</u>
@@ -86,6 +86,17 @@
             <ol>-Dados de um pet localizado pelo campo selecionado na pesquisa.</ol>
             <ol>-Lista com todos os pets em sistema.</ol>
             </li>
+            <li>Página home: gerador de qr code, possibilidade de download do qrcode para impressão em coleiras.
+            <ol><u>Entrada esperada:</u></ol>
+            <ol>-Pet: id </ol>
+            <ol><u>Saída esperada:</u></ol>
+            <ol>-Url com qr code do pet requisitado pelo id. </ol>
+            <li>Página home: possibilidade de alterar o atributo "procurado" do pet através de um flag booleano.
+            <ol><u>Entrada esperada:</u></ol>
+            <ol>-Pet: id </ol>
+            <ol><u>Saída esperada:</u></ol>
+            <ol>-Procurado = true/false </ol>
+            </li>
           </ul>
           <hr>
         </details>
@@ -95,22 +106,26 @@
           <summary><strong>Público</strong></summary>
           <br/>
           <hr>
-          <span>Usuário escaneou o qr code na coleira.</span>
+          <span>Acesso a home/pública via qr code.</span>
           <ul>
             <li>
+            Usuário escaneou o qr code na coleira.
             <ol><u>Entrada esperada:</u></ol>
-            <ol>-Endereço web home/pública com id do pet.</ol>
+            <ol>-Url home/pública com id do pet.</ol>
             <ol><u>Saída esperada:</u></ol>
             <ol>-Todos os dados registrados no banco de dados do pet selecionado.</ol>
             </li>
           </ul>
-          <span>Buscar todos os pets em sistema</span>
+          <span>Buscar todos os pets em sistema.</span>
           <ul>
             <li>Usuário não sabe/conseguiu ler o qr code.
             <ol><u>Entrada esperada:</u></ol>
             <ol>Acesso a página home/pública.</ol>
+            <ol>Busca de pet por código de identificação.</ol>
+            <ol>Filtro de pets por cidade</ol>
+            <ol>Flag do atributo "procurado" em true/false</ol>
             <ol><u>Saída esperada:</u></ol>
-            <ol>-Lista com todos os pets em cadastrados no banco de dados do sistema.</ol>
+            <ol>-Lista com todos os pets em cadastrados no banco de dados do sistema, filtrados ou não.</ol>
             <ol>-Dados de um pet localizado por id.</ol>
             </li>
           </ul>
@@ -160,7 +175,7 @@
         <li>Configuração angular.</li>
         <li>Página home/privada com recurso para registrar novo pet/cliente.</li>
         <li>Página home/privada listando todos os pets, com recurso para atualizar/excluir em cada pet.</li>
-        <li>Página home/pública listando todos os pets.</li>    
+        <li>Página home/pública listando todos os pets, filtrados por cidade ou não.</li>    
         <li>Ao ser encaminhado pelo qr code escaneado, página do pet selecionado com todos os dados registrados.</li>        
       </ul>
       <hr>      
@@ -173,7 +188,7 @@
     <summary><strong>UML</strong></summary>
     </br>
     <hr>
-    <img src="" alt="TODO">
+    <img src="./resources/pet-fi.jpg" alt="uml">
     <hr>
     </details>
 </div>
