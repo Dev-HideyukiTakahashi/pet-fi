@@ -146,7 +146,7 @@
       <p>- Back-End:</p>
       <span>Task 1 : CRUD de sistema, relacionamentos entre entidades.</span>
       <ul>
-        <li><s>Configuração com banco de dados H2 para testes.</s></li>
+        <li><s>Configuração com banco de dados H2 para testes, profile TEST</s></li>
         <li><s>Criação das entidades e mapeamento Hibernate</s></li>
         <li>Validações com Spring Validation.</li>
         <li><s>Criação de todos controllers, pelo menos com o método "find" para testar relacionamentos.
@@ -159,8 +159,8 @@
        </li>
         <li>Upload de foto de perfil do pet, salvando no banco de dados.
         </li>
-        <li>Geração de link url para qr code.
-        </li>
+        <li>Geração de link url para qr code.</li>
+        <li>Configuração com banco de dados postgreSQL / profile DEV</li>
       </ul>
       <span>Task 2 - Spring security, autenticando o sistema e autorizando páginas de acordo com o perfil.</span>
       <ul>
