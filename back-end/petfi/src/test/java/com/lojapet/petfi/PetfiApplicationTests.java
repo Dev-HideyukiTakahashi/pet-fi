@@ -1,10 +1,10 @@
-package com.petfi.track;
+package com.lojapet.petfi;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class TrackApplicationTests {
+class PetfiApplicationTests {
 
 	@Test
 	void contextLoads() {

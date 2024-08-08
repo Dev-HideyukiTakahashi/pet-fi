@@ -5,6 +5,7 @@ import java.util.Arrays;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Profile;
 
 import com.lojapet.petfi.entities.Client;
 import com.lojapet.petfi.entities.Dog;
@@ -15,6 +16,7 @@ import com.lojapet.petfi.repositories.DogRepository;
 import com.lojapet.petfi.repositories.UserRepository;
 
 @Configuration
+@Profile(value = "test")
 public class TestConfig implements CommandLineRunner {
 
   @Autowired
