@@ -154,13 +154,14 @@
         <li><s>Database seeding para testes.</s>
         </li>
         <li><s>Controller/Service com CRUD completo para entidades user, pet, cliente.</s>
+        <li><s>Camada DTO</s></li>
         </li>
         <li><s>Exceptions configuradas.</s>
        </li>
         <li>Upload de foto de perfil do pet, salvando no banco de dados.
         </li>
-        <li>Geração de link url para qr code.</li>
-        <li>Configuração com banco de dados postgreSQL / profile DEV</li>
+        <li><s>Geração de link url para qr code.</s></li>
+        <li><s>Configuração e testes com banco de dados postgreSQL / profile DEV</s></li>
       </ul>
       <span>Task 2 - Spring security, autenticando o sistema e autorizando páginas de acordo com o perfil.</span>
       <ul>
