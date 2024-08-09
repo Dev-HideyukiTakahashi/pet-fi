@@ -1,18 +1,19 @@
 package com.lojapet.petfi.services;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
+import com.lojapet.petfi.dto.ClientDTO;
 import com.lojapet.petfi.entities.Client;
 import com.lojapet.petfi.repositories.ClientRepository;
 import com.lojapet.petfi.services.exceptions.DatabaseException;
 import com.lojapet.petfi.services.exceptions.ResourceNotFoundException;
 
 import jakarta.persistence.EntityNotFoundException;
-import jakarta.transaction.Transactional;
 
 @Service
 public class ClientService {
@@ -20,35 +21,43 @@ public class ClientService {
   @Autowired
   private ClientRepository clientRepository;
 
-  public List<Client> findAll() {
-    return clientRepository.findAll();
+  @Transactional(readOnly = true)
+  public Page<ClientDTO> findAllPaged(PageRequest pageRequest) {
+    Page<Client> list = clientRepository.findAll(pageRequest);
+    return list.map(client -> new ClientDTO(client));
   }
 
-  public Client findById(Long id) {
-    return clientRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException(id));
-  }
-
-  public Client insert(Client entity) {
-    return clientRepository.save(entity);
+  @Transactional(readOnly = true)
+  public ClientDTO findById(Long id) {
+    Client entity = clientRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException(id));
+    return new ClientDTO(entity);
   }
 
   @Transactional
-  public Client update(Long id, Client entity) {
+  public ClientDTO insert(ClientDTO dto) {
+    Client entity = ClientDTO.toClient(dto);
+    entity = clientRepository.save(entity);
+    return new ClientDTO(entity);
+  }
+
+  @Transactional
+  public ClientDTO update(Long id, ClientDTO dto) {
     try {
       Client client = clientRepository.getReferenceById(id);
-      updateEntity(client, entity);
-      return clientRepository.save(client);
+      updateEntity(client, dto);
+      client = clientRepository.save(client);
+      return new ClientDTO(client, "update");
     } catch (EntityNotFoundException e) {
       throw new ResourceNotFoundException(id);
     }
   }
 
-  private void updateEntity(Client client, Client entity) {
-    client.setName(entity.getName());
-    client.setPhone(entity.getPhone());
-    client.setFacebook(entity.getFacebook());
-    client.setInstagram(entity.getInstagram());
-    client.setCity(entity.getCity());
+  private void updateEntity(Client client, ClientDTO dto) {
+    client.setName(dto.getName());
+    client.setPhone(dto.getPhone());
+    client.setFacebook(dto.getFacebook());
+    client.setInstagram(dto.getInstagram());
+    client.setCity(dto.getCity());
   }
 
   public void deleteById(Long id) {

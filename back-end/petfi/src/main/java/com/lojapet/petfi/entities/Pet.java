@@ -1,5 +1,6 @@
 package com.lojapet.petfi.entities;
 
+import com.lojapet.petfi.entities.enums.PetType;
 import com.lojapet.petfi.entities.enums.Sex;
 
 import jakarta.persistence.Entity;
@@ -11,8 +12,8 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "tb_dog")
-public class Dog {
+@Table(name = "tb_pet")
+public class Pet {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,22 +24,25 @@ public class Dog {
   private String qrcode;
   private String photo;
   private Boolean wanted;
+  private PetType petType;
 
   @ManyToOne
   @JoinColumn(name = "client_id")
   private Client client;
 
-  public Dog() {
+  public Pet() {
 
   }
 
-  public Dog(Long id, String name, Sex sex, String additionalInformation, String photo, Client client) {
+  public Pet(Long id, String name, Sex sex, String additionalInformation, String photo, Client client,
+      PetType petType) {
     this.id = id;
     this.name = name;
     this.sex = sex;
     this.additionalInformation = additionalInformation;
     this.photo = photo;
     this.client = client;
+    this.petType = petType;
     this.wanted = false;
   }
 
@@ -74,7 +78,7 @@ public class Dog {
     this.additionalInformation = additionalInformation;
   }
 
-  public Dog(String qrcode) {
+  public Pet(String qrcode) {
     this.qrcode = qrcode;
   }
 
@@ -111,7 +115,15 @@ public class Dog {
   }
 
   public void generateQrcode() {
-    this.qrcode = "http://localhost:8080/dogs/" + this.id;
+    this.qrcode = "http://localhost:8080/pets/" + this.id;
+  }
+
+  public PetType getPetType() {
+    return petType;
+  }
+
+  public void setPetType(PetType petType) {
+    this.petType = petType;
   }
 
   @Override
@@ -130,7 +142,7 @@ public class Dog {
       return false;
     if (getClass() != obj.getClass())
       return false;
-    Dog other = (Dog) obj;
+    Pet other = (Pet) obj;
     if (id == null) {
       if (other.id != null)
         return false;

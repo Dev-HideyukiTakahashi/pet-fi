@@ -5,14 +5,15 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
+import com.lojapet.petfi.dto.UserDTO;
 import com.lojapet.petfi.entities.User;
 import com.lojapet.petfi.repositories.UserRepository;
 import com.lojapet.petfi.services.exceptions.DatabaseException;
 import com.lojapet.petfi.services.exceptions.ResourceNotFoundException;
 
 import jakarta.persistence.EntityNotFoundException;
-import jakarta.transaction.Transactional;
 
 @Service
 public class UserService {
@@ -20,32 +21,42 @@ public class UserService {
   @Autowired
   private UserRepository userRepository;
 
-  public List<User> findAll() {
-    return userRepository.findAll();
+  @Transactional(readOnly = true)
+  public List<UserDTO> findAll() {
+    List<User> list = userRepository.findAll();
+    return list.stream()
+        .map(user -> new UserDTO(user))
+        .toList();
   }
 
-  public User findById(Long id) {
-    return userRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException(id));
-  }
-
-  public User insert(User entity) {
-    return userRepository.save(entity);
+  @Transactional(readOnly = true)
+  public UserDTO findById(Long id) {
+    User user = userRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException(id));
+    return new UserDTO(user);
   }
 
   @Transactional
-  public User update(Long id, User entity) {
+  public UserDTO insert(UserDTO dto) {
+    User entity = UserDTO.toUser(dto);
+    entity = userRepository.save(entity);
+    return new UserDTO(entity);
+  }
+
+  @Transactional
+  public UserDTO update(Long id, UserDTO dto) {
     try {
       User user = userRepository.getReferenceById(id);
-      updateEntity(user, entity);
-      return userRepository.save(user);
+      updateEntity(user, dto);
+      user = userRepository.save(user);
+      return new UserDTO(user);
     } catch (EntityNotFoundException e) {
       throw new ResourceNotFoundException(id);
     }
   }
 
-  private void updateEntity(User user, User entity) {
-    user.setLogin(entity.getLogin());
-    user.setPassword(entity.getPassword());
+  private void updateEntity(User user, UserDTO dto) {
+    user.setLogin(dto.getLogin());
+    user.setPassword(dto.getPassword());
   }
 
   public void deleteById(Long id) {

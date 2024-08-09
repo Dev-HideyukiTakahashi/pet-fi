@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-import com.lojapet.petfi.entities.User;
+import com.lojapet.petfi.dto.UserDTO;
 import com.lojapet.petfi.services.UserService;
 
 @RestController
@@ -26,32 +26,32 @@ public class UserController {
   private UserService userService;
 
   @GetMapping
-  public ResponseEntity<List<User>> findAll() {
-    List<User> users = userService.findAll();
+  public ResponseEntity<List<UserDTO>> findAll() {
+    List<UserDTO> users = userService.findAll();
     return ResponseEntity.ok(users);
   }
 
   @GetMapping(path = "/{id}")
-  public ResponseEntity<User> findById(@PathVariable Long id) {
-    User user = userService.findById(id);
-    return ResponseEntity.ok(user);
+  public ResponseEntity<UserDTO> findById(@PathVariable Long id) {
+    UserDTO dto = userService.findById(id);
+    return ResponseEntity.ok(dto);
   }
 
   @PostMapping
-  public ResponseEntity<User> insert(@RequestBody User entity) {
-    entity = userService.insert(entity);
+  public ResponseEntity<UserDTO> insert(@RequestBody UserDTO dto) {
+    dto = userService.insert(dto);
     URI uri = ServletUriComponentsBuilder
         .fromCurrentRequest()
         .path("/{id}")
-        .buildAndExpand(entity.getId())
+        .buildAndExpand(dto.getId())
         .toUri();
-    return ResponseEntity.created(uri).body(entity);
+    return ResponseEntity.created(uri).body(dto);
   }
 
   @PutMapping(path = "/{id}")
-  public ResponseEntity<User> update(@PathVariable Long id, @RequestBody User entity) {
-    entity = userService.update(id, entity);
-    return ResponseEntity.ok(entity);
+  public ResponseEntity<UserDTO> update(@PathVariable Long id, @RequestBody UserDTO dto) {
+    dto = userService.update(id, dto);
+    return ResponseEntity.ok(dto);
   }
 
   @DeleteMapping(path = "/{id}")

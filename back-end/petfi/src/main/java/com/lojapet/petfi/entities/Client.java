@@ -27,7 +27,7 @@ public class Client {
 
   @JsonIgnore
   @OneToMany(mappedBy = "client")
-  private List<Dog> dogs = new ArrayList<>();
+  private List<Pet> pets = new ArrayList<>();
 
   public Client() {
   }
@@ -89,16 +89,16 @@ public class Client {
     this.city = city;
   }
 
-  public List<Dog> getDogs() {
-    return dogs;
+  public List<Pet> getPets() {
+    return pets;
   }
 
-  public void addDog(Dog dog) {
-    dogs.add(dog);
+  public void addPet(Pet pet) {
+    pets.add(pet);
   }
 
-  public void removeDog(Dog dog) {
-    dogs.remove(dog);
+  public void removePet(Pet pet) {
+    pets.remove(pet);
   }
 
   @Override

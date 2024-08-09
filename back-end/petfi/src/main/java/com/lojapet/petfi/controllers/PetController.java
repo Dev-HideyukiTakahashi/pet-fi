@@ -18,36 +18,38 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-import com.lojapet.petfi.dto.ClientDTO;
-import com.lojapet.petfi.services.ClientService;
+import com.lojapet.petfi.dto.PetDTO;
+import com.lojapet.petfi.services.PetService;
 
 @RestController
-@RequestMapping(path = "/clients")
-public class ClientController {
+@RequestMapping(path = "/pets")
+public class PetController {
 
   @Autowired
-  private ClientService clientService;
+  private PetService petService;
 
   @GetMapping
-  public ResponseEntity<Page<ClientDTO>> findAll(
+  public ResponseEntity<Page<PetDTO>> findAll(
       @RequestParam(value = "page", defaultValue = "0") Integer page,
-      @RequestParam(value = "linesPerPage", defaultValue = "12") Integer linesPerPage,
+      @RequestParam(value = "linesPerPage", defaultValue = "15") Integer linesPerPage,
       @RequestParam(value = "direction", defaultValue = "ASC") String direction,
       @RequestParam(value = "orderBy", defaultValue = "id") String orderBy) {
     PageRequest pageRequest = PageRequest.of(page, linesPerPage, Direction.valueOf(direction), orderBy);
-    Page<ClientDTO> list = clientService.findAllPaged(pageRequest);
+    Page<PetDTO> list = petService.findAllPaged(pageRequest);
     return ResponseEntity.ok(list);
   }
 
   @GetMapping(path = "/{id}")
-  public ResponseEntity<ClientDTO> findById(@PathVariable Long id) {
-    ClientDTO client = clientService.findById(id);
-    return ResponseEntity.ok(client);
+  public ResponseEntity<PetDTO> findById(@PathVariable Long id) {
+    PetDTO dto = petService.findById(id);
+    System.out.println("---------------CONTROLLER-----------------");
+    System.out.println(dto.getQrcode());
+    return ResponseEntity.ok(dto);
   }
 
   @PostMapping
-  public ResponseEntity<ClientDTO> insert(@RequestBody ClientDTO dto) {
-    dto = clientService.insert(dto);
+  public ResponseEntity<PetDTO> insert(@RequestBody PetDTO dto) {
+    dto = petService.insert(dto);
     URI uri = ServletUriComponentsBuilder
         .fromCurrentRequest()
         .path("/{id}")
@@ -57,14 +59,15 @@ public class ClientController {
   }
 
   @PutMapping(path = "/{id}")
-  public ResponseEntity<ClientDTO> update(@PathVariable Long id, @RequestBody ClientDTO dto) {
-    dto = clientService.update(id, dto);
+  public ResponseEntity<PetDTO> update(@PathVariable Long id, @RequestBody PetDTO dto) {
+    dto = petService.update(id, dto);
     return ResponseEntity.ok(dto);
   }
 
   @DeleteMapping(path = "/{id}")
-  public ResponseEntity<Void> delete(@PathVariable Long id) {
-    clientService.deleteById(id);
+  public ResponseEntity<Void> deleteById(@PathVariable Long id) {
+    petService.deleteById(id);
     return ResponseEntity.noContent().build();
   }
+
 }
