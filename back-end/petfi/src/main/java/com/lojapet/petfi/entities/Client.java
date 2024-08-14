@@ -5,6 +5,7 @@ import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -26,7 +27,7 @@ public class Client {
   private String city;
 
   @JsonIgnore
-  @OneToMany(mappedBy = "client")
+  @OneToMany(mappedBy = "client", cascade = CascadeType.ALL)
   private List<Pet> pets = new ArrayList<>();
 
   public Client() {

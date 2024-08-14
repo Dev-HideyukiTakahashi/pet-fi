@@ -43,10 +43,11 @@ public class ClientService {
   @Transactional
   public ClientDTO update(Long id, ClientDTO dto) {
     try {
-      Client client = clientRepository.getReferenceById(id);
-      updateEntity(client, dto);
-      client = clientRepository.save(client);
-      return new ClientDTO(client, "update");
+      Client entity = clientRepository.getReferenceById(id);
+      updateEntity(entity, dto);
+      entity.setId(id);
+      entity = clientRepository.save(entity);
+      return new ClientDTO(entity, "update");
     } catch (EntityNotFoundException e) {
       throw new ResourceNotFoundException(id);
     }
