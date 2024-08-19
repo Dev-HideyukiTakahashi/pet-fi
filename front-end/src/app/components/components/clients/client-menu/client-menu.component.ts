@@ -22,4 +22,8 @@ export class ClientMenuComponent {
       alert("Preencha pelo menos um campo!");
     }
   }
+
+  newClient() {
+
+  }
 }
