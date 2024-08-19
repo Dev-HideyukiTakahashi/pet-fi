@@ -1,0 +1,39 @@
+<div class="container top-distance">
+  <div class="row">
+    <div class="col-lg-4"></div>
+    <div class="col-lg-4">
+      <div class="card">
+        <div class="card-body">
+          <div class="text-center mb-4">
+            <h2>Menu Cliente</h2>
+            <button type="button" class="btn btn-primary btn-rounded mt-4" mdbRipple (click)="findClient()">Cadastrar
+              cliente</button>
+          </div>
+          <hr>
+          <div>
+            <span>Buscar cliente:</span>
+            <mdb-form-control>
+              <input mdbInput type="text" id="form1" class="form-control mt-3" [(ngModel)]="name" />
+              <label mdbLabel class="form-label" for="form1">Nome do cliente</label>
+            </mdb-form-control>
+            <mdb-form-control>
+              <input mdbInput type="tel" id="form1" class="form-control mt-3" [(ngModel)]="phone" />
+              <label mdbLabel class="form-label" for="form1">Telefone do cliente</label>
+            </mdb-form-control>
+            <mdb-form-control>
+              <input mdbInput type="text" id="form1" class="form-control mt-3" [(ngModel)]="city" />
+              <label mdbLabel class="form-label" for="form1">Cidade do cliente</label>
+            </mdb-form-control>
+            <button type="button" class="btn btn-primary btn-rounded mt-4" mdbRipple
+              (click)="findClient()">Buscar</button>
+          </div>
+          <hr>
+
+
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-4">
+    </div>
+  </div>
+</div>

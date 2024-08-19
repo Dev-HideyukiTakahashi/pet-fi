@@ -4,6 +4,7 @@ import { HomeComponent } from './components/layouts/home/home.component';
 import { ClientsListComponent } from './components/components/clients/clients-list/clients-list.component';
 import { ClientDetailsComponent } from './components/components/clients/client-details/client-details.component';
 import { ClientSearchComponent } from './components/components/clients/client-search/client-search.component';
+import { ClientMenuComponent } from './components/components/clients/client-menu/client-menu.component';
 
 export const routes: Routes = [
   { path: "", redirectTo: "login", pathMatch: "full" },
@@ -11,6 +12,7 @@ export const routes: Routes = [
   {
     path: "admin/home", component: HomeComponent,
     children: [
+      { path: "menu/clients", component: ClientMenuComponent },
       { path: "clients", component: ClientsListComponent },
       { path: "clients/new", component: ClientDetailsComponent },
       { path: "clients/edit/:id", component: ClientDetailsComponent },
