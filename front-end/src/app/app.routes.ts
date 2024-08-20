@@ -9,6 +9,7 @@ import { PetMenuComponent } from './components/components/pets/pet-menu/pet-menu
 import { PetListComponent } from './components/components/pets/pet-list/pet-list.component';
 import { PetDetailsComponent } from './components/components/pets/pet-details/pet-details.component';
 import { PetSearchComponent } from './components/components/pets/pet-search/pet-search.component';
+import { HelpComponent } from './components/layouts/help/help.component';
 
 export const routes: Routes = [
   { path: "", redirectTo: "login", pathMatch: "full" },
@@ -16,6 +17,7 @@ export const routes: Routes = [
   {
     path: "admin/home", component: HomeComponent,
     children: [
+      { path: "help", component: HelpComponent },
       { path: "menu/clients", component: ClientMenuComponent },
       { path: "clients", component: ClientsListComponent },
       { path: "clients/new", component: ClientDetailsComponent },
