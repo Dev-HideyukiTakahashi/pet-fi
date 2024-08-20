@@ -28,6 +28,24 @@ public class ClientService {
   }
 
   @Transactional(readOnly = true)
+  public Page<ClientDTO> findAllByName(PageRequest pageRequest, String name) {
+    Page<Client> list = clientRepository.findByNameContainingIgnoreCase(pageRequest, name);
+    return list.map(client -> new ClientDTO(client));
+  }
+
+  @Transactional(readOnly = true)
+  public Page<ClientDTO> findAllByInstagram(PageRequest pageRequest, String instagram) {
+    Page<Client> list = clientRepository.findByInstagram(pageRequest, instagram);
+    return list.map(client -> new ClientDTO(client));
+  }
+
+  @Transactional(readOnly = true)
+  public Page<ClientDTO> findAllByPhone(PageRequest pageRequest, String phone) {
+    Page<Client> list = clientRepository.findByPhone(pageRequest, phone);
+    return list.map(client -> new ClientDTO(client));
+  }
+
+  @Transactional(readOnly = true)
   public ClientDTO findById(Long id) {
     Client entity = clientRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException(id));
     return new ClientDTO(entity);
@@ -71,4 +89,5 @@ public class ClientService {
       throw new DatabaseException(e.getMessage());
     }
   }
+
 }

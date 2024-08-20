@@ -39,6 +39,42 @@ public class ClientController {
     return ResponseEntity.ok(list);
   }
 
+  @GetMapping(path = "/name/{name}")
+  public ResponseEntity<Page<ClientDTO>> findByName(
+      @RequestParam(value = "page", defaultValue = "0") Integer page,
+      @RequestParam(value = "linesPerPage", defaultValue = "12") Integer linesPerPage,
+      @RequestParam(value = "direction", defaultValue = "ASC") String direction,
+      @RequestParam(value = "orderBy", defaultValue = "id") String orderBy,
+      @PathVariable String name) {
+    PageRequest pageRequest = PageRequest.of(page, linesPerPage, Direction.valueOf(direction), orderBy);
+    Page<ClientDTO> list = clientService.findAllByName(pageRequest, name);
+    return ResponseEntity.ok(list);
+  }
+
+  @GetMapping(path = "/instagram/{instagram}")
+  public ResponseEntity<Page<ClientDTO>> findByInstagram(
+      @RequestParam(value = "page", defaultValue = "0") Integer page,
+      @RequestParam(value = "linesPerPage", defaultValue = "12") Integer linesPerPage,
+      @RequestParam(value = "direction", defaultValue = "ASC") String direction,
+      @RequestParam(value = "orderBy", defaultValue = "id") String orderBy,
+      @PathVariable String instagram) {
+    PageRequest pageRequest = PageRequest.of(page, linesPerPage, Direction.valueOf(direction), orderBy);
+    Page<ClientDTO> list = clientService.findAllByInstagram(pageRequest, instagram);
+    return ResponseEntity.ok(list);
+  }
+
+  @GetMapping(path = "/phone/{phone}")
+  public ResponseEntity<Page<ClientDTO>> findByPhone(
+      @RequestParam(value = "page", defaultValue = "0") Integer page,
+      @RequestParam(value = "linesPerPage", defaultValue = "12") Integer linesPerPage,
+      @RequestParam(value = "direction", defaultValue = "ASC") String direction,
+      @RequestParam(value = "orderBy", defaultValue = "id") String orderBy,
+      @PathVariable String phone) {
+    PageRequest pageRequest = PageRequest.of(page, linesPerPage, Direction.valueOf(direction), orderBy);
+    Page<ClientDTO> list = clientService.findAllByPhone(pageRequest, phone);
+    return ResponseEntity.ok(list);
+  }
+
   @GetMapping(path = "/{id}")
   public ResponseEntity<ClientDTO> findById(@PathVariable Long id) {
     ClientDTO client = clientService.findById(id);

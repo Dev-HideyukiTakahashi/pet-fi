@@ -34,23 +34,43 @@ public class TestConfig implements CommandLineRunner {
 
     User user = new User(null, "admin", "123456");
 
-    Client client1 = new Client(null, "Maria", "1199999999", "www.facebook.com", "@maria", "Diadema");
-    Client client2 = new Client(null, "João", "1199999999", "www.facebook.com", "@joao", "São Bernardo do Campo");
-    Client client3 = new Client(null, "José", "1199999999", "www.facebook.com", "@jose", "Santo André");
+    Client client1 = new Client(null, "Maria Silva", "11966666666", "www.facebook.com", "@maria", "Diadema");
+    Client client2 = new Client(null, "João Silva", "11977777777", "www.facebook.com", "@joao",
+        "São Bernardo do Campo");
+    Client client3 = new Client(null, "José Silva", "11988888888", "www.facebook.com", "@jose", "Santo André");
+    Client client4 = new Client(null, "Gabriel Rocha", "1199999999", "www.facebook.com", "@gabriel", "Diadema");
+    Client client5 = new Client(null, "Zé Carlos", "1199999999", "www.facebook.com", "@ze", "Santo André");
+    Client client6 = new Client(null, "Amanda", "1199999999", "www.facebook.com", "@amanda", "São Paulo");
+    Client client7 = new Client(null, "Teresa Nascimento", "1199999999", "www.facebook.com", "@teresa", "Diadema");
+    Client client8 = new Client(null, "Alex Brown", "1199999999", "www.facebook.com", "@alex", "São Paulo");
+    Client client9 = new Client(null, "Bob Green", "1199999999", "www.facebook.com", "@bob", "Diadema");
 
     Pet pet1 = new Pet(null, "Banzé", Sex.MALE, "Castrado", "linkfoto.jpg", client1, PetType.DOG);
     Pet pet2 = new Pet(null, "Totó", Sex.MALE, "Agressivo", "linkfoto.jpg", client1, PetType.DOG);
     Pet pet3 = new Pet(null, "Carabina", Sex.FEMALE, "", "linkfoto.jpg", client2, PetType.DOG);
     Pet pet4 = new Pet(null, "Mel", Sex.FEMALE, "Esperando filhote", "linkfoto.jpg", client3, PetType.DOG);
+    Pet pet5 = new Pet(null, "Babinha", Sex.FEMALE, "", "linkfoto.jpg", client5, PetType.DOG);
+    Pet pet6 = new Pet(null, "Dio", Sex.MALE, "Dócil", "linkfoto.jpg", client6, PetType.DOG);
+    Pet pet7 = new Pet(null, "Rhino", Sex.MALE, "", "linkfoto.jpg", client7, PetType.DOG);
+    Pet pet8 = new Pet(null, "Heavy", Sex.FEMALE, "", "linkfoto.jpg", client8, PetType.DOG);
+    Pet pet9 = new Pet(null, "Fan", Sex.MALE, "", "linkfoto.jpg", client9, PetType.DOG);
+    Pet pet10 = new Pet(null, "Russo", Sex.MALE, "Agressivo", "linkfoto.jpg", client9, PetType.DOG);
 
     client1.addPet(pet1);
     client1.addPet(pet2);
     client2.addPet(pet3);
     client3.addPet(pet4);
+    client5.addPet(pet5);
+    client6.addPet(pet6);
+    client7.addPet(pet7);
+    client8.addPet(pet8);
+    client9.addPet(pet9);
+    client9.addPet(pet10);
 
     userRepository.save(user);
-    clientRepository.saveAll(Arrays.asList(client1, client2, client3));
-    petRepository.saveAll(Arrays.asList(pet1, pet2, pet3, pet4));
+    clientRepository
+        .saveAll(Arrays.asList(client1, client2, client3, client4, client5, client6, client7, client8, client9));
+    petRepository.saveAll(Arrays.asList(pet1, pet2, pet3, pet4, pet5, pet6, pet7, pet8, pet9, pet10));
   }
 
 }
