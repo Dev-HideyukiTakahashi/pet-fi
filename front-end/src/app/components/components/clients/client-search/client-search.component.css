@@ -1,0 +1,7 @@
+.top-distance{
+  margin-top: 5vh;
+}
+
+input[type=number]::-webkit-inner-spin-button{
+    appearance: none; 
+}

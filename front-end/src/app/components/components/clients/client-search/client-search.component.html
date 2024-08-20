@@ -1,1 +1,91 @@
-<p>client-search works!</p>
+<div class="container top-distance">
+  <div class="row">
+    <div class="col-lg-2">
+      <div class="card">
+        <div class="card-body">
+          <div class="text-center mb-4">
+            <h2>Menu Cliente</h2>
+            <hr>
+            <button type="button" class="col-lg-12 btn btn-success btn-rounded mt-3" mdbRipple
+              (click)="newClient()">Cadastrar</button>
+            <button type="button" class="col-lg-12 btn btn-warning btn-rounded mt-3" mdbRipple
+              (click)="newClient()">Editar</button>
+            <button type="button" class="col-lg-12 btn btn-danger btn-rounded mt-3" mdbRipple
+              (click)="newClient()">Deletar</button>
+            <button type="button" (click)="findClient()" class="col-lg-12 btn btn-primary btn-rounded mt-3"
+              mdbRipple>Buscar</button>
+          </div>
+          <hr>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-10">
+      <div class="card">
+        <div class="card-body">
+          <h3 class="text-center">Buscar cliente</h3>
+          <hr>
+          <div class="input-group mt-2">
+            <mdb-form-control class="col-lg-1">
+              <input mdbInput type="number" id="form1" class=" form-control" [(ngModel)]="idClient" />
+              <label mdbLabel class="form-label" for="form1">Id</label>
+            </mdb-form-control>
+            <button type="button" class="btn btn-primary" (click)="findClientById()">
+              <i class="fas fa-search"></i>
+            </button>
+          </div>
+          <div class="input-group mt-2">
+            <mdb-form-control class="col-lg-2">
+              <input mdbInput type="number" class=" form-control" [(ngModel)]="phoneClient" />
+              <label mdbLabel class="form-label" for="form1">Telefone</label>
+            </mdb-form-control>
+            <button type="button" class="btn btn-primary" (click)="findClientByPhone()">
+              <i class="fas fa-search"></i>
+            </button>
+          </div>
+          <div class="input-group mt-2">
+            <mdb-form-control class="col-lg-3">
+              <input mdbInput type="text" id="form1" class=" form-control" [(ngModel)]="nameClient" />
+              <label mdbLabel class="form-label" for="form1">Nome</label>
+            </mdb-form-control>
+            <button type="button" class="btn btn-primary" (click)="findClientByName()">
+              <i class=" fas fa-search"></i>
+            </button>
+          </div>
+          <div class="input-group mt-2">
+            <mdb-form-control class="col-lg-3">
+              <input mdbInput type="text" id="form1" class=" form-control" [(ngModel)]="instagramClient" />
+              <label mdbLabel class="form-label" for="form1">Instagram</label>
+            </mdb-form-control>
+            <button type="button" class="btn btn-primary" (click)="findClientByInstagram()">
+              <i class="fas fa-search"></i>
+            </button>
+          </div>
+          <table class="table mt-5" border="1px">
+            <thead class="table-dark">
+              <tr>
+                <td>ID</td>
+                <td>Nome</td>
+                <td>Telefone</td>
+                <td>Instagram</td>
+                <td></td>
+              </tr>
+            </thead>
+            <tbody>
+              @for (client of clients; track $index) {
+              <tr>
+                <td>{{client.id}}</td>
+                <td>{{client.name}}</td>
+                <td>{{client.phone}}</td>
+                <td>{{client.instagram}}</td>
+                <button type="button" class="btn btn-outline-dark col-lg-6" mdbRipple rippleColor="dark">Editar</button>
+                <button type="button" class="btn btn-outline-dark col-lg-6" mdbRipple
+                  rippleColor="dark">Deletar</button>
+              </tr>
+              }
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
