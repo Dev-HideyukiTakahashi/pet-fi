@@ -5,11 +5,12 @@ import { MdbFormsModule } from 'mdb-angular-ui-kit/forms';
 import { Client } from '../../../../models/client';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-client-menu',
   standalone: true,
-  imports: [MdbFormsModule, FormsModule],
+  imports: [MdbFormsModule, FormsModule, RouterLink],
   templateUrl: './client-menu.component.html',
   styleUrl: './client-menu.component.css'
 })
@@ -23,6 +24,7 @@ export class ClientMenuComponent {
 
 
   router = inject(Router);
+
 
   constructor() {
     this.client.id = 1;
@@ -49,6 +51,19 @@ export class ClientMenuComponent {
     this.clients.push(this.client2);
     this.clients.push(this.client3);
     this.clients.push(this.client4);
+
+    let newClient = history.state.newClient;
+    let updatedClient = history.state.updatedClient;
+
+    if (newClient) {
+      this.clients.push(newClient);
+    }
+    if (updatedClient) {
+      let index = this.clients.findIndex(x => {
+        return x.id == updatedClient.id
+      });
+      this.clients[index] = updatedClient;
+    }
   }
 
   findClient() {
@@ -56,7 +71,7 @@ export class ClientMenuComponent {
   }
 
   newClient() {
-
+    this.router.navigate(["admin/home/clients/new"]);
   }
 
   deleteClient(client: Client) {
