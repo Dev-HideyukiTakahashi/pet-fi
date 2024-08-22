@@ -5,6 +5,7 @@ import Swal from 'sweetalert2';
 import { Client } from '../../../../models/client';
 import { FormsModule } from '@angular/forms';
 import { MdbValidationModule } from 'mdb-angular-ui-kit/validation';
+import { Pets } from '../../../../models/pets';
 
 @Component({
   selector: 'app-client-details',
@@ -20,6 +21,8 @@ export class ClientDetailsComponent {
   client: Client = new Client();
   error: boolean = false;
   edit: boolean = false;
+  pet1: Pets = new Pets();
+  pet2: Pets = new Pets();
 
   constructor() {
     let id = this.activatedRouter.snapshot.params['id'];
@@ -36,6 +39,30 @@ export class ClientDetailsComponent {
     clientReturned.city = "Diadema"
     clientReturned.phone = "111111";
     clientReturned.instagram = "@update"
+
+    this.pet1.id = 1;
+    this.pet1.name = "Totó";
+    this.pet1.sex = "FEMEA";
+    this.pet1.additionalInformation = "";
+    this.pet1.qrcode = "";
+    this.pet1.photo = "img/url";
+    this.pet1.wanted = false;
+    this.pet1.petType = "DOG";
+    this.pet1.client = this.client;
+
+    this.pet2.id = 2;
+    this.pet2.name = "Banzé";
+    this.pet2.sex = "MACHO";
+    this.pet2.additionalInformation = "Agressivo";
+    this.pet2.qrcode = "";
+    this.pet2.photo = "img/url";
+    this.pet2.wanted = false;
+    this.pet2.petType = "DOG";
+    this.pet2.client = this.client;
+
+    clientReturned.pets.push(this.pet1);
+    clientReturned.pets.push(this.pet2);
+
     this.client = clientReturned;
   }
 

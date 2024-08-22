@@ -20,7 +20,7 @@
         <div class="card-body">
           <h1 class="text-center">Dados Cadastrais</h1>
           <hr>
-          <div class="row mt-4" ngNativeValidate>
+          <div class="row mt-4">
             <h2>Cliente:</h2>
             @if (edit) {
             <mdb-form-control class="col-lg-2 mt-2">
@@ -55,18 +55,82 @@
               <label mdbLabel class="form-label">Instagram</label>
             </mdb-form-control>
             <span class="mt-3">* Campos obrigatórios</span>
+            @if (!edit) {
             <button type="submit" class="btn btn-success mt-4 me-2 col-lg-2" mdbRipple
               (click)="registerClient()">Salvar</button>
-            @if (edit) {
-            <button type="button" class="btn btn-info mt-4 me-2 col-lg-2" mdbRipple (click)="registerPet()">Novo
-              Pet</button>
             }
           </div>
           <hr>
           @if (edit) {
-          <div>
-            <h1 class="text-center">Pets:</h1>
+          <div class="row mt-2">
+            @for (pet of client.pets; track $index) {
+            <h1>Pet:</h1>
+            <mdb-form-control class="col-lg-2 mt-3">
+              <input mdbInput type="number" class="form-control bg-secondary text-light" [(ngModel)]="pet.id"
+                disabled />
+              <label mdbLabel class="form-label">Código</label>
+            </mdb-form-control>
+            <div class="col-lg-10 mt-3"></div>
+            <mdb-form-control class="col-lg-4 mt-3">
+              <input mdbInput type="text" class="form-control" [(ngModel)]="pet.name" />
+              <label mdbLabel class="form-label">Nome*</label>
+            </mdb-form-control>
+            <div class="mt-3 col-lg-3">
+              <select class="form-select " aria-label="Default select example" [(ngModel)]="pet.sex">
+                <option selected>Sexo</option>
+                <option value="MACHO">MACHO</option>
+                <option value="FEMEA">FEMEA</option>
+              </select>
+            </div>
+            <div class="mt-3 col-lg-3">
+              <select class="form-select " aria-label="Default select example" [(ngModel)]="pet.petType">
+                <option selected>Pet</option>
+                <option value="DOG">CACHORRO</option>
+                <option value="CAT">GATO</option>
+              </select>
+            </div>
+            <mdb-form-control class="col-lg-6 mt-3">
+              <input mdbInput type="text" class="form-control" [(ngModel)]="pet.additionalInformation" />
+              <label mdbLabel class="form-label">Informações adicionais</label>
+            </mdb-form-control>
+            <div class="col-lg-5 mt-3"></div>
+            <div class="col-lg-2 mt-3 d-flex align-items-center">
+              <div>Desaparecido:</div>
+            </div>
+
+            <div class=" mt-3 col-lg-2">
+              <select class="form-select " aria-label="Default select example" [(ngModel)]="pet.wanted">
+                <option selected>Desaparecido</option>
+                <option value="true">Sim</option>
+                <option value="false">Não</option>
+              </select>
+            </div>
+            <div class="row mt-3">
+              <div class="col-lg-4 mt-3 text-center">
+                <img src="assets\dig-wifi.jpg" alt="..." class="img-thumbnail">
+              </div>
+              <div class="col-lg-4 mt-3 text-center">
+                <img src="assets\qrcode.png" alt="...">
+              </div>
+            </div>
+            <div class="col-lg-4 text-center">
+              <div class="mt-2"><button type="button" class="btn btn-primary btn-sm">Alterar Foto</button></div>
+            </div>
+            <div class="col-lg-4 text-center">
+              <div class="mt-2"><button type="button" class="btn btn-secondary btn-sm">Gerar QRCODE</button></div>
+            </div>
+            <div class="col-lg-12 mt-3"></div>
+            <br>
+            <hr>
+
+            }
           </div>
+          }
+          @if (edit) {
+          <button type="submit" class="btn btn-success mt-4 me-2 col-lg-2" mdbRipple
+            (click)="registerClient()">Atualizar</button>
+          <button type="button" class="btn btn-info mt-4 me-2 col-lg-2" mdbRipple (click)="registerPet()">Novo
+            Pet</button>
           }
         </div>
       </div>
