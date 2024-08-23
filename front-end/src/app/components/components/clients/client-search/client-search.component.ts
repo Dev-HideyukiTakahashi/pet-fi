@@ -57,6 +57,6 @@ export class ClientSearchComponent {
   }
 
   newClient() {
-    this.router.navigate(["admin/home/clients/new"]);
+    this.router.navigate(["admin/home/client/new"]);
   }
 }

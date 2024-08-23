@@ -71,7 +71,7 @@ export class ClientDetailsComponent {
   }
 
   newClient() {
-    this.router.navigate(["admin/home/clients/new"]);
+    this.router.navigate(["admin/home/client/new"]);
   }
 
   registerClient() {
@@ -94,7 +94,7 @@ export class ClientDetailsComponent {
           icon: 'success',
           confirmButtonText: 'Ok'
         })
-        this.router.navigate(["admin/home/menu/clients"], { state: { updatedClient: this.client } })
+        this.router.navigate(["admin/home/clients"], { state: { updatedClient: this.client } })
       } else {
 
         //APAGAR
@@ -106,7 +106,7 @@ export class ClientDetailsComponent {
           icon: 'success',
           confirmButtonText: 'Ok'
         })
-        this.router.navigate(["admin/home/menu/clients"], { state: { newClient: this.client } })
+        this.router.navigate(["admin/home/clients"], { state: { newClient: this.client } })
       }
     }
   }
