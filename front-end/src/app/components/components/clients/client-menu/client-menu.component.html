@@ -31,7 +31,7 @@
               </tr>
             </thead>
             <tbody>
-              @for (client of clients.reverse(); track $index) {
+              @for (client of clients; track $index) {
               <tr>
                 <td>{{client.id}}</td>
                 <td>{{client.name}}</td>
@@ -42,9 +42,22 @@
                 <button type="button" class="btn btn-outline-dark col-lg-6" mdbRipple rippleColor="dark"
                   (click)="deleteClient(client)">Deletar</button>
               </tr>
+
               }
             </tbody>
           </table>
+
+
+          <nav>
+            <ul class="pagination justify-content-center">
+              @for (n of totalPages; track $index) {
+              <li class="page-item page-index"><a class="page-link" (click)="findAllByPage($index)">{{$index + 1}}</a>
+              </li>
+              }
+            </ul>
+          </nav>
+
+
           <hr>
         </div>
       </div>
