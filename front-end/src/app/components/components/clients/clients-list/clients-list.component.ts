@@ -57,7 +57,7 @@ export class ClientsListComponent {
     });
   }
 
-  // método no back-end findAll paginado com parâmetro de página
+  // método no back-end findAll paginado com parâmetro de página - response da tag pagination do html
   findAllByPage(page: number) {
     this.clientService.findAllByPage(page).subscribe(res => {
       this.clients = res.content.reverse();
@@ -72,10 +72,7 @@ export class ClientsListComponent {
     this.router.navigate(["admin/home/client/new"]);
   }
 
-  deleteClient(client: Client) {
-    let index = this.clients.findIndex(x => {
-      return x.id == client.id;
-    })
+  deleteClient(id: number) {
     Swal.fire({
       title: "Deletar cliente",
       text: "Tem certeza que deseja deletar cliente?",
@@ -87,7 +84,12 @@ export class ClientsListComponent {
       cancelButtonText: "Não"
     }).then((result) => {
       if (result.isConfirmed) {
-        this.clients.splice(index, 1);
+        this.clientService.deleteById(id).subscribe({
+          next: res => this.findAll(),
+          error: err => console.log(err),
+        });
+
+
         Swal.fire({
           title: "Deletado com sucesso!",
           text: "Cadastro removido.",

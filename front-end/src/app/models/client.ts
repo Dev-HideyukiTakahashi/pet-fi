@@ -9,6 +9,4 @@ export class Client {
   instagram!: string;
   city!: string;
   pets: Pets[] = [];
-
-  totalPages!: number;
 }

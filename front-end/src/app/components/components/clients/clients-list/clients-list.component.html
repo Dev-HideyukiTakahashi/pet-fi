@@ -40,14 +40,11 @@
                 <button type="button" class="btn btn-outline-dark col-lg-6" mdbRipple rippleColor="dark"
                   routerLink="/admin/home/clients/edit/{{client.id}}">Editar</button>
                 <button type="button" class="btn btn-outline-dark col-lg-6" mdbRipple rippleColor="dark"
-                  (click)="deleteClient(client)">Deletar</button>
+                  (click)="deleteClient(client.id)">Deletar</button>
               </tr>
-
               }
             </tbody>
           </table>
-
-
           <nav>
             <ul class="pagination justify-content-center">
               @for (n of totalPages; track $index) {
@@ -56,8 +53,6 @@
               }
             </ul>
           </nav>
-
-
           <hr>
         </div>
       </div>

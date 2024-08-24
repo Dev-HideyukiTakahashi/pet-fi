@@ -13,16 +13,16 @@ export class ClientService {
 
   constructor() { }
 
-  // findAll(): Observable<Client[]> {
-  //   return this.http.get<Client[]>(this.API);
-  // }
-
   findAll(): Observable<any> {
     return this.http.get(this.API);
   }
 
   findAllByPage(pageIndex: number): Observable<any> {
     return this.http.get(this.API + "?page=" + pageIndex);
+  }
+
+  deleteById(id: number): Observable<any> {
+    return this.http.delete(this.API + "/" + id);
   }
 
 }
