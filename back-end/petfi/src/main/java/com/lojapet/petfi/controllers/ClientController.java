@@ -41,12 +41,6 @@ public class ClientController {
     Page<ClientDTO> list = clientService.findAllPaged(pageRequest);
     return ResponseEntity.ok(list);
   }
-  
-  @GetMapping("/all")
-  public ResponseEntity<List<ClientDTO>> findAll() {
-    List<ClientDTO> list = clientService.findAll();
-    return ResponseEntity.ok(list);
-  }
 
   @GetMapping(path = "/name/{name}")
   public ResponseEntity<Page<ClientDTO>> findByName(

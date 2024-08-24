@@ -1,7 +1,5 @@
 package com.lojapet.petfi.services;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.data.domain.Page;
@@ -91,11 +89,4 @@ public class ClientService {
 			throw new DatabaseException(e.getMessage());
 		}
 	}
-
-	@Transactional
-	public List<ClientDTO> findAll() {
-		List<Client> list = clientRepository.findAll();
-		return list.stream().map(client -> new ClientDTO(client)).toList();
-	}
-
 }
