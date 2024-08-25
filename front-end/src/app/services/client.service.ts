@@ -21,6 +21,18 @@ export class ClientService {
     return this.http.get(this.API + "?page=" + pageIndex);
   }
 
+  insert(client: Client): Observable<any> {
+    return this.http.post(this.API, client);
+  }
+
+  update(id: number, client: Client): Observable<any> {
+    return this.http.put(this.API + "/" + id, client);
+  }
+
+  findById(id: number): Observable<any> {
+    return this.http.get(this.API + "/" + id);
+  }
+
   deleteById(id: number): Observable<any> {
     return this.http.delete(this.API + "/" + id);
   }

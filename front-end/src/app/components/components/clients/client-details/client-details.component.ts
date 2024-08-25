@@ -5,7 +5,7 @@ import Swal from 'sweetalert2';
 import { Client } from '../../../../models/client';
 import { FormsModule } from '@angular/forms';
 import { MdbValidationModule } from 'mdb-angular-ui-kit/validation';
-import { Pets } from '../../../../models/pets';
+import { ClientService } from '../../../../services/client.service';
 
 @Component({
   selector: 'app-client-details',
@@ -19,51 +19,22 @@ export class ClientDetailsComponent {
   router = inject(Router);
   activatedRouter = inject(ActivatedRoute);
   client: Client = new Client();
-  error: boolean = false;
   edit: boolean = false;
-  pet1: Pets = new Pets();
-  pet2: Pets = new Pets();
+  clientService = inject(ClientService)
 
   constructor() {
     let id = this.activatedRouter.snapshot.params['id'];
-    if (id > 0) {
+    if (id != null) {
       this.findById(id);
       this.edit = true;
     }
   }
 
   findById(id: number) {
-    let clientReturned: Client = new Client();
-    clientReturned.id = id;
-    clientReturned.name = "teste updated";
-    clientReturned.city = "Diadema"
-    clientReturned.phone = "111111";
-    clientReturned.instagram = "@update"
-
-    this.pet1.id = 1;
-    this.pet1.name = "Totó";
-    this.pet1.sex = "FEMEA";
-    this.pet1.additionalInformation = "";
-    this.pet1.qrcode = "";
-    this.pet1.photo = "img/url";
-    this.pet1.wanted = false;
-    this.pet1.petType = "DOG";
-    this.pet1.client = this.client;
-
-    this.pet2.id = 2;
-    this.pet2.name = "Banzé";
-    this.pet2.sex = "MACHO";
-    this.pet2.additionalInformation = "Agressivo";
-    this.pet2.qrcode = "";
-    this.pet2.photo = "img/url";
-    this.pet2.wanted = false;
-    this.pet2.petType = "DOG";
-    this.pet2.client = this.client;
-
-    clientReturned.pets.push(this.pet1);
-    clientReturned.pets.push(this.pet2);
-
-    this.client = clientReturned;
+    this.clientService.findById(id).subscribe({
+      next: response => this.client = response,
+      error: e => e.error.message,
+    })
   }
 
   findClient() {
@@ -74,7 +45,7 @@ export class ClientDetailsComponent {
     this.router.navigate(["admin/home/client/new"]);
   }
 
-  registerClient() {
+  insert(client: Client) {
     if (this.client.name == null || this.client.city == null || this.client.phone == null) {
       Swal.fire({
         icon: "error",
@@ -86,27 +57,36 @@ export class ClientDetailsComponent {
         if (!this.client.instagram.startsWith("@")) {
           this.client.instagram = "@" + this.client.instagram
         }
-      }
+        // EDITANDO UM CLIENT
+        if (this.client.id != null) {
+          this.clientService.update(client.id, client).subscribe({
 
-      if (this.client.id != null) {
-        Swal.fire({
-          title: 'Editado com sucesso!',
-          icon: 'success',
-          confirmButtonText: 'Ok'
-        })
-        this.router.navigate(["admin/home/clients"], { state: { updatedClient: this.client } })
-      } else {
+            next: response => this.router.navigate(["admin/home/clients"], { state: { updatedClient: this.client } }),
+            error: e => console.log("Error : " + e.error.message),
 
-        //APAGAR
-        this.client.id = 555;
+          });
+          console.log("EDITADO " + client);
+          Swal.fire({
+            title: 'Editado com sucesso!',
+            icon: 'success',
+            confirmButtonText: 'Ok'
+          })
 
-        Swal.fire({
-          title: 'Sucesso!',
-          text: 'Novo cadastro realizado.',
-          icon: 'success',
-          confirmButtonText: 'Ok'
-        })
-        this.router.navigate(["admin/home/clients"], { state: { newClient: this.client } })
+        }
+        // CADASTRANDO UM NOVO CLIENT
+        else {
+          this.clientService.insert(client).subscribe({
+            next: response => this.router.navigate(["admin/home/clients"], { state: { newClient: this.client } }),
+            error: e => console.log("Error : " + e.error.message),
+          });
+          console.log("SALVO " + client.id);
+          Swal.fire({
+            title: 'Sucesso!',
+            text: 'Novo cadastro realizado.',
+            icon: 'success',
+            confirmButtonText: 'Ok'
+          })
+        }
       }
     }
   }
@@ -133,3 +113,7 @@ export class ClientDetailsComponent {
   }
 
 }
+function registerClient() {
+  throw new Error('Function not implemented.');
+}
+

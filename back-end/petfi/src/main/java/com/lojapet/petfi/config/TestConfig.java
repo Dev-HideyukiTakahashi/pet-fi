@@ -45,16 +45,16 @@ public class TestConfig implements CommandLineRunner {
     Client client8 = new Client(null, "Alex Brown", "1199999999", "www.facebook.com", "@alex", "São Paulo");
     Client client9 = new Client(null, "Bob Green", "1199999999", "www.facebook.com", "@bob", "Diadema");
 
-    Pet pet1 = new Pet(null, "Banzé", Sex.MACHO, "Castrado", "linkfoto.jpg", client1, PetType.DOG);
-    Pet pet2 = new Pet(null, "Totó", Sex.MACHO, "Agressivo", "linkfoto.jpg", client1, PetType.DOG);
-    Pet pet3 = new Pet(null, "Carabina", Sex.FEMEA, "", "linkfoto.jpg", client2, PetType.DOG);
-    Pet pet4 = new Pet(null, "Mel", Sex.FEMEA, "Esperando filhote", "linkfoto.jpg", client3, PetType.DOG);
-    Pet pet5 = new Pet(null, "Babinha", Sex.FEMEA, "", "linkfoto.jpg", client5, PetType.DOG);
-    Pet pet6 = new Pet(null, "Dio", Sex.MACHO, "Dócil", "linkfoto.jpg", client6, PetType.DOG);
-    Pet pet7 = new Pet(null, "Rhino", Sex.MACHO, "", "linkfoto.jpg", client7, PetType.DOG);
-    Pet pet8 = new Pet(null, "Heavy", Sex.FEMEA, "", "linkfoto.jpg", client8, PetType.DOG);
-    Pet pet9 = new Pet(null, "Fan", Sex.MACHO, "", "linkfoto.jpg", client9, PetType.DOG);
-    Pet pet10 = new Pet(null, "Russo", Sex.MACHO, "Agressivo", "linkfoto.jpg", client9, PetType.DOG);
+    Pet pet1 = new Pet(null, "Banzé", Sex.MACHO, "Castrado", "linkfoto.jpg", client1, PetType.CACHORRO);
+    Pet pet2 = new Pet(null, "Totó", Sex.MACHO, "Agressivo", "linkfoto.jpg", client1, PetType.CACHORRO);
+    Pet pet3 = new Pet(null, "Carabina", Sex.FEMEA, "", "linkfoto.jpg", client2, PetType.CACHORRO);
+    Pet pet4 = new Pet(null, "Mel", Sex.FEMEA, "Esperando filhote", "linkfoto.jpg", client3, PetType.CACHORRO);
+    Pet pet5 = new Pet(null, "Babinha", Sex.FEMEA, "", "linkfoto.jpg", client5, PetType.CACHORRO);
+    Pet pet6 = new Pet(null, "Dio", Sex.MACHO, "Dócil", "linkfoto.jpg", client6, PetType.CACHORRO);
+    Pet pet7 = new Pet(null, "Rhino", Sex.MACHO, "", "linkfoto.jpg", client7, PetType.CACHORRO);
+    Pet pet8 = new Pet(null, "Heavy", Sex.FEMEA, "", "linkfoto.jpg", client8, PetType.CACHORRO);
+    Pet pet9 = new Pet(null, "Fan", Sex.MACHO, "", "linkfoto.jpg", client9, PetType.CACHORRO);
+    Pet pet10 = new Pet(null, "Russo", Sex.MACHO, "Agressivo", "linkfoto.jpg", client9, PetType.CACHORRO);
 
     client1.addPet(pet1);
     client1.addPet(pet2);

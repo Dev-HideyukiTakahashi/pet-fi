@@ -48,22 +48,6 @@ export class ClientsListComponent {
     //teste fim
   }
 
-  // método no back-end findAll paginado
-  findAll() {
-    this.clientService.findAll().subscribe(res => {
-      this.clients = res.content.reverse();
-      let totalPages: number[] = new Array(res.totalPages);
-      this.totalPages = totalPages;
-    });
-  }
-
-  // método no back-end findAll paginado com parâmetro de página - response da tag pagination do html
-  findAllByPage(page: number) {
-    this.clientService.findAllByPage(page).subscribe(res => {
-      this.clients = res.content.reverse();
-    });
-  }
-
   findClient() {
     this.router.navigate(["admin/home/client"]);
   }
@@ -71,6 +55,25 @@ export class ClientsListComponent {
   newClient() {
     this.router.navigate(["admin/home/client/new"]);
   }
+
+  // método no back-end findAll paginado
+  findAll() {
+    this.clientService.findAll().subscribe(res => {
+      this.clients = res.content;
+      this.totalPages = new Array(res.totalPages);
+    });
+  }
+
+  // método no back-end findAll paginado com parâmetro de página - response da tag pagination do html
+  findAllByPage(page: number) {
+    this.clientService.findAllByPage(page).subscribe(res => {
+      this.clients = res.content;
+    });
+  }
+
+
+
+
 
   deleteClient(id: number) {
     Swal.fire({
@@ -85,11 +88,9 @@ export class ClientsListComponent {
     }).then((result) => {
       if (result.isConfirmed) {
         this.clientService.deleteById(id).subscribe({
-          next: res => this.findAll(),
-          error: err => console.log(err),
+          next: response => this.findAll(),
+          error: e => console.log("Error : " + e.error.message),
         });
-
-
         Swal.fire({
           title: "Deletado com sucesso!",
           text: "Cadastro removido.",
