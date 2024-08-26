@@ -33,6 +33,18 @@ export class ClientService {
     return this.http.get(this.API + "/" + id);
   }
 
+  findByPhone(phone: string): Observable<any> {
+    return this.http.get(this.API + "/phone/" + phone);
+  }
+
+  findByName(name: string): Observable<any> {
+    return this.http.get(this.API + "/name/" + name);
+  }
+
+  findByInstagram(instagram: string): Observable<any> {
+    return this.http.get(this.API + "/instagram/" + instagram);
+  }
+
   deleteById(id: number): Observable<any> {
     return this.http.delete(this.API + "/" + id);
   }

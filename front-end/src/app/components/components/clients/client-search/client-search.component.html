@@ -25,16 +25,17 @@
               <input mdbInput type="number" id="form1" class=" form-control" [(ngModel)]="idClient" />
               <label mdbLabel class="form-label" for="form1">Código</label>
             </mdb-form-control>
-            <button type="button" class="btn btn-primary" (click)="findClientById()">
+            <button type="button" class="btn btn-primary" (click)="findClientById(idClient)">
               <i class="fas fa-search"></i>
             </button>
           </div>
           <div class="input-group mt-2">
             <mdb-form-control class="col-lg-2">
-              <input mdbInput type="number" class=" form-control" [(ngModel)]="phoneClient" />
+              <input mdbInput id="text" type="number" class=" form-control" [(ngModel)]="phoneClient"
+                pattern="/^\d+$/" />
               <label mdbLabel class="form-label" for="form1">Telefone</label>
             </mdb-form-control>
-            <button type="button" class="btn btn-primary" (click)="findClientByPhone()">
+            <button type="button" class="btn btn-primary" (click)="findClientByPhone(phoneClient)">
               <i class="fas fa-search"></i>
             </button>
           </div>
@@ -43,7 +44,7 @@
               <input mdbInput type="text" id="form1" class=" form-control" [(ngModel)]="nameClient" />
               <label mdbLabel class="form-label" for="form1">Nome</label>
             </mdb-form-control>
-            <button type="button" class="btn btn-primary" (click)="findClientByName()">
+            <button type="button" class="btn btn-primary" (click)="findClientByName(nameClient)">
               <i class=" fas fa-search"></i>
             </button>
           </div>
@@ -52,7 +53,7 @@
               <input mdbInput type="text" id="form1" class=" form-control" [(ngModel)]="instagramClient" />
               <label mdbLabel class="form-label" for="form1">Instagram</label>
             </mdb-form-control>
-            <button type="button" class="btn btn-primary" (click)="findClientByInstagram()">
+            <button type="button" class="btn btn-primary" (click)="findClientByInstagram(instagramClient)">
               <i class="fas fa-search"></i>
             </button>
           </div>

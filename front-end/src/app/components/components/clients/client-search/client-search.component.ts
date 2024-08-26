@@ -3,6 +3,8 @@ import { Client } from '../../../../models/client';
 import { Router } from '@angular/router';
 import { MdbFormsModule } from 'mdb-angular-ui-kit/forms';
 import { FormsModule } from '@angular/forms';
+import { ClientService } from '../../../../services/client.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-client-search',
@@ -13,42 +15,90 @@ import { FormsModule } from '@angular/forms';
 })
 export class ClientSearchComponent {
 
+  clientService = inject(ClientService);
   router = inject(Router);
-  client!: Client;
   clients: Client[] = [];
   idClient!: number;
-  phoneClient!: number;
+  phoneClient!: string;
   nameClient!: string;
   instagramClient!: string;
 
-  findClientById() {
+  findClientById(id: number) {
     if (this.idClient == null) {
-      alert("Preencha o campo antes de buscar!");
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Preencha o campo para realizar a busca!",
+      });
+    } else {
+      this.clients = [];
+      this.clientService.findById(id).subscribe({
+
+        next: response => {
+          if (response != null) { this.clients.push(response) }
+          else { Swal.fire("Código não localizado!") }
+        },
+        error: e => { console.log(e.error.message) },
+      })
     }
   }
 
-  findClientByPhone() {
+  findClientByPhone(phone: string) {
     if (this.phoneClient == null) {
-      alert("Preencha o campo antes de buscar! \nTelefone apenas números!");
-      location.reload()
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Preencha o campo para realizar a busca! \nTelefone apenas números!",
+      });
+      this.phoneClient = "";
+    } else {
+      this.clients = [];
+      this.clientService.findByPhone(phone).subscribe({
+        next: response => {
+          if (response.content.length > 0) { this.clients = response.content }
+          else { Swal.fire("Telefone não localizado!"), this.phoneClient = "" }
+        },
+        error: e => { console.log(e.error.message) },
+      });
     }
   }
 
-  findClientByName() {
+  findClientByName(name: string) {
     if (this.nameClient == null) {
-      alert("Preencha o campo antes de buscar!");
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Preencha o campo para realizar a busca!",
+      });
     } else {
-      let completeName = this.nameClient.split(" ");
-      let firstName = completeName[0];
-      let lastName = completeName[1];
+      this.clientService.findByName(name).subscribe({
+        next: response => {
+          if (response.content.length > 0) { this.clients = response.content }
+          else { Swal.fire("Nome não localizado!"), this.nameClient = "" }
+        },
+        error: e => { console.log(e.error.message) },
+      });
     }
   }
 
-  findClientByInstagram() {
+  findClientByInstagram(instagram: string) {
     if (this.instagramClient == null) {
-      alert("Preencha o campo antes de buscar!");
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Preencha o campo para realizar a busca!",
+      });
     } else {
-      this.instagramClient = "@" + this.instagramClient;
+      if (!instagram.startsWith("@")) {
+        instagram = "@" + instagram;
+      }
+      this.clientService.findByInstagram(instagram).subscribe({
+        next: response => {
+          if (response.content.length > 0) { this.clients = response.content }
+          else { Swal.fire("Instagram não localizado!"), this.instagramClient = "" }
+        },
+        error: e => { console.log(e.error.message) },
+      });
     }
   }
 
