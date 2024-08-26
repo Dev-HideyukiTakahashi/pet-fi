@@ -1,6 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { Client } from '../../../../models/client';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { MdbFormsModule } from 'mdb-angular-ui-kit/forms';
 import { FormsModule } from '@angular/forms';
 import { ClientService } from '../../../../services/client.service';
@@ -9,7 +9,7 @@ import Swal from 'sweetalert2';
 @Component({
   selector: 'app-client-search',
   standalone: true,
-  imports: [MdbFormsModule, FormsModule],
+  imports: [MdbFormsModule, FormsModule, RouterLink],
   templateUrl: './client-search.component.html',
   styleUrl: './client-search.component.css'
 })
@@ -22,6 +22,7 @@ export class ClientSearchComponent {
   phoneClient!: string;
   nameClient!: string;
   instagramClient!: string;
+  totalPages!: number[];
 
   findClientById(id: number) {
     if (this.idClient == null) {
@@ -108,5 +109,25 @@ export class ClientSearchComponent {
 
   newClient() {
     this.router.navigate(["admin/home/client/new"]);
+  }
+
+  deleteClient(id: number) {
+    Swal.fire({
+      title: "Deletar cliente",
+      text: "Tem certeza que deseja deletar cliente?",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Sim",
+      cancelButtonText: "Não"
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.clientService.deleteById(id).subscribe({
+          next: response => location.reload(),
+          error: e => console.log("Error : " + e.error.message),
+        });
+      }
+    });
   }
 }

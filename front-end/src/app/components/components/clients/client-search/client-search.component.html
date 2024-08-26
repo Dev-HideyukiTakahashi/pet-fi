@@ -74,9 +74,10 @@
                 <td>{{client.name}}</td>
                 <td>{{client.phone}}</td>
                 <td>{{client.instagram}}</td>
-                <button type="button" class="btn btn-outline-dark col-lg-6" mdbRipple rippleColor="dark">Editar</button>
-                <button type="button" class="btn btn-outline-dark col-lg-6" mdbRipple
-                  rippleColor="dark">Deletar</button>
+                <button type="button" class="btn btn-outline-dark col-lg-6" mdbRipple rippleColor="dark"
+                  routerLink="/admin/home/clients/edit/{{client.id}}">Editar</button>
+                <button type="button" class="btn btn-outline-dark col-lg-6" mdbRipple rippleColor="dark"
+                  (click)="deleteClient(client.id)">Deletar</button>
               </tr>
               }
             </tbody>
