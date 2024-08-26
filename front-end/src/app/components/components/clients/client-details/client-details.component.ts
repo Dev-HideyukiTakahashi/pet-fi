@@ -1,5 +1,5 @@
 import { Component, inject, Input, input } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { MdbFormsModule } from 'mdb-angular-ui-kit/forms';
 import Swal from 'sweetalert2';
 import { Client } from '../../../../models/client';
@@ -10,7 +10,7 @@ import { ClientService } from '../../../../services/client.service';
 @Component({
   selector: 'app-client-details',
   standalone: true,
-  imports: [MdbFormsModule, FormsModule, MdbValidationModule],
+  imports: [MdbFormsModule, FormsModule, MdbValidationModule, RouterLink],
   templateUrl: './client-details.component.html',
   styleUrl: './client-details.component.css'
 })
@@ -65,7 +65,6 @@ export class ClientDetailsComponent {
             error: e => console.log("Error : " + e.error.message),
 
           });
-          console.log("EDITADO " + client);
           Swal.fire({
             title: 'Editado com sucesso!',
             icon: 'success',
@@ -79,7 +78,6 @@ export class ClientDetailsComponent {
             next: response => this.router.navigate(["admin/home/clients"], { state: { newClient: this.client } }),
             error: e => console.log("Error : " + e.error.message),
           });
-          console.log("SALVO " + client.id);
           Swal.fire({
             title: 'Sucesso!',
             text: 'Novo cadastro realizado.',
@@ -91,29 +89,12 @@ export class ClientDetailsComponent {
     }
   }
 
-
   registerPet() {
-    if (this.client.id == null) {
-      Swal.fire({
-        title: "Atenção",
-        text: "Cadastro do cliente foi salvo?",
-        icon: "warning",
-        showCancelButton: true,
-        confirmButtonColor: "#3085d6",
-        cancelButtonColor: "#d33",
-        confirmButtonText: "Sim",
-        cancelButtonText: "Não",
-      }).then((result) => {
-        if (result.isConfirmed) {
-          console.log("registar pet")
-        }
-      });
-    }
-
+    this.router.navigate(["admin/home/pet/new"], { state: { client: this.client } });
   }
 
-}
-function registerClient() {
-  throw new Error('Function not implemented.');
+  updatePet(id: number) {
+    this.router.navigate(["admin/home/pet/edit/" + id], { state: { client: this.client } });
+  }
 }
 

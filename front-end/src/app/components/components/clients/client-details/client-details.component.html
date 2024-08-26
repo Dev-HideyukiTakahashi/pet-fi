@@ -62,13 +62,13 @@
             @else{
             <button type="submit" class="btn btn-success mt-4 me-2 col-lg-2" mdbRipple
               (click)="insert(client)">Atualizar</button>
-            <button type="button" class="btn btn-info mt-4 me-2 col-lg-2" mdbRipple (click)="registerPet()">Novo
+            <button type="button" class="btn btn-info mt-4 me-2 col-lg-2" (click)="registerPet()">Novo
               Pet</button>
             }
           </div>
           <hr>
           @if (edit) {
-          <div class="row mt-2">
+          <div class=" row mt-2">
             @for (pet of client.pets; track $index) {
             <h1>Pet:</h1>
             <mdb-form-control class="col-lg-2 mt-3">
@@ -78,7 +78,9 @@
             </mdb-form-control>
 
             <div class="col-lg-9 mt-3">
-              <button type="submit" class="col-lg-3 btn btn-primary col-lg-2" mdbRipple>Editar</button>
+              <button type="submit" class="col-lg-3 btn btn-primary ms-3" mdbRipple
+                (click)="updatePet(pet.id)">Editar</button>
+              <button type="submit" class="col-lg-3 btn btn-danger ms-1" mdbRipple>Deletar</button>
             </div>
 
             <mdb-form-control class="col-lg-4 mt-3">

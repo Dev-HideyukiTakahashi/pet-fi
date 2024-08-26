@@ -114,9 +114,7 @@ public class Pet {
     this.client = client;
   }
 
-  public void generateQrcode() {
-    this.qrcode = "http://localhost:8080/pets/" + this.id;
-  }
+
 
   public PetType getPetType() {
     return petType;

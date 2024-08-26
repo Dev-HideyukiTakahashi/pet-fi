@@ -8,7 +8,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.lojapet.petfi.dto.PetDTO;
+import com.lojapet.petfi.entities.Client;
 import com.lojapet.petfi.entities.Pet;
+import com.lojapet.petfi.repositories.ClientRepository;
 import com.lojapet.petfi.repositories.PetRepository;
 import com.lojapet.petfi.services.exceptions.DatabaseException;
 import com.lojapet.petfi.services.exceptions.ResourceNotFoundException;
@@ -20,6 +22,9 @@ public class PetService {
 
   @Autowired
   private PetRepository petRepository;
+  
+  @Autowired
+  private ClientRepository clientRepository;
 
   @Transactional(readOnly = true)
   public Page<PetDTO> findAllPaged(PageRequest pageRequest) {
@@ -34,9 +39,12 @@ public class PetService {
   }
 
   @Transactional
-  public PetDTO insert(PetDTO dto) {
+  public PetDTO insert(Long clientId, PetDTO dto) {
+	Client client = clientRepository.getReferenceById(clientId);
     Pet pet = PetDTO.toPet(dto);
-    pet = petRepository.save(pet);
+    petRepository.save(pet);
+    client.addPet(pet);
+    pet.setClient(clientRepository.save(client));
     return new PetDTO(pet);
   }
 
@@ -46,6 +54,7 @@ public class PetService {
       Pet pet = petRepository.getReferenceById(id);
       updateEntity(pet, dto);
       pet = petRepository.save(pet);
+      System.out.println(" ID: ------------> " + pet.getClient().getId());
       return new PetDTO(pet);
     } catch (EntityNotFoundException e) {
       throw new ResourceNotFoundException(id);
@@ -54,6 +63,8 @@ public class PetService {
 
   private void updateEntity(Pet pet, PetDTO dto) {
     pet.setName(dto.getName());
+    pet.setSex(dto.getSex());
+    pet.setPetType(dto.getPetType());
     pet.setAdditionalInformation(dto.getAdditionalInformation());
     pet.setPhoto(dto.getPhoto());
     pet.setWanted(dto.isWanted());

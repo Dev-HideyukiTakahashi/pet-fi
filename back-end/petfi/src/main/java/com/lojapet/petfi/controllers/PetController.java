@@ -49,9 +49,9 @@ public class PetController {
     return ResponseEntity.ok(dto);
   }
 
-  @PostMapping
-  public ResponseEntity<PetDTO> insert(@RequestBody PetDTO dto) {
-    dto = petService.insert(dto);
+  @PostMapping(path = "/{clientId}")
+  public ResponseEntity<PetDTO> insert(@PathVariable Long clientId , @RequestBody PetDTO dto) {
+    dto = petService.insert(clientId, dto);
     URI uri = ServletUriComponentsBuilder
         .fromCurrentRequest()
         .path("/{id}")
