@@ -6,11 +6,12 @@ import { FormsModule } from '@angular/forms';
 import { Pets } from '../../../../models/pets';
 import Swal from 'sweetalert2';
 import { PetService } from '../../../../services/pet.service';
+import { SideMenuComponent } from '../../../layouts/side-menu/side-menu.component';
 
 @Component({
   selector: 'app-pet-details',
   standalone: true,
-  imports: [MdbFormsModule, FormsModule],
+  imports: [MdbFormsModule, FormsModule, SideMenuComponent],
   templateUrl: './pet-details.component.html',
   styleUrl: './pet-details.component.css'
 })
@@ -73,6 +74,10 @@ export class PetDetailsComponent {
         error: e => console.log(e.error.message),
       });
     }
+  }
+
+  cancel(client: Client) {
+    this.router.navigate(["admin/home/clients/edit/" + client.id])
   }
 
   findClient() {
