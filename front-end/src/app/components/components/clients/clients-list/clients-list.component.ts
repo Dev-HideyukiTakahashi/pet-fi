@@ -48,10 +48,6 @@ export class ClientsListComponent {
     });
   }
 
-
-
-
-
   deleteClient(id: number) {
     Swal.fire({
       title: "Deletar cliente",

@@ -8,6 +8,7 @@ import { Observable } from 'rxjs';
 })
 export class PetService {
 
+
   http = inject(HttpClient);
   API = "http://localhost:8080/pets";
 
@@ -23,5 +24,9 @@ export class PetService {
 
   findById(id: number): Observable<any> {
     return this.http.get(this.API + "/" + id);
+  }
+
+  deleteById(id: number): Observable<any> {
+    return this.http.delete(this.API + "/" + id);
   }
 }

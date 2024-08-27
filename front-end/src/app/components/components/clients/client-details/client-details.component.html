@@ -68,7 +68,8 @@
             <div class="col-lg-9 mt-3">
               <button type="submit" class="col-lg-3 btn btn-primary ms-3" mdbRipple
                 (click)="updatePet(pet.id)">Editar</button>
-              <button type="submit" class="col-lg-3 btn btn-danger ms-1" mdbRipple>Deletar</button>
+              <button type="submit" class="col-lg-3 btn btn-danger ms-1" mdbRipple
+                (click)="deletePet(pet.id)">Deletar</button>
             </div>
 
             <mdb-form-control class="col-lg-4 mt-3">

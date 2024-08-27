@@ -7,6 +7,7 @@ import { FormsModule } from '@angular/forms';
 import { MdbValidationModule } from 'mdb-angular-ui-kit/validation';
 import { ClientService } from '../../../../services/client.service';
 import { SideMenuComponent } from '../../../layouts/side-menu/side-menu.component';
+import { PetService } from '../../../../services/pet.service';
 
 @Component({
   selector: 'app-client-details',
@@ -21,7 +22,8 @@ export class ClientDetailsComponent {
   activatedRouter = inject(ActivatedRoute);
   client: Client = new Client();
   edit: boolean = false;
-  clientService = inject(ClientService)
+  clientService = inject(ClientService);
+  petService = inject(PetService);
 
   constructor() {
     let id = this.activatedRouter.snapshot.params['id'];
@@ -88,6 +90,26 @@ export class ClientDetailsComponent {
 
   updatePet(id: number) {
     this.router.navigate(["admin/home/pet/edit/" + id], { state: { client: this.client } });
+  }
+
+  deletePet(id: number) {
+    Swal.fire({
+      title: "Deletar pet",
+      text: "Tem certeza que deseja deletar pet?",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Sim",
+      cancelButtonText: "Não"
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.petService.deleteById(id).subscribe({
+          next: response => location.reload(),
+          error: e => console.log(e.error.message),
+        });
+      }
+    });
   }
 }
 
