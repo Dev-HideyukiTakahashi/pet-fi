@@ -6,6 +6,7 @@ import { FormsModule } from '@angular/forms';
 import { ClientService } from '../../../../services/client.service';
 import Swal from 'sweetalert2';
 import { SideMenuComponent } from '../../../layouts/side-menu/side-menu.component';
+import { empty } from 'rxjs';
 
 @Component({
   selector: 'app-client-search',
@@ -36,11 +37,8 @@ export class ClientSearchComponent {
       this.clients = [];
       this.clientService.findById(id).subscribe({
 
-        next: response => {
-          if (response != null) { this.clients.push(response) }
-          else { Swal.fire("Código não localizado!") }
-        },
-        error: e => { console.log(e.error.message) },
+        next: response => this.clients.push(response),
+        error: e => { Swal.fire("Código não localizado!"), this.idClient = Number(undefined) },
       })
     }
   }

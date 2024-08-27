@@ -23,7 +23,7 @@ export const routes: Routes = [
       { path: "pets", component: PetListComponent },
       { path: "pet/new", component: PetDetailsComponent },
       { path: "pet/edit/:id", component: PetDetailsComponent },
-      { path: "pet/:id", component: PetSearchComponent }
+      { path: "pet", component: PetSearchComponent }
     ]
   }
 ];

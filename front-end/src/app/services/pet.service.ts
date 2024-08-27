@@ -29,4 +29,12 @@ export class PetService {
   deleteById(id: number): Observable<any> {
     return this.http.delete(this.API + "/" + id);
   }
+
+  findPetByName() {
+
+  }
+
+  findPetByClient() {
+
+  }
 }

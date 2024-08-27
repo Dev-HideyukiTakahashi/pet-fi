@@ -80,11 +80,4 @@ export class PetDetailsComponent {
     this.router.navigate(["admin/home/clients/edit/" + client.id])
   }
 
-  findClient() {
-    this.router.navigate(["admin/home/client"]);
-  }
-
-  newClient() {
-    this.router.navigate(["admin/home/client/new"]);
-  }
 }

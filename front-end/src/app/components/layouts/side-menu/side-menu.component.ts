@@ -19,4 +19,8 @@ export class SideMenuComponent {
   newClient() {
     this.router.navigate(["admin/home/client/new"]);
   }
+
+  findPet() {
+    this.router.navigate(["admin/home/pet"]);
+  }
 }

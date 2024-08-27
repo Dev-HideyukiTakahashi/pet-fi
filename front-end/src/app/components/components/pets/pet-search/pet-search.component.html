@@ -1,1 +1,66 @@
-<p>pet-search works!</p>
+<div class="container top-distance">
+  <div class="row">
+
+    <app-side-menu class="col-lg-2"></app-side-menu>
+
+    <div class="col-lg-10">
+      <div class="card">
+        <div class="card-body">
+          <h1 class="text-center">Buscar Pet</h1>
+          <hr>
+          <div class="input-group mt-2">
+            <mdb-form-control class="col-lg-2">
+              <input mdbInput type="number" id="form1" class=" form-control" [(ngModel)]="idPet" />
+              <label mdbLabel class="form-label" for="form1">Código</label>
+            </mdb-form-control>
+            <button type="button" class="btn btn-primary" (click)="findPetById(idPet)">
+              <i class="fas fa-search"></i>
+            </button>
+          </div>
+          <div class="input-group mt-2">
+            <mdb-form-control class="col-lg-3">
+              <input mdbInput type="text" id="form1" class=" form-control" />
+              <label mdbLabel class="form-label" for="form1">Nome</label>
+            </mdb-form-control>
+            <button type="button" class="btn btn-primary" (click)="findPetByName()">
+              <i class=" fas fa-search"></i>
+            </button>
+          </div>
+          <div class="input-group mt-2">
+            <mdb-form-control class="col-lg-3">
+              <input mdbInput type="text" id="form1" class=" form-control" />
+              <label mdbLabel class="form-label" for="form1">Cliente</label>
+            </mdb-form-control>
+            <button type="button" class="btn btn-primary" (click)="findPetByClient()">
+              <i class=" fas fa-search"></i>
+            </button>
+          </div>
+          <table class="table mt-5" border="1px">
+            <thead class="table-dark">
+              <tr>
+                <td>Código</td>
+                <td>Nome</td>
+                <td>Cliente</td>
+                <td></td>
+              </tr>
+            </thead>
+            <tbody>
+              @for (pet of pets; track $index) {
+              <tr>
+                <td>{{pet.id}}</td>
+                <td>{{pet.name}}</td>
+                <td>{{pet.client.name}}</td>
+                <button type="button" class="btn btn-outline-dark col-lg-6" mdbRipple rippleColor="dark"
+                  (click)="navigateEdit(pet.id, pet.client)">Detalhes</button>
+                <button type="button" class="btn btn-outline-dark col-lg-6" mdbRipple rippleColor="dark"
+                  (click)="deletePet(pet.id)">Deletar</button>
+              </tr>
+              }
+            </tbody>
+          </table>
+          <hr>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

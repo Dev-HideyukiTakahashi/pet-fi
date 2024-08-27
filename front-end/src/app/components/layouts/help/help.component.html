@@ -3,8 +3,18 @@
     <div class="col-lg-12">
       <div class="card">
         <div class="card-body">
-          <h2>Clientes</h2>
+          <div class="text-center d-flex justify-content-evenly">
+            @if(clientsView){
+            <span class="h2 menu-select text-primary underline" (click)="clientsView = true">CLIENTES</span>
+            <span class="h2 menu-select text-dark" (click)="clientsView = false">PETS</span>
+            }
+            @else{
+            <a class="h2 menu-select text-dark" (click)="clientsView = true">CLIENTES</a>
+            <a class="h2 menu-select text-primary underline" (click)="clientsView = false">PETS</a>
+            }
+          </div>
           <hr>
+          @if (clientsView) {
           <h5>Cadastrar clientes:</h5>
           <ul>
             <li>Para cadastrar um cliente, clique em cadastrar(verde) no menu esquerdo para acessar a página de
@@ -26,22 +36,22 @@
           </ul>
           <h5>Deletar clientes:</h5>
           <ul>
-            <li>Para deletar um cliente, clique em buscar para acessar a página de buscas.</li>
+            <li>Para deletar um cliente, clique em buscar(azul escuro) no menu esquerdo para acessar a página de buscas.
+            </li>
             <li>Faça uma busca do cliente a ser deletado, preencha ao menos um campo.</li>
             <li>Clique em deletar para apagar os dados do cliente.</li>
             <li>Ao deletar um cliente, todos os pets também serão excluídos.</li>
           </ul>
           <h5>Buscar clientes:</h5>
           <ul>
-            <li>Para buscar um cliente, clique em buscar para acessar a página de buscas.</li>
+            <li>Para buscar um cliente, clique em buscar(azul escuro) no menu esquerdo para acessar a página de buscas.
+            </li>
             <li>Selecione ao menos um campo para busca.</li>
             <li>Telefone aceita apenas números.</li>
             <li>Não é necessário colocar &#64; no campo instagram em nenhum momento.</li>
           </ul>
           <hr>
-          <hr>
-          <h2>Pets</h2>
-          <hr>
+          }@else {
           <h5>Cadastrar pets:</h5>
           <ul>
             <li>Para cadastrar um novo pet siga o passo de buscar um cliente.</li>
@@ -68,8 +78,12 @@
           </ul>
           <h5>Buscar pets:</h5>
           <ul>
-            <li></li>
+            <li>Para buscar um pet, clique em buscar(azul claro) no menu esquerdo para acessar a página de buscas.
+            </li>
+            <li>Selecione ao menos um campo para busca.</li>
           </ul>
+          <hr>
+          }
         </div>
       </div>
     </div>
