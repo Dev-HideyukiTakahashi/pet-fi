@@ -19,19 +19,10 @@
           </div>
           <div class="input-group mt-2">
             <mdb-form-control class="col-lg-3">
-              <input mdbInput type="text" id="form1" class=" form-control" />
-              <label mdbLabel class="form-label" for="form1">Nome</label>
+              <input mdbInput type="text" id="form1" class=" form-control" [(ngModel)]="petName" />
+              <label mdbLabel class="form-label" for="form1">Nome Pet</label>
             </mdb-form-control>
-            <button type="button" class="btn btn-primary" (click)="findPetByName()">
-              <i class=" fas fa-search"></i>
-            </button>
-          </div>
-          <div class="input-group mt-2">
-            <mdb-form-control class="col-lg-3">
-              <input mdbInput type="text" id="form1" class=" form-control" />
-              <label mdbLabel class="form-label" for="form1">Cliente</label>
-            </mdb-form-control>
-            <button type="button" class="btn btn-primary" (click)="findPetByClient()">
+            <button type="button" class="btn btn-primary" (click)="findPetByName(petName)">
               <i class=" fas fa-search"></i>
             </button>
           </div>

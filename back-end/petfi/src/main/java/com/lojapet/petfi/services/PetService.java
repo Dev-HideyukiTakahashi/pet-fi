@@ -37,6 +37,12 @@ public class PetService {
     Pet pet = petRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException(id));
     return new PetDTO(pet);
   }
+  
+  @Transactional(readOnly = true)
+  public Page<PetDTO> findAllByName(String name, PageRequest pageRequest) {
+	    Page<Pet> list = petRepository.findByNameContainingIgnoreCase(name, pageRequest);
+	    return list.map(pet -> new PetDTO(pet));
+	  }
 
   @Transactional
   public PetDTO insert(Long clientId, PetDTO dto) {

@@ -26,15 +26,14 @@ export class PetService {
     return this.http.get(this.API + "/" + id);
   }
 
+  findByName(name: string): Observable<any> {
+    return this.http.get(this.API + "/name/" + name);
+  }
+
   deleteById(id: number): Observable<any> {
     return this.http.delete(this.API + "/" + id);
   }
 
-  findPetByName() {
 
-  }
 
-  findPetByClient() {
-
-  }
 }

@@ -33,7 +33,7 @@ public class PetController {
   @GetMapping
   public ResponseEntity<Page<PetDTO>> findAll(
       @RequestParam(value = "page", defaultValue = "0") Integer page,
-      @RequestParam(value = "linesPerPage", defaultValue = "15") Integer linesPerPage,
+      @RequestParam(value = "linesPerPage", defaultValue = "10") Integer linesPerPage,
       @RequestParam(value = "direction", defaultValue = "ASC") String direction,
       @RequestParam(value = "orderBy", defaultValue = "id") String orderBy) {
     PageRequest pageRequest = PageRequest.of(page, linesPerPage, Direction.valueOf(direction), orderBy);
@@ -44,10 +44,20 @@ public class PetController {
   @GetMapping(path = "/{id}")
   public ResponseEntity<PetDTO> findById(@PathVariable Long id) {
     PetDTO dto = petService.findById(id);
-    System.out.println("---------------CONTROLLER-----------------");
-    System.out.println(dto.getQrcode());
     return ResponseEntity.ok(dto);
   }
+  
+  @GetMapping(path = "/name/{name}")
+  public ResponseEntity<Page<PetDTO>> findAllByName(
+	      @RequestParam(value = "page", defaultValue = "0") Integer page,
+	      @RequestParam(value = "linesPerPage", defaultValue = "10") Integer linesPerPage,
+	      @RequestParam(value = "direction", defaultValue = "ASC") String direction,
+	      @RequestParam(value = "orderBy", defaultValue = "id") String orderBy,
+	      @PathVariable String name) {
+	    PageRequest pageRequest = PageRequest.of(page, linesPerPage, Direction.valueOf(direction), orderBy);
+	    Page<PetDTO> list = petService.findAllByName(name, pageRequest);
+	    return ResponseEntity.ok(list);
+	  }
 
   @PostMapping(path = "/{clientId}")
   public ResponseEntity<PetDTO> insert(@PathVariable Long clientId , @RequestBody PetDTO dto) {

@@ -7,6 +7,7 @@ import { FormsModule } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
 import { Client } from '../../../../models/client';
 import Swal from 'sweetalert2';
+import { ClientService } from '../../../../services/client.service';
 
 @Component({
   selector: 'app-pet-search',
@@ -19,15 +20,13 @@ export class PetSearchComponent {
 
   pets: Pets[] = [];
   petService = inject(PetService);
+  clientService = inject(ClientService);
   router = inject(Router);
 
   idPet!: number;
-
-
-
+  petName!: string;
 
   findPetById(id: number) {
-
     if (id == null) {
       Swal.fire({
         icon: "error",
@@ -41,15 +40,23 @@ export class PetSearchComponent {
         error: e => { Swal.fire("Código não localizado!"), this.idPet = Number(undefined) },
       })
     }
-
   }
 
-  findPetByName() {
-
-  }
-
-  findPetByClient() {
-
+  findPetByName(petName: string) {
+    console.log(petName);
+    if (petName == null) {
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Preencha o campo para realizar a busca!",
+      });
+    } else {
+      this.pets = [];
+      this.petService.findByName(petName).subscribe({
+        next: response => this.pets = response.content,
+        error: e => { Swal.fire("Nome não localizado!"), this.petName = "" },
+      })
+    }
   }
 
   navigateEdit(petId: number, clientData: Client) {
@@ -75,4 +82,5 @@ export class PetSearchComponent {
       }
     });
   }
+
 }
