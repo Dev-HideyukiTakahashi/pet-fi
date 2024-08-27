@@ -6,11 +6,12 @@ import { Client } from '../../../../models/client';
 import { FormsModule } from '@angular/forms';
 import { MdbValidationModule } from 'mdb-angular-ui-kit/validation';
 import { ClientService } from '../../../../services/client.service';
+import { SideMenuComponent } from '../../../layouts/side-menu/side-menu.component';
 
 @Component({
   selector: 'app-client-details',
   standalone: true,
-  imports: [MdbFormsModule, FormsModule, MdbValidationModule, RouterLink],
+  imports: [MdbFormsModule, FormsModule, MdbValidationModule, RouterLink, SideMenuComponent],
   templateUrl: './client-details.component.html',
   styleUrl: './client-details.component.css'
 })
@@ -35,14 +36,6 @@ export class ClientDetailsComponent {
       next: response => this.client = response,
       error: e => e.error.message,
     })
-  }
-
-  findClient() {
-    this.router.navigate(["admin/home/client"]);
-  }
-
-  newClient() {
-    this.router.navigate(["admin/home/client/new"]);
   }
 
   insert(client: Client) {

@@ -7,11 +7,12 @@ import { Pets } from '../../../../models/pets';
 import { MdbFormsModule } from 'mdb-angular-ui-kit/forms';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { SideMenuComponent } from '../../../layouts/side-menu/side-menu.component';
 
 @Component({
   selector: 'app-clients-list',
   standalone: true,
-  imports: [MdbFormsModule, FormsModule, RouterLink, CommonModule],
+  imports: [MdbFormsModule, FormsModule, RouterLink, CommonModule, SideMenuComponent],
   templateUrl: './clients-list.component.html',
   styleUrl: './clients-list.component.css'
 })
@@ -30,30 +31,6 @@ export class ClientsListComponent {
   constructor() {
 
     this.findAll();
-
-    //teste
-    let newClient = history.state.newClient;
-    let updatedClient = history.state.updatedClient;
-
-    if (newClient) {
-      this.clients.push(newClient);
-    }
-    if (updatedClient) {
-      let index = this.clients.findIndex(x => {
-        return x.id == updatedClient.id
-      });
-      this.clients[index] = updatedClient;
-    }
-
-    //teste fim
-  }
-
-  findClient() {
-    this.router.navigate(["admin/home/client"]);
-  }
-
-  newClient() {
-    this.router.navigate(["admin/home/client/new"]);
   }
 
   // método no back-end findAll paginado
@@ -78,7 +55,7 @@ export class ClientsListComponent {
   deleteClient(id: number) {
     Swal.fire({
       title: "Deletar cliente",
-      text: "Tem certeza que deseja deletar cliente?",
+      text: "Tem certeza que deseja deletar cliente e todos seus pets?",
       icon: "warning",
       showCancelButton: true,
       confirmButtonColor: "#3085d6",

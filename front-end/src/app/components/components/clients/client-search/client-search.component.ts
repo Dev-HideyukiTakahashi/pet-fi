@@ -5,11 +5,12 @@ import { MdbFormsModule } from 'mdb-angular-ui-kit/forms';
 import { FormsModule } from '@angular/forms';
 import { ClientService } from '../../../../services/client.service';
 import Swal from 'sweetalert2';
+import { SideMenuComponent } from '../../../layouts/side-menu/side-menu.component';
 
 @Component({
   selector: 'app-client-search',
   standalone: true,
-  imports: [MdbFormsModule, FormsModule, RouterLink],
+  imports: [MdbFormsModule, FormsModule, RouterLink, SideMenuComponent],
   templateUrl: './client-search.component.html',
   styleUrl: './client-search.component.css'
 })
@@ -101,14 +102,6 @@ export class ClientSearchComponent {
         error: e => { console.log(e.error.message) },
       });
     }
-  }
-
-  findClient() {
-    this.router.navigate(["admin/home/client"]);
-  }
-
-  newClient() {
-    this.router.navigate(["admin/home/client/new"]);
   }
 
   deleteClient(id: number) {
