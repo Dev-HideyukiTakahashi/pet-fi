@@ -1,18 +1,18 @@
 import { Component, inject } from '@angular/core';
-import { SideMenuComponent } from '../../../layouts/side-menu/side-menu.component';
+import { SideMenuComponent } from '../../layouts/side-menu/side-menu.component';
 import { MdbFormsModule } from 'mdb-angular-ui-kit/forms';
-import { Pets } from '../../../../models/pets';
-import { PetService } from '../../../../services/pet.service';
+import { Pets } from '../../../models/pets';
+import { PetService } from '../../../services/pet.service';
 import { FormsModule } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
-import { Client } from '../../../../models/client';
+import { Client } from '../../../models/client';
 import Swal from 'sweetalert2';
-import { ClientService } from '../../../../services/client.service';
+import { ClientService } from '../../../services/client.service';
 
 @Component({
   selector: 'app-pet-search',
   standalone: true,
-  imports: [SideMenuComponent, MdbFormsModule, FormsModule, RouterLink],
+  imports: [SideMenuComponent, MdbFormsModule, FormsModule],
   templateUrl: './pet-search.component.html',
   styleUrl: './pet-search.component.css'
 })
@@ -25,6 +25,9 @@ export class PetSearchComponent {
 
   idPet!: number;
   petName!: string;
+  search!: boolean;
+
+
 
   findPetById(id: number) {
     if (id == null) {

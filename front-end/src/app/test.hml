@@ -1,0 +1,65 @@
+<div class="container top-distance">
+  <div class="row">
+
+    <app-side-menu class="col-lg-2"></app-side-menu>
+
+
+    <div class="col-lg-10">
+      <div class="card">
+        <div class="card-body">
+          <h1 class="text-center">Gerar QR code</h1>
+          <hr>
+          <div class="input-group mt-2">
+
+
+
+          </div>
+          <table class="table mt-5" border="1px">
+            <thead class="table-dark">
+              <tr>
+                <td>Código</td>
+                <td>Nome</td>
+                <td>Gerar QR Code</td>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>{{pet.id}}</td>
+                <td>{{pet.name}}</td>
+                <button type="button" class="btn btn-outline-dark col-lg-6" mdbRipple rippleColor="dark">QR
+                  Code</button>
+              </tr>
+            </tbody>
+          </table>
+          <hr>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+import { Component } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { MdbFormsModule } from 'mdb-angular-ui-kit/forms';
+import { Pets } from '../../../models/pets';
+import { SideMenuComponent } from '../../layouts/side-menu/side-menu.component';
+
+@Component({
+  selector: 'app-qrcode',
+  standalone: true,
+  imports: [FormsModule, MdbFormsModule, SideMenuComponent],
+  templateUrl: './qrcode.component.html',
+  styleUrl: './qrcode.component.css'
+})
+export class QrcodeComponent {
+
+  idPet!: number;
+  pet!: Pets;
+
+
+  findPetById(id: number) {
+
+  }
+}

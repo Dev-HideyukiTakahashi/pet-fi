@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { MenuComponent } from '../menu/menu.component';
-import { ClientsListComponent } from '../../components/clients/clients-list/clients-list.component';
+import { ClientsListComponent } from '../../clients/clients-list/clients-list.component';
 
 @Component({
   selector: 'app-home',

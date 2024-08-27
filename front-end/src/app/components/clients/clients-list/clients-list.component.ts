@@ -1,13 +1,13 @@
 import { Component, inject } from '@angular/core';
 import Swal from 'sweetalert2';
-import { Client } from '../../../../models/client';
-import { ClientService } from '../../../../services/client.service';
+import { Client } from '../../../models/client';
+import { ClientService } from '../../../services/client.service';
 import { Router, RouterLink } from '@angular/router';
-import { Pets } from '../../../../models/pets';
+import { Pets } from '../../../models/pets';
 import { MdbFormsModule } from 'mdb-angular-ui-kit/forms';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { SideMenuComponent } from '../../../layouts/side-menu/side-menu.component';
+import { SideMenuComponent } from '../../layouts/side-menu/side-menu.component';
 
 @Component({
   selector: 'app-clients-list',

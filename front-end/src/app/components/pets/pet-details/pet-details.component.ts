@@ -1,12 +1,12 @@
 import { Component, inject } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MdbFormsModule } from 'mdb-angular-ui-kit/forms';
-import { Client } from '../../../../models/client';
+import { Client } from '../../../models/client';
 import { FormsModule } from '@angular/forms';
-import { Pets } from '../../../../models/pets';
+import { Pets } from '../../../models/pets';
 import Swal from 'sweetalert2';
-import { PetService } from '../../../../services/pet.service';
-import { SideMenuComponent } from '../../../layouts/side-menu/side-menu.component';
+import { PetService } from '../../../services/pet.service';
+import { SideMenuComponent } from '../../layouts/side-menu/side-menu.component';
 
 @Component({
   selector: 'app-pet-details',

@@ -2,12 +2,12 @@ import { Component, inject, Input, input } from '@angular/core';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { MdbFormsModule } from 'mdb-angular-ui-kit/forms';
 import Swal from 'sweetalert2';
-import { Client } from '../../../../models/client';
+import { Client } from '../../../models/client';
 import { FormsModule } from '@angular/forms';
 import { MdbValidationModule } from 'mdb-angular-ui-kit/validation';
-import { ClientService } from '../../../../services/client.service';
-import { SideMenuComponent } from '../../../layouts/side-menu/side-menu.component';
-import { PetService } from '../../../../services/pet.service';
+import { ClientService } from '../../../services/client.service';
+import { SideMenuComponent } from '../../layouts/side-menu/side-menu.component';
+import { PetService } from '../../../services/pet.service';
 
 @Component({
   selector: 'app-client-details',

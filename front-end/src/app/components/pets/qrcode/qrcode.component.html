@@ -1,0 +1,49 @@
+<div class="container top-distance">
+  <div class="row">
+
+    <app-side-menu class="col-lg-2"></app-side-menu>
+
+
+    <div class="col-lg-10">
+      <div class="card">
+        <div class="card-body">
+          <h1 class="text-center">Gerar QR code</h1>
+          <hr>
+          <div class="input-group mt-2">
+            <div class="input-group">
+              <mdb-form-control>
+                <input mdbInput type="number" id="form1" class="form-control" [(ngModel)]="idPet" />
+                <label mdbLabel class="form-label" for="form1">Código</label>
+              </mdb-form-control>
+              <button type="button" class="btn btn-primary" (click)="findPetById(idPet)">
+                <i class="fas fa-search"></i>
+              </button>
+            </div>
+          </div>
+          <table class="table mt-5" border="1px">
+            <thead class="table-dark">
+              <tr>
+                <td>Código</td>
+                <td>Nome</td>
+                <td>QR Code</td>
+              </tr>
+            </thead>
+            @if (pet != null) {
+            <tbody>
+              <tr>
+                <td>{{pet.id}}</td>
+                <td>{{pet.name}}</td>
+                @if(pet.id > 0){
+                <button type="button" class="btn btn-outline-dark col-lg-6" mdbRipple rippleColor="dark">QR
+                  Code</button>
+                }
+              </tr>
+            </tbody>
+            }
+          </table>
+          <hr>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

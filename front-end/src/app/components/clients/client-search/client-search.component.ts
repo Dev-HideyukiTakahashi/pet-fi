@@ -1,11 +1,11 @@
 import { Component, inject } from '@angular/core';
-import { Client } from '../../../../models/client';
+import { Client } from '../../../models/client';
 import { Router, RouterLink } from '@angular/router';
 import { MdbFormsModule } from 'mdb-angular-ui-kit/forms';
 import { FormsModule } from '@angular/forms';
-import { ClientService } from '../../../../services/client.service';
+import { ClientService } from '../../../services/client.service';
 import Swal from 'sweetalert2';
-import { SideMenuComponent } from '../../../layouts/side-menu/side-menu.component';
+import { SideMenuComponent } from '../../layouts/side-menu/side-menu.component';
 import { empty } from 'rxjs';
 
 @Component({

@@ -1,6 +1,6 @@
 import { Component, ViewChild } from '@angular/core';
 import { MdbCollapseModule } from 'mdb-angular-ui-kit/collapse';
-import { ClientsListComponent } from '../../components/clients/clients-list/clients-list.component';
+import { ClientsListComponent } from '../../clients/clients-list/clients-list.component';
 
 @Component({
   selector: 'app-menu',

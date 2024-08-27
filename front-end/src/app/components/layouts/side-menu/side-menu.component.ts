@@ -23,4 +23,8 @@ export class SideMenuComponent {
   findPet() {
     this.router.navigate(["admin/home/pet"]);
   }
+
+  generateQrCode() {
+    this.router.navigate(["admin/home/pet/qrcode"]);
+  }
 }
