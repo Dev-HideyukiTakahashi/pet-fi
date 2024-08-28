@@ -7,7 +7,7 @@
     <div class="col-lg-10">
       <div class="card">
         <div class="card-body">
-          <h1 class="text-center">Gerar QR code</h1>
+          <h1 class="text-start">Gerar QR code</h1>
           <hr>
           <div class="input-group mt-2">
             <div class="input-group">
@@ -20,27 +20,30 @@
               </button>
             </div>
           </div>
-          <table class="table mt-5" border="1px">
-            <thead class="table-dark">
+          <table class="table mt-5" border="1px ">
+            <thead class=" table-dark text-center">
               <tr>
-                <td>Código</td>
                 <td>Nome</td>
-                <td>QR Code</td>
+                <td>Código</td>
               </tr>
             </thead>
             @if (pet != null) {
             <tbody>
-              <tr>
-                <td>{{pet.id}}</td>
+              <tr class="text-center">
                 <td>{{pet.name}}</td>
-                @if(pet.id > 0){
-                <button type="button" class="btn btn-outline-dark col-lg-6" mdbRipple rippleColor="dark">QR
-                  Code</button>
-                }
+                <td>{{pet.id}}</td>
               </tr>
             </tbody>
             }
           </table>
+          @if (qrcodeView) {
+          <div class="text-center">
+            <qrcode (qrCodeURL)="onChange($event)" [qrdata]="qrdata" [width]=" 256" [errorCorrectionLevel]="'M'">
+            </qrcode>
+            <a type="button" [href]="qrCodeDownloadLink" download class="btn btn-outline-dark col-lg-2" mdbRipple
+              rippleColor="dark">Download</a>
+          </div>
+          }
           <hr>
         </div>
       </div>

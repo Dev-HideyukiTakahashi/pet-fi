@@ -85,8 +85,5 @@ public class PetService {
       throw new DatabaseException(e.getMessage());
     }
   }
-  
-  public String generateQrCode(Long id) {
-	  return PetDTO.generateQrcode(id);
-  }
+
 }

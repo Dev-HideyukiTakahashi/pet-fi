@@ -116,10 +116,6 @@ public class PetDTO {
 	public void setPetType(PetType petType) {
 		this.petType = petType;
 	}
-	
-	public static String generateQrcode(Long id) {
-		return QRCODE + id;
-	}
 
 	public static Pet toPet(PetDTO dto) {
 		Pet pet = new Pet();

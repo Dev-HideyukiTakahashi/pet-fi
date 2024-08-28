@@ -81,11 +81,5 @@ public class PetController {
     petService.deleteById(id);
     return ResponseEntity.noContent().build();
   }
-  
-  @GetMapping(path = "/qrcode/{id}")
-  public ResponseEntity<String> generateQrCode(@PathVariable Long id){
-	  String qrcode = petService.generateQrCode(id);
-	  return ResponseEntity.ok(qrcode);
-  }
 
 }
