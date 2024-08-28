@@ -9,6 +9,7 @@ public class PetDTO {
 
 	// LINK LOCAL (mudar em produção)
 	private static final String QRCODE = "http://localhost:8080/pets/";
+	
 	private Long id;
 	private String name;
 	private Sex sex;
@@ -116,7 +117,7 @@ public class PetDTO {
 		this.petType = petType;
 	}
 	
-	public String generateQrcode() {
+	public static String generateQrcode(Long id) {
 		return QRCODE + id;
 	}
 

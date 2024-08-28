@@ -60,7 +60,6 @@ public class PetService {
       Pet pet = petRepository.getReferenceById(id);
       updateEntity(pet, dto);
       pet = petRepository.save(pet);
-      System.out.println(" ID: ------------> " + pet.getClient().getId());
       return new PetDTO(pet);
     } catch (EntityNotFoundException e) {
       throw new ResourceNotFoundException(id);
@@ -85,5 +84,9 @@ public class PetService {
     } catch (DataIntegrityViolationException e) {
       throw new DatabaseException(e.getMessage());
     }
+  }
+  
+  public String generateQrCode(Long id) {
+	  return PetDTO.generateQrcode(id);
   }
 }
