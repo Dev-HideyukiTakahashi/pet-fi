@@ -80,4 +80,24 @@ export class PetDetailsComponent {
     this.router.navigate(["admin/home/clients/edit/" + client.id])
   }
 
+  selectFile(event: any): void {
+    const selectedFiles = event.target.files;
+
+    if (selectedFiles) {
+      const file: File | null = selectedFiles.item(0);
+
+      if (file) {
+        new Promise((resolve, reject) => {
+          const reader = new FileReader();
+          reader.readAsDataURL(file as Blob);
+          reader.onloadend = () => {
+            const base64String = reader.result as string;
+            this.pet.photo = base64String;
+            resolve(base64String);
+          };
+          reader.onerror = (error) => reject(error);
+        });
+      }
+    }
+  }
 }

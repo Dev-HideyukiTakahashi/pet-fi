@@ -64,9 +64,11 @@
                 <img src={{pet.photo}} alt="..." class="img-thumbnail">
                 }
                 @if (edit) {
-                <button type="button" class="btn btn-secondary btn-sm mt-3">Alterar foto</button>
+                <input type="file" accept="image/*" (change)="selectFile($event)"
+                  class="col-12 btn btn-secondary btn-sm mt-3">
                 }@else {
-                <button type="button" class="btn btn-secondary btn-sm mt-3">Incluir foto</button>
+                <input type="file" accept="image/*" (change)="selectFile($event)"
+                  class="col-12 btn btn-secondary btn-sm mt-3">
                 }
               </div>
             </div>
