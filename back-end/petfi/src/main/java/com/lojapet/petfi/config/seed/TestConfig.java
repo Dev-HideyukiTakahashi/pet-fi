@@ -1,4 +1,4 @@
-package com.lojapet.petfi.config;
+package com.lojapet.petfi.config.seed;
 
 import java.util.Arrays;
 
@@ -13,8 +13,8 @@ import com.lojapet.petfi.entities.User;
 import com.lojapet.petfi.entities.enums.PetType;
 import com.lojapet.petfi.entities.enums.Sex;
 import com.lojapet.petfi.repositories.ClientRepository;
+import com.lojapet.petfi.repositories.LoginRepository;
 import com.lojapet.petfi.repositories.PetRepository;
-import com.lojapet.petfi.repositories.UserRepository;
 
 @Configuration
 @Profile(value = "test")
@@ -27,12 +27,15 @@ public class TestConfig implements CommandLineRunner {
   private PetRepository petRepository;
 
   @Autowired
-  private UserRepository userRepository;
+  private LoginRepository loginRepository;
 
   @Override
   public void run(String... args) throws Exception {
 
-    User user = new User(null, "admin", "123456");
+    User user = new User();
+    user.setUsername("admin");
+    user.setPassword("$2a$12$.5Dv8FNNzikuB86JTV0WZe73kJqKXwYu4NFsD2Sl.33aCSv5SbPhy");
+    user.setRole("ADMIN");
 
     Client client1 = new Client(null, "Maria Silva", "11966666666", "www.facebook.com", "@maria", "Diadema");
     Client client2 = new Client(null, "João Silva", "11977777777", "www.facebook.com", "@joao",
@@ -67,7 +70,7 @@ public class TestConfig implements CommandLineRunner {
     client9.addPet(pet9);
     client9.addPet(pet10);
 
-    userRepository.save(user);
+    loginRepository.save(user);
     clientRepository
         .saveAll(Arrays.asList(client1, client2, client3, client4, client5, client6, client7, client8, client9));
     petRepository.saveAll(Arrays.asList(pet1, pet2, pet3, pet4, pet5, pet6, pet7, pet8, pet9, pet10));
