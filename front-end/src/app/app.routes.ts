@@ -4,7 +4,6 @@ import { HomeComponent } from './components/layouts/home/home.component';
 import { ClientsListComponent } from './components/clients/clients-list/clients-list.component';
 import { ClientDetailsComponent } from './components/clients/client-details/client-details.component';
 import { ClientSearchComponent } from './components/clients/client-search/client-search.component';
-import { PetListComponent } from './components/pets/pet-list/pet-list.component';
 import { PetDetailsComponent } from './components/pets/pet-details/pet-details.component';
 import { PetSearchComponent } from './components/pets/pet-search/pet-search.component';
 import { HelpComponent } from './components/layouts/help/help.component';
@@ -21,7 +20,6 @@ export const routes: Routes = [
       { path: "client/new", component: ClientDetailsComponent },
       { path: "clients/edit/:id", component: ClientDetailsComponent },
       { path: "client", component: ClientSearchComponent },
-      { path: "pets", component: PetListComponent },
       { path: "pet/new", component: PetDetailsComponent },
       { path: "pet/edit/:id", component: PetDetailsComponent },
       { path: "pet", component: PetSearchComponent },
