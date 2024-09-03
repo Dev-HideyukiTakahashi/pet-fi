@@ -8,6 +8,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort.Direction;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -84,6 +85,7 @@ public class ClientController {
     return ResponseEntity.ok(client);
   }
 
+  @PreAuthorize("hasRole('ADMIN')")
   @PostMapping
   public ResponseEntity<ClientDTO> insert(@RequestBody ClientDTO dto) {
     dto = clientService.insert(dto);
@@ -95,12 +97,14 @@ public class ClientController {
     return ResponseEntity.created(uri).body(dto);
   }
 
+  @PreAuthorize("hasRole('ADMIN')")
   @PutMapping(path = "/{id}")
   public ResponseEntity<ClientDTO> update(@PathVariable Long id, @RequestBody ClientDTO dto) {
     dto = clientService.update(id, dto);
     return ResponseEntity.ok(dto);
   }
 
+  @PreAuthorize("hasRole('ADMIN')")
   @DeleteMapping(path = "/{id}")
   public ResponseEntity<Void> delete(@PathVariable Long id) {
     clientService.deleteById(id);

@@ -7,6 +7,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort.Direction;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -59,6 +60,7 @@ public class PetController {
 	    return ResponseEntity.ok(list);
 	  }
 
+  @PreAuthorize("hasRole('ADMIN')")
   @PostMapping(path = "/{clientId}")
   public ResponseEntity<PetDTO> insert(@PathVariable Long clientId , @RequestBody PetDTO dto) {
     dto = petService.insert(clientId, dto);
@@ -70,12 +72,14 @@ public class PetController {
     return ResponseEntity.created(uri).body(dto);
   }
 
+  @PreAuthorize("hasRole('ADMIN')")
   @PutMapping(path = "/{id}")
   public ResponseEntity<PetDTO> update(@PathVariable Long id, @RequestBody PetDTO dto) {
     dto = petService.update(id, dto);
     return ResponseEntity.ok(dto);
   }
 
+  @PreAuthorize("hasRole('ADMIN')")
   @DeleteMapping(path = "/{id}")
   public ResponseEntity<Void> deleteById(@PathVariable Long id) {
     petService.deleteById(id);
