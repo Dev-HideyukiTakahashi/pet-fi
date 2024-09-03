@@ -8,12 +8,13 @@ import { PetDetailsComponent } from './components/pets/pet-details/pet-details.c
 import { PetSearchComponent } from './components/pets/pet-search/pet-search.component';
 import { HelpComponent } from './components/layouts/help/help.component';
 import { QrcodeComponent } from './components/pets/qrcode/qrcode.component';
+import { loginGuard } from './auth/login-guard';
 
 export const routes: Routes = [
   { path: "", redirectTo: "login", pathMatch: "full" },
   { path: "login", component: LoginComponent },
   {
-    path: "admin/home", component: HomeComponent,
+    path: "admin/home", component: HomeComponent, canActivate: [loginGuard],
     children: [
       { path: "help", component: HelpComponent },
       { path: "clients", component: ClientsListComponent },
