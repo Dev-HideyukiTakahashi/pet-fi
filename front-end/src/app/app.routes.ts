@@ -9,6 +9,7 @@ import { PetSearchComponent } from './components/pets/pet-search/pet-search.comp
 import { HelpComponent } from './components/layouts/help/help.component';
 import { QrcodeComponent } from './components/pets/qrcode/qrcode.component';
 import { loginGuard } from './auth/login-guard';
+import { PetListComponent } from './components/public/pet-list/pet-list.component';
 
 export const routes: Routes = [
   { path: "", redirectTo: "login", pathMatch: "full" },
@@ -26,5 +27,7 @@ export const routes: Routes = [
       { path: "pet", component: PetSearchComponent },
       { path: "pet/qrcode", component: QrcodeComponent },
     ]
-  }
+  },
+  { path: "home", component: PetListComponent },
+  { path: "home/pet/:id", component: PetSearchComponent },
 ];
