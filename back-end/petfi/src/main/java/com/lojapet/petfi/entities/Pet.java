@@ -1,5 +1,7 @@
 package com.lojapet.petfi.entities;
 
+import java.time.LocalDate;
+
 import com.lojapet.petfi.entities.enums.PetType;
 import com.lojapet.petfi.entities.enums.Sex;
 
@@ -25,6 +27,7 @@ public class Pet {
 	private String name;
 	private Sex sex;
 	private String additionalInformation;
+	private LocalDate age;
 	private String qrcode;
 
 	@Lob
@@ -42,12 +45,13 @@ public class Pet {
 
 	}
 
-	public Pet(Long id, String name, Sex sex, String additionalInformation, String photo, Client client,
-			PetType petType) {
+	public Pet(Long id, String name, Sex sex, String additionalInformation, LocalDate age,String photo, Client client,
+			PetType petType ) {
 		this.id = id;
 		this.name = name;
 		this.sex = sex;
 		this.additionalInformation = additionalInformation;
+		this.age = age;
 		this.photo = photo;
 		this.client = client;
 		this.petType = petType;
@@ -96,6 +100,14 @@ public class Pet {
 
 	public void setQrcode(String qrcode) {
 		this.qrcode = qrcode;
+	}
+
+	public LocalDate getAge() {
+		return age;
+	}
+
+	public void setAge(LocalDate age) {
+		this.age = age;
 	}
 
 	public String getPhoto() {

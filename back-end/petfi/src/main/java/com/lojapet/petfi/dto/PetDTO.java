@@ -1,5 +1,7 @@
 package com.lojapet.petfi.dto;
 
+import java.time.LocalDate;
+
 import com.lojapet.petfi.entities.Client;
 import com.lojapet.petfi.entities.Pet;
 import com.lojapet.petfi.entities.enums.PetType;
@@ -9,11 +11,12 @@ public class PetDTO {
 
 	// LINK LOCAL (mudar em produção)
 	private static final String QRCODE = "http://192.168.1.106:4200/home/pet/";
-	
+
 	private Long id;
 	private String name;
 	private Sex sex;
 	private String additionalInformation;
+	private LocalDate age;
 	private String qrcode;
 	private String photo;
 	private Boolean wanted;
@@ -23,12 +26,13 @@ public class PetDTO {
 	public PetDTO() {
 	}
 
-	public PetDTO(Long id, String name, Sex sex, String additionalInformation, String photo, Boolean wanted,
+	public PetDTO(Long id, String name, Sex sex, String additionalInformation, LocalDate age,String photo, Boolean wanted,
 			Client client, PetType petType) {
 		this.id = id;
 		this.name = name;
 		this.sex = sex;
 		this.additionalInformation = additionalInformation;
+		this.age = age;
 		this.photo = photo;
 		this.wanted = wanted;
 		this.client = client;
@@ -41,6 +45,7 @@ public class PetDTO {
 		this.name = pet.getName();
 		this.sex = pet.getSex();
 		this.additionalInformation = pet.getAdditionalInformation();
+		this.age = pet.getAge();
 		this.qrcode = pet.getQrcode();
 		this.photo = pet.getPhoto();
 		this.wanted = pet.isWanted();
@@ -79,6 +84,14 @@ public class PetDTO {
 
 	public void setAdditionalInformation(String additionalInformation) {
 		this.additionalInformation = additionalInformation;
+	}
+
+	public LocalDate getAge() {
+		return age;
+	}
+
+	public void setAge(LocalDate age) {
+		this.age = age;
 	}
 
 	public String getQrcode() {
@@ -123,6 +136,7 @@ public class PetDTO {
 		pet.setName(dto.getName());
 		pet.setSex(dto.getSex());
 		pet.setAdditionalInformation(dto.getAdditionalInformation());
+		pet.setAge(dto.getAge());
 		pet.setQrcode(dto.getQrcode());
 		pet.setPhoto(dto.getPhoto());
 		pet.setWanted(dto.isWanted());
