@@ -1,6 +1,6 @@
 import { Component, ViewEncapsulation } from '@angular/core';
-import { FooterComponent } from '../footer/footer.component';
-import { MenuComponent } from '../menu/menu.component';
+import { FooterComponent } from '../public-footer/public-footer.component';
+import { MenuComponent } from '../public-menu/public-menu.component';
 
 @Component({
   selector: 'app-pet-list',
@@ -11,6 +11,6 @@ import { MenuComponent } from '../menu/menu.component';
   encapsulation: ViewEncapsulation.None
 
 })
-export class PetListComponent {
+export class PublicPetListComponent {
 
 }

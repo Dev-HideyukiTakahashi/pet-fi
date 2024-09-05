@@ -9,7 +9,8 @@ import { PetSearchComponent } from './components/pets/pet-search/pet-search.comp
 import { HelpComponent } from './components/layouts/help/help.component';
 import { QrcodeComponent } from './components/pets/qrcode/qrcode.component';
 import { loginGuard } from './auth/login-guard';
-import { PetListComponent } from './components/public/pet-list/pet-list.component';
+import { PublicPetListComponent } from './components/public/public-pet-list/pet-list.component';
+import { PublicPetDetailsComponent } from './components/public/public-pet-details/public-pet-details.component';
 
 export const routes: Routes = [
   { path: "", redirectTo: "home", pathMatch: "full" },
@@ -24,10 +25,10 @@ export const routes: Routes = [
       { path: "client", component: ClientSearchComponent },
       { path: "pet/new", component: PetDetailsComponent },
       { path: "pet/edit/:id", component: PetDetailsComponent },
-      { path: "pet", component: PetSearchComponent },
+      { path: "pet", component: PetDetailsComponent },
       { path: "pet/qrcode", component: QrcodeComponent },
     ]
   },
-  { path: "home", component: PetListComponent },
-  { path: "home/pet/:id", component: PetSearchComponent },
+  { path: "home", component: PublicPetListComponent },
+  { path: "home/pet/:id", component: PublicPetDetailsComponent },
 ];

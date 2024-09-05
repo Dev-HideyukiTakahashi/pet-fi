@@ -5,15 +5,14 @@
 .bottom-distance{
   margin-bottom: 8vh;
 }
-
 body{
   background-image: url('front-end/src/assets/background.png');
   background-size: cover;
   opacity: .7;
 }
 
-img{
 
+img{
     width: 50%;
     display:block;
 }
@@ -25,3 +24,13 @@ img{
 }
 
 
+
+
+
+@media (max-width: 770px) {
+ .footer{
+  width: 100%;
+  bottom: 0;
+  position: fixed;
+ }
+}
