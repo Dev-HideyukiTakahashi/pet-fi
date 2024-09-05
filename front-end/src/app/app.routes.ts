@@ -12,7 +12,7 @@ import { loginGuard } from './auth/login-guard';
 import { PetListComponent } from './components/public/pet-list/pet-list.component';
 
 export const routes: Routes = [
-  { path: "", redirectTo: "login", pathMatch: "full" },
+  { path: "", redirectTo: "home", pathMatch: "full" },
   { path: "login", component: LoginComponent },
   {
     path: "admin/home", component: HomeComponent, canActivate: [loginGuard],

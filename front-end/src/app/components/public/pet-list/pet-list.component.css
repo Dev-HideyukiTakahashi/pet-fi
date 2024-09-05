@@ -1,0 +1,27 @@
+.top-distance{
+  margin-top: 8vh;
+}
+
+.bottom-distance{
+  margin-bottom: 8vh;
+}
+
+body{
+  background-image: url('front-end/src/assets/background.png');
+  background-size: cover;
+  opacity: .7;
+}
+
+img{
+
+    width: 50%;
+    display:block;
+}
+
+
+.card{
+  color: black;
+  font-weight: 500;
+}
+
+
