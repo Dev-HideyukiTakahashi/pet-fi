@@ -34,10 +34,12 @@ public class SecurityConfig {
 		http
 		.csrf(AbstractHttpConfigurer::disable)
 		.cors(AbstractHttpConfigurer::disable)
+		.headers(AbstractHttpConfigurer::disable) // para autorizar h2-console retirar em prod
 		.authorizeHttpRequests((requests) -> requests
 				.requestMatchers("/login").permitAll()
 				.requestMatchers("/pets").permitAll()
 				.requestMatchers("/pets/{id}").permitAll()
+				.requestMatchers("/h2-console/**").permitAll()
 				.anyRequest().authenticated())
 		.authenticationProvider(authenticationProvider)
 		.addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class)
