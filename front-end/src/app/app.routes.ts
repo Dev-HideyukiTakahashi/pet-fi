@@ -14,6 +14,8 @@ import { PublicPetDetailsComponent } from './components/public/public-pet-detail
 
 export const routes: Routes = [
   { path: "", redirectTo: "home", pathMatch: "full" },
+  { path: "home", component: PublicPetListComponent },
+  { path: "home/pet/:id", component: PublicPetDetailsComponent },
   { path: "login", component: LoginComponent },
   {
     path: "admin/home", component: HomeComponent, canActivate: [loginGuard],
@@ -29,6 +31,5 @@ export const routes: Routes = [
       { path: "pet/qrcode", component: QrcodeComponent },
     ]
   },
-  { path: "home", component: PublicPetListComponent },
-  { path: "home/pet/:id", component: PublicPetDetailsComponent },
+
 ];

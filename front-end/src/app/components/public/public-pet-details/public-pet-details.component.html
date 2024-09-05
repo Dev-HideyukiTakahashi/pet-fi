@@ -8,24 +8,37 @@
         <div class="card-body ">
 
           <div class="justify-content-center d-flex row text-center">
-            <h2>Nome do pet</h2>
-            <img src=" https://mdbootstrap.com/img/new/standard/city/047.webp" class="img-fluid rounded-pill w-75 mt-2 "
-              alt="" />
+            <h1>{{pet.name}}</h1>
+            @if(pet.photo == null){
+            <img src="assets\dog-wifi.jpg" class="img-fluid rounded-pill w-75 mt-2 " border="1px" />
+            }
+            @else {
+            <img src={{pet.photo}} class="img-fluid rounded-pill w-75 mt-2" />
+            }
+
           </div>
+          <hr>
           <div class="row mt-4">
-            <span>Sexo: MACHO</span>
-            <span>Idade: 20</span>
-            <span>Informações adicionais: </span>
-            <span>Pet procurado: SIM</span>
+            <span>Identificação: {{pet.id}}</span>
+            <span>Sexo: {{pet.sex}}</span>
+            <span>Desaparecido: {{petProcurado}}</span>
+            <span>Informações adicionais: {{pet.additionalInformation}}</span>
+            <span>Tutor: {{pet.client.name}}</span>
           </div>
-          <div class="row mt-3">
-            <h3>Contato</h3>
-            <span>Telefone: 1199999999</span>
-            <span>Facebook: www.facebook.com </span>
-            <span>Instagram: &#64;teste</span>
+          <hr>
+          <div class="mt-3 text-center">
+            <h2>Contato</h2>
+            <!-- Facebook -->
+            <a class=" btn btn-primary me-2 mt-2" style="background-color: #3b5998;" target="_blank"
+              href="{{pet.client.facebook}}" role="button"><i class="fab fa-facebook-f"></i></a>
+            <!-- Instagram -->
+            <a class="btn btn-primary me-2" style="background-color: #ac2bac;" target="_blank"
+              href="https://www.instagram.com/{{pet.client.instagram}}" role="button"><i
+                class="fab fa-instagram"></i></a>
+            <!-- Whatsapp -->
+            <a class="btn btn-primary" style="background-color: #25d366;" target="_blank" role="button"
+              href="https://api.whatsapp.com/send?phone={{pet.client.phone}}"><i class="fab fa-whatsapp"></i></a>
           </div>
-
-
         </div>
       </div>
     </div>

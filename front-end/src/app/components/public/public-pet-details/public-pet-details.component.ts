@@ -1,7 +1,10 @@
-import { Component, ViewEncapsulation } from '@angular/core';
+import { Component, inject, ViewEncapsulation } from '@angular/core';
 import { FooterComponent } from '../public-footer/public-footer.component';
 import { MenuComponent } from '../public-menu/public-menu.component';
 import { Pets } from '../../../models/pets';
+import { PetService } from '../../../services/pet.service';
+import { ActivatedRoute } from '@angular/router';
+import { Client } from '../../../models/client';
 
 @Component({
   selector: 'app-pet-details',
@@ -13,5 +16,27 @@ import { Pets } from '../../../models/pets';
 })
 export class PublicPetDetailsComponent {
 
+  petService = inject(PetService);
+  activatedRouter = inject(ActivatedRoute);
+
   pet = new Pets();
+  petProcurado: string = this.pet.wanted ? "Sim" : "Não";
+
+
+  constructor() {
+
+    let id = this.activatedRouter.snapshot.params['id'];
+    if (id != null) {
+      this.pet.client = new Client();
+      this.petService.findById(id).subscribe({
+        next: response => { this.pet = response },
+        error: err => console.log(err),
+      });
+    }
+
+
+
+  }
+
+
 }

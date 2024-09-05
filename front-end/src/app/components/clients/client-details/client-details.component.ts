@@ -49,8 +49,8 @@ export class ClientDetailsComponent {
       });
     } else {
       if (this.client.instagram != null) {
-        if (!this.client.instagram.startsWith("@")) {
-          this.client.instagram = "@" + this.client.instagram
+        if (this.client.instagram.startsWith("@")) {
+          this.client.instagram = this.client.instagram.substring(1);
         }
         // EDITANDO UM CLIENT
         if (this.client.id != null) {

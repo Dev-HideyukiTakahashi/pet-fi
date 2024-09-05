@@ -1,27 +1,31 @@
-.top-distance{
+.top-distance {
   margin-top: 8vh;
 }
 
-.bottom-distance{
+.bottom-distance {
   margin-bottom: 8vh;
 }
 
-body{
+body {
   background-image: url('front-end/src/assets/background.png');
   background-size: cover;
   opacity: .7;
 }
 
-img{
-
-    width: 50%;
-    display:block;
+img {
+  width: 50%;
+  display: block;
 }
 
-
-.card{
+.card {
   color: black;
   font-weight: 500;
 }
 
-
+@media (max-width: 770px) {
+  .footer {
+    width: 100%;
+    bottom: 0;
+    position: fixed;
+  }
+}

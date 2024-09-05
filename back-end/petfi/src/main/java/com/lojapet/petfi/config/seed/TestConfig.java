@@ -37,27 +37,27 @@ public class TestConfig implements CommandLineRunner {
     user.setPassword("$2a$12$.5Dv8FNNzikuB86JTV0WZe73kJqKXwYu4NFsD2Sl.33aCSv5SbPhy");
     user.setRole("ADMIN");
 
-    Client client1 = new Client(null, "Maria Silva", "11966666666", "www.facebook.com", "@maria", "Diadema");
-    Client client2 = new Client(null, "João Silva", "11977777777", "www.facebook.com", "@joao",
+    Client client1 = new Client(null, "Maria Silva", "11966666666", "https://www.facebook.com/", "bella.samoieda", "Diadema");
+    Client client2 = new Client(null, "João Silva", "11977777777", "https://www.facebook.com/", "bella.samoieda",
         "São Bernardo do Campo");
-    Client client3 = new Client(null, "José Silva", "11988888888", "www.facebook.com", "@jose", "Santo André");
-    Client client4 = new Client(null, "Gabriel Rocha", "1199999999", "www.facebook.com", "@gabriel", "Diadema");
-    Client client5 = new Client(null, "Zé Carlos", "1199999999", "www.facebook.com", "@ze", "Santo André");
-    Client client6 = new Client(null, "Amanda", "1199999999", "www.facebook.com", "@amanda", "São Paulo");
-    Client client7 = new Client(null, "Teresa Nascimento", "1199999999", "www.facebook.com", "@teresa", "Diadema");
-    Client client8 = new Client(null, "Alex Brown", "1199999999", "www.facebook.com", "@alex", "São Paulo");
-    Client client9 = new Client(null, "Bob Green", "1199999999", "www.facebook.com", "@bob", "Diadema");
+    Client client3 = new Client(null, "José Silva", "11988888888", "https://www.facebook.com/", "jose", "Santo André");
+    Client client4 = new Client(null, "Gabriel Rocha", "1199999999", "https://www.facebook.com/", "gabriel", "Diadema");
+    Client client5 = new Client(null, "Zé Carlos", "1199999999", "https://www.facebook.com/", "ze", "Santo André");
+    Client client6 = new Client(null, "Amanda", "1199999999", "https://www.facebook.com/", "amanda", "São Paulo");
+    Client client7 = new Client(null, "Teresa Nascimento", "1199999999", "https://www.facebook.com/", "teresa", "Diadema");
+    Client client8 = new Client(null, "Alex Brown", "1199999999", "https://www.facebook.com/", "alex", "São Paulo");
+    Client client9 = new Client(null, "Bob Green", "1199999999", "https://www.facebook.com/", "bob", "Diadema");
 
-    Pet pet1 = new Pet(null, "Banzé", Sex.MACHO, "Castrado", null, client1, PetType.CACHORRO);
-    Pet pet2 = new Pet(null, "Totó", Sex.MACHO, "Agressivo", null, client1, PetType.CACHORRO);
-    Pet pet3 = new Pet(null, "Carabina", Sex.FEMEA, "", null, client2, PetType.CACHORRO);
-    Pet pet4 = new Pet(null, "Mel", Sex.FEMEA, "Esperando filhote", null, client3, PetType.CACHORRO);
-    Pet pet5 = new Pet(null, "Babinha", Sex.FEMEA, "", null, client5, PetType.CACHORRO);
-    Pet pet6 = new Pet(null, "Dio", Sex.MACHO, "Dócil", null, client6, PetType.CACHORRO);
-    Pet pet7 = new Pet(null, "Rhino", Sex.MACHO, "", null, client7, PetType.CACHORRO);
-    Pet pet8 = new Pet(null, "Heavy", Sex.FEMEA, "", null, client8, PetType.CACHORRO);
-    Pet pet9 = new Pet(null, "Fan", Sex.MACHO, "", null, client9, PetType.CACHORRO);
-    Pet pet10 = new Pet(null, "Russo", Sex.MACHO, "Agressivo", null, client9, PetType.CACHORRO);
+    Pet pet1 = new Pet(null, "Banzé", Sex.Macho, "Castrado", null, client1, PetType.CACHORRO);
+    Pet pet2 = new Pet(null, "Totó", Sex.Macho, "Agressivo", null, client1, PetType.CACHORRO);
+    Pet pet3 = new Pet(null, "Carabina", Sex.Femea, "", null, client2, PetType.CACHORRO);
+    Pet pet4 = new Pet(null, "Mel", Sex.Femea, "Esperando filhote", null, client3, PetType.CACHORRO);
+    Pet pet5 = new Pet(null, "Babinha", Sex.Femea, "", null, client5, PetType.CACHORRO);
+    Pet pet6 = new Pet(null, "Dio", Sex.Macho, "Dócil", null, client6, PetType.CACHORRO);
+    Pet pet7 = new Pet(null, "Rhino", Sex.Macho, "", null, client7, PetType.CACHORRO);
+    Pet pet8 = new Pet(null, "Heavy", Sex.Femea, "", null, client8, PetType.CACHORRO);
+    Pet pet9 = new Pet(null, "Fan", Sex.Macho, "", null, client9, PetType.CACHORRO);
+    Pet pet10 = new Pet(null, "Russo", Sex.Macho, "Agressivo", null, client9, PetType.CACHORRO);
 
     client1.addPet(pet1);
     client1.addPet(pet2);

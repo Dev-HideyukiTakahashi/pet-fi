@@ -8,7 +8,7 @@ import com.lojapet.petfi.entities.enums.Sex;
 public class PetDTO {
 
 	// LINK LOCAL (mudar em produção)
-	private static final String QRCODE = "http://localhost:8080/pets/";
+	private static final String QRCODE = "http://192.168.1.106:4200/home/pet/";
 	
 	private Long id;
 	private String name;

@@ -10,7 +10,7 @@ export class PetService {
 
 
   http = inject(HttpClient);
-  API = "http://localhost:8080/pets";
+  API = "http://192.168.1.106:8080/pets";
 
   constructor() { }
 
