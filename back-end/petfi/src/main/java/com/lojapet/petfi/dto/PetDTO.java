@@ -1,6 +1,7 @@
 package com.lojapet.petfi.dto;
 
 import java.time.LocalDate;
+import java.time.Period;
 
 import com.lojapet.petfi.entities.Client;
 import com.lojapet.petfi.entities.Pet;
@@ -22,12 +23,13 @@ public class PetDTO {
 	private Boolean wanted;
 	private Client client;
 	private PetType petType;
+	private String ageAsString;
 
 	public PetDTO() {
 	}
 
-	public PetDTO(Long id, String name, Sex sex, String additionalInformation, LocalDate age,String photo, Boolean wanted,
-			Client client, PetType petType) {
+	public PetDTO(Long id, String name, Sex sex, String additionalInformation, LocalDate age, String photo,
+			Boolean wanted, Client client, PetType petType) {
 		this.id = id;
 		this.name = name;
 		this.sex = sex;
@@ -128,6 +130,31 @@ public class PetDTO {
 
 	public void setPetType(PetType petType) {
 		this.petType = petType;
+	}
+
+	public String getAgeAsString() {
+
+		Period diff = Period.between(age, LocalDate.now());
+		int month = diff.getMonths();
+		int year = diff.getYears();
+
+		String age = "";
+
+		if (month != 0) {
+			age = month > 1 ? month + " meses" : month + " mes";
+		}
+
+		if (year != 0 && month != 0) {
+			age += year > 1 ? " e " + year + " anos" : " e " + year + " ano";
+		} else {
+			age += year > 1 ? year + " anos" : year + " ano";
+		}
+
+		return age;
+	}
+
+	public void setAgeAsString(String ageAsString) {
+		this.ageAsString = ageAsString;
 	}
 
 	public static Pet toPet(PetDTO dto) {

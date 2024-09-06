@@ -11,4 +11,6 @@ export class Pets {
   wanted!: boolean;
   petType!: string;
   client!: Client;
+  age!: string;
+  ageAsString!: string;
 }

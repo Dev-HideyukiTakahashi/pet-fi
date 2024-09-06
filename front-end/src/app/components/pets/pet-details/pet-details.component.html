@@ -28,8 +28,8 @@
             <div class="mt-3 col-lg-3">
               <select class="form-select " aria-label="Default select example" [(ngModel)]="pet.sex">
                 <option selected>Sexo*</option>
-                <option value="MACHO">MACHO</option>
-                <option value="FEMEA">FEMEA</option>
+                <option value="Macho">Macho</option>
+                <option value="Femea">Femea</option>
               </select>
             </div>
             <div class="mt-3 col-lg-3">
@@ -48,11 +48,17 @@
               <div>Desaparecido:</div>
             </div>
 
-            <div class=" mt-3 col-lg-3">
+            <div class=" mt-3 ms-2 col-lg-3">
               <select class="form-select " aria-label="Default select example" [(ngModel)]="pet.wanted">
                 <option value="true">Sim</option>
                 <option value="false">Não</option>
               </select>
+            </div>
+
+
+            <div class="col-lg-2 mt-3 d-flex align-items-center">
+              <div>Idade:</div>
+              <input type="date" class="ms-2" [(ngModel)]="pet.age">
             </div>
 
 

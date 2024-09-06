@@ -71,6 +71,7 @@ public class PetService {
     pet.setSex(dto.getSex());
     pet.setPetType(dto.getPetType());
     pet.setAdditionalInformation(dto.getAdditionalInformation());
+    pet.setAge(dto.getAge());
     pet.setPhoto(dto.getPhoto());
     pet.setWanted(dto.isWanted());
   }

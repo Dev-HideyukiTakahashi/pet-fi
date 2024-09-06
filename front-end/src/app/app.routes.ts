@@ -27,7 +27,7 @@ export const routes: Routes = [
       { path: "client", component: ClientSearchComponent },
       { path: "pet/new", component: PetDetailsComponent },
       { path: "pet/edit/:id", component: PetDetailsComponent },
-      { path: "pet", component: PetDetailsComponent },
+      { path: "pet", component: PetSearchComponent },
       { path: "pet/qrcode", component: QrcodeComponent },
     ]
   },

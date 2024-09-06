@@ -8,6 +8,7 @@ import Swal from 'sweetalert2';
 import { PetService } from '../../../services/pet.service';
 import { SideMenuComponent } from '../../layouts/side-menu/side-menu.component';
 
+
 @Component({
   selector: 'app-pet-details',
   standalone: true,
@@ -23,6 +24,7 @@ export class PetDetailsComponent {
   client!: Client;
   pet: Pets = new Pets();
   petService = inject(PetService);
+  model!: string;
 
 
   constructor() {
@@ -100,4 +102,9 @@ export class PetDetailsComponent {
       }
     }
   }
+
+
+
+
+
 }
