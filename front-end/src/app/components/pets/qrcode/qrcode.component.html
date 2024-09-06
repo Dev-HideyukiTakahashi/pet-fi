@@ -9,29 +9,38 @@
         <div class="card-body">
           <h1 class="text-start">Gerar QR code</h1>
           <hr>
-          <div class="input-group mt-2">
+          <div class="input-group mt-2 ">
+
             <div class="input-group">
+
+              <div class="col-lg-2 me-2">
+                <input mdbInput type="text" id="form1" class="form-control" value="Código" disabled="true" />
+              </div>
               <mdb-form-control>
-                <input mdbInput type="number" id="form1" class="form-control" [(ngModel)]="idPet" />
-                <label mdbLabel class="form-label" for="form1">Código</label>
+                <input mdbInput type="text" id="form1" class="form-control" [(ngModel)]="value" />
+                <label mdbLabel class="form-label" for="form1">Digite o código</label>
               </mdb-form-control>
-              <button type="button" class="btn btn-primary" (click)="findPetById(idPet)">
+              <button type="button" class="btn btn-primary" (click)="findById(value)">
                 <i class="fas fa-search"></i>
               </button>
+
             </div>
+
           </div>
           <table class="table mt-5" border="1px ">
             <thead class=" table-dark text-center">
               <tr>
-                <td>Nome</td>
                 <td>Código</td>
+                <td>Nome</td>
+                <td>Tutor</td>
               </tr>
             </thead>
             @if (pet != null) {
             <tbody>
               <tr class="text-center">
-                <td>{{pet.name}}</td>
                 <td>{{pet.id}}</td>
+                <td>{{pet.name}}</td>
+                <td>{{pet.client.name}}</td>
               </tr>
             </tbody>
             }
