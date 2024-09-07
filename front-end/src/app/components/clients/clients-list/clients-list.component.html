@@ -11,20 +11,20 @@
           <table class="table" border="1px">
             <thead class="table-dark">
               <tr>
-                <td>Código</td>
                 <td>Nome</td>
                 <td>Telefone</td>
                 <td>Instagram</td>
+                <td>Cidade</td>
                 <td></td>
               </tr>
             </thead>
             <tbody>
               @for (client of clients; track $index) {
               <tr>
-                <td>{{client.id}}</td>
                 <td>{{client.name}}</td>
                 <td>{{client.phone}}</td>
                 <td>{{client.instagram}}</td>
+                <td>{{client.city}}</td>
                 <button type="button" class="btn btn-outline-dark col-lg-6" mdbRipple rippleColor="dark"
                   routerLink="/admin/home/clients/edit/{{client.id}}">Detalhes</button>
                 <button type="button" class="btn btn-outline-dark col-lg-6" mdbRipple rippleColor="dark"
