@@ -33,7 +33,7 @@ export class ClientService {
     return this.http.get(this.API + "/" + id);
   }
 
-  findByPhone(phone: string): Observable<any> {
+  findByPhone(phone: number): Observable<any> {
     return this.http.get(this.API + "/phone/" + phone);
   }
 
