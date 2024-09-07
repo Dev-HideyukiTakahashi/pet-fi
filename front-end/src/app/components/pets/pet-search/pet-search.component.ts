@@ -23,26 +23,55 @@ export class PetSearchComponent {
   clientService = inject(ClientService);
   router = inject(Router);
 
-  idPet!: number;
+  searchOption = "Selecione";
+  value!: string;
+
   petName!: string;
-  search!: boolean;
 
-
-
-  findPetById(id: number) {
-    if (id == null) {
+  search() {
+    if (this.searchOption == "Selecione" || this.searchOption == "") {
       Swal.fire({
         icon: "error",
         title: "Oops...",
-        text: "Preencha o campo para realizar a busca!",
+        text: "Selecione o o filtro de busca!",
       });
-    } else {
-      this.pets = [];
-      this.petService.findById(id).subscribe({
-        next: response => this.pets.push(response),
-        error: e => { Swal.fire("Código não localizado!"), this.idPet = Number(undefined) },
-      })
     }
+    // BUSCA POR ID
+    if (this.searchOption == "id") {
+      let id = Number.parseInt(this.value);
+      if (id == null || isNaN(id)) {
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: "Preencha o campo com números para realizar a busca!",
+        });
+        this.value = "";
+      } else {
+        this.pets = [];
+        this.petService.findById(id).subscribe({
+          next: response => this.pets.push(response),
+          error: () => { Swal.fire("Código não localizado!"), this.value = "" },
+        })
+      }
+    }
+    // BUSCA POR NOME
+    if (this.searchOption == "name") {
+      if (this.value == null || this.value == "") {
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: "Preencha o nome para realizar a busca!",
+        });
+        this.value = "";
+      } else {
+        this.pets = [];
+        this.petService.findByName(this.value).subscribe({
+          next: response => this.pets = response.content,
+          error: () => { Swal.fire("Código não localizado!"), this.value = "" },
+        })
+      }
+    }
+
   }
 
   findPetByName(petName: string) {

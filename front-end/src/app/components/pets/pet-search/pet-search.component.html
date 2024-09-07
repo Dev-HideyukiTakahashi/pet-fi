@@ -8,30 +8,33 @@
         <div class="card-body">
           <h1 class="text-center">Buscar Pet</h1>
           <hr>
-          <div class="input-group mt-2">
-            <mdb-form-control class="col-lg-2">
-              <input mdbInput type="number" id="form1" class=" form-control" [(ngModel)]="idPet" />
-              <label mdbLabel class="form-label" for="form1">Código</label>
+
+
+          <div class="input-group">
+            <div class="col-lg-3 me-2">
+              <select class="form-select" [(ngModel)]="searchOption">
+                <option selected>Selecione</option>
+                <option value="id">Código</option>
+                <option value="name">Nome</option>
+              </select>
+            </div>
+            <mdb-form-control>
+              <input mdbInput type="text" id="form1" class="form-control" [(ngModel)]="value" />
+              <label mdbLabel class="form-label" for="form1">Digite a busca</label>
             </mdb-form-control>
-            <button type="button" class="btn btn-primary" (click)="findPetById(idPet)">
+            <button type="button" class="btn btn-primary" (click)="search()">
               <i class="fas fa-search"></i>
             </button>
           </div>
-          <div class="input-group mt-2">
-            <mdb-form-control class="col-lg-3">
-              <input mdbInput type="text" id="form1" class=" form-control" [(ngModel)]="petName" />
-              <label mdbLabel class="form-label" for="form1">Nome Pet</label>
-            </mdb-form-control>
-            <button type="button" class="btn btn-primary" (click)="findPetByName(petName)">
-              <i class=" fas fa-search"></i>
-            </button>
-          </div>
+
+
           <table class="table mt-5" border="1px">
             <thead class="table-dark">
               <tr>
-                <td>Código</td>
+                <td>Cód.</td>
                 <td>Nome</td>
-                <td>Cliente</td>
+                <td>Tutor</td>
+                <td>Telefone</td>
                 <td></td>
               </tr>
             </thead>
@@ -41,6 +44,7 @@
                 <td>{{pet.id}}</td>
                 <td>{{pet.name}}</td>
                 <td>{{pet.client.name}}</td>
+                <td>{{pet.client.phone}}</td>
                 <button type="button" class="btn btn-outline-dark col-lg-6" mdbRipple rippleColor="dark"
                   (click)="navigateEdit(pet.id, pet.client)">Detalhes</button>
                 <button type="button" class="btn btn-outline-dark col-lg-6" mdbRipple rippleColor="dark"
@@ -55,27 +59,3 @@
     </div>
   </div>
 </div>
-
-
-
-
-
-
-<!-- <div class="input-group">
-
-  <div class="col-lg-3 me-2">
-    <select class="form-select" [(ngModel)]="searchOption">
-      <option selected>Selecione</option>
-      <option value="id">Código</option>
-      <option value="name">Nome</option>
-    </select>
-  </div>
-  <mdb-form-control>
-    <input mdbInput type="text" id="form1" class="form-control" [(ngModel)]="value" />
-    <label mdbLabel class="form-label" for="form1">Digite a busca</label>
-  </mdb-form-control>
-  <button type="button" class="btn btn-primary" (click)="search(value)">
-    <i class="fas fa-search"></i>
-  </button>
-
-</div> -->
