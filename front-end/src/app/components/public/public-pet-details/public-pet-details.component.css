@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
 .top-distance {
   margin-top: 8vh;
 }
@@ -7,6 +9,7 @@
 }
 
 body {
+  font-family: 'Courier New', Courier, monospace;
   background-image: url('front-end/src/assets/background.png');
   background-size: cover;
   opacity: .7;
@@ -18,8 +21,15 @@ img {
 }
 
 .card {
-  color: black;
+
+  background-color: #2E2A29;
+  color: white;
   font-weight: 500;
+}
+
+h1 {
+  font-weight: bold;
+  font-size: 38px;
 }
 
 @media (max-width: 770px) {
