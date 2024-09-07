@@ -158,26 +158,31 @@
         </li>
         <li><s>Exceptions configuradas.</s>
        </li>
-        <li>Upload de foto de perfil do pet, salvando no banco de dados.
+        <li><s>Upload de foto de perfil do pet, salvando no banco de dados.</s>
         </li>
         <li><s>Geração de link url para qr code.</s></li>
         <li><s>Configuração e testes com banco de dados postgreSQL / profile DEV</s></li>
       </ul>
       <span>Task 2 - Spring security, autenticando o sistema e autorizando páginas de acordo com o perfil.</span>
       <ul>
-        <li>Validação com banco de dados, login/senha para acessar o sistema.
+        <li><s>Validação com banco de dados, login/senha para acessar o sistema.</s>
         </li>
-        <li>Validação para não acessar página home/privada sem estar logado.
+        <li><s>Validação para não acessar página home/privada sem estar logado.</s>
         </li>
       </ul>
       <p>- Front-End:</p>
-      <ul>
-        <li>Configuração bootstrap.</li>
-        <li>Configuração angular.</li>
-        <li>Página home/privada com recurso para registrar novo pet/cliente.</li>
-        <li>Página home/privada listando todos os pets, com recurso para atualizar/excluir em cada pet.</li>
-        <li>Página home/pública listando todos os pets, filtrados por cidade ou não.</li>    
-        <li>Ao ser encaminhado pelo qr code escaneado, página do pet selecionado com todos os dados registrados.</li>        
+       <ul>
+        <li><s>Configuração Material Design for Bootstrap 5 & Angular 17.</s></li>
+        <li><s>Criação front com angular.</s></li>
+        <li><s>Criação modelds.</s></li>
+        <li><s>Criação services.</s></li>
+        <li><s>Criação layouts básicos.</s></li>
+        <li><s>Página admin/home - crud completo cliente.</s></li>
+        <li><s>Página admin/home - crud completo pet.</s></li>
+        <li><s>Página admin/home - geração de qrcode.</s></li>
+        <li><s>Página admin/home - listando todos os pets, com recurso para atualizar/excluir em cada pet.</s></li>
+        <li><s>Página admin/home buscando pet, filtrados por nome, código.</s></li>    
+        <li><s>Ao ser encaminhado pelo qr code escaneado, página com dados pet/cliente.</s></li>      
       </ul>
       <hr>      
     </div>
