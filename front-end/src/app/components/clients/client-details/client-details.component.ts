@@ -41,24 +41,31 @@ export class ClientDetailsComponent {
   }
 
   insert(client: Client) {
-    if (this.client.name == null || this.client.city == null || this.client.phone == null) {
+
+    //Checando se telefone apenas numeros
+    if (this.phoneOnlyNumber()) {
+      Swal.fire("Telefone apenas números!");
+    }
+
+    else if (this.client.name == null || this.client.city == null || this.client.phone == null) {
       Swal.fire({
         icon: "error",
         title: "Oops...",
         text: "Preencha todos os campos obrigatórios!",
       });
-    } else {
+    }
+    else {
       if (this.client.instagram != null) {
+        // REMOVENDO UM POSSIVEL '@'
         if (this.client.instagram.startsWith("@")) {
           this.client.instagram = this.client.instagram.substring(1);
         }
         // EDITANDO UM CLIENT
         if (this.client.id != null) {
+          this.checkDDI();
           this.clientService.update(client.id, client).subscribe({
-
             next: response => this.router.navigate(["admin/home/clients"], { state: { updatedClient: this.client } }),
             error: e => console.log("Error : " + e.error.message),
-
           });
           Swal.fire({
             title: 'Editado com sucesso!',
@@ -69,6 +76,7 @@ export class ClientDetailsComponent {
         }
         // CADASTRANDO UM NOVO CLIENT
         else {
+          this.checkDDI();
           this.clientService.insert(client).subscribe({
             next: response => this.router.navigate(["admin/home/clients"], { state: { newClient: this.client } }),
             error: e => console.log("Error : " + e.error.message),
@@ -82,6 +90,23 @@ export class ClientDetailsComponent {
         }
       }
     }
+  }
+
+  checkDDI() {
+    if (this.client.phone.charAt(0) != "5" && this.client.phone.charAt(1) != "5") {
+      this.client.phone = "" + 55 + this.client.phone;
+    }
+  }
+
+  phoneOnlyNumber() {
+    //Checando cada caractere, se um não for número retorna true
+    for (let index = 0; index < this.client.phone.length; index++) {
+      let test = Number.parseInt(this.client.phone[index])
+      if (isNaN(test)) {
+        return true;
+      }
+    }
+    return false;
   }
 
   registerPet() {
