@@ -10,13 +10,6 @@
           <hr>
           <div class="row mt-4">
             <h2>Cliente:</h2>
-            @if (edit) {
-            <mdb-form-control class="col-lg-2 mt-2">
-              <input mdbInput type="number" class="form-control bg-secondary text-light" [(ngModel)]="client.id"
-                disabled />
-              <label mdbLabel class="form-label">Código</label>
-            </mdb-form-control>
-            }
             <div class="col-lg-11 mt-2"></div>
             <mdb-form-control class="col-lg-5 mt-2">
               <input mdbInput type="text" class="form-control" [(ngModel)]="client.name" />
