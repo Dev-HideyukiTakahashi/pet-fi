@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { PublicPetListComponent } from './pet-list.component';
+import { PublicPetListComponent } from './public-pet-list.component';
 
 describe('PublicPetListComponent', () => {
   let component: PublicPetListComponent;

@@ -9,7 +9,7 @@ import { PetSearchComponent } from './components/pets/pet-search/pet-search.comp
 import { HelpComponent } from './components/layouts/help/help.component';
 import { QrcodeComponent } from './components/pets/qrcode/qrcode.component';
 import { loginGuard } from './auth/login-guard';
-import { PublicPetListComponent } from './components/public/public-pet-list/pet-list.component';
+import { PublicPetListComponent } from './components/public/public-pet-list/public-pet-list.component';
 import { PublicPetDetailsComponent } from './components/public/public-pet-details/public-pet-details.component';
 import { ContactComponent } from './components/public/contact/contact.component';
 

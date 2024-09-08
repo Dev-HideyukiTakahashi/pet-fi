@@ -1,5 +1,7 @@
 package com.lojapet.petfi.services;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.data.domain.Page;
@@ -31,6 +33,17 @@ public class ClientService {
 	public Page<ClientDTO> findAllByName(PageRequest pageRequest, String name) {
 		Page<Client> list = clientRepository.findByNameContainingIgnoreCase(pageRequest, name);
 		return list.map(client -> new ClientDTO(client));
+	}
+	
+	@Transactional
+	public List<String> findAllCities(){
+		List<String> cities = 
+				clientRepository.findAll()
+				.stream()
+				.map(x -> x.getCity())
+				.distinct()
+				.toList();
+		return cities;
 	}
 
 	@Transactional(readOnly = true)

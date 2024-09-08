@@ -17,6 +17,10 @@ export class ClientService {
     return this.http.get(this.API);
   }
 
+  findAllCities(): Observable<any> {
+    return this.http.get(this.API + "/cities");
+  }
+
   findAllByPage(pageIndex: number): Observable<any> {
     return this.http.get(this.API + "?page=" + pageIndex);
   }
