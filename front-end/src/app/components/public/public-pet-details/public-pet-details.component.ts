@@ -1,6 +1,6 @@
 import { Component, inject, ViewEncapsulation } from '@angular/core';
-import { FooterComponent } from '../public-footer/public-footer.component';
-import { MenuComponent } from '../public-menu/public-menu.component';
+import { publicFooterComponent } from '../public-footer/public-footer.component';
+import { publicMenuComponent } from '../public-menu/public-menu.component';
 import { Pets } from '../../../models/pets';
 import { PetService } from '../../../services/pet.service';
 import { ActivatedRoute } from '@angular/router';
@@ -9,7 +9,7 @@ import { Client } from '../../../models/client';
 @Component({
   selector: 'app-pet-details',
   standalone: true,
-  imports: [FooterComponent, MenuComponent],
+  imports: [publicFooterComponent, publicMenuComponent],
   templateUrl: './public-pet-details.component.html',
   styleUrl: './public-pet-details.component.css',
   encapsulation: ViewEncapsulation.None

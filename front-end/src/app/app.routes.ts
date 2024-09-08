@@ -11,11 +11,13 @@ import { QrcodeComponent } from './components/pets/qrcode/qrcode.component';
 import { loginGuard } from './auth/login-guard';
 import { PublicPetListComponent } from './components/public/public-pet-list/pet-list.component';
 import { PublicPetDetailsComponent } from './components/public/public-pet-details/public-pet-details.component';
+import { ContactComponent } from './components/public/contact/contact.component';
 
 export const routes: Routes = [
   { path: "", redirectTo: "home", pathMatch: "full" },
   { path: "home", component: PublicPetListComponent },
   { path: "home/pet/:id", component: PublicPetDetailsComponent },
+  { path: "home/contact", component: ContactComponent },
   { path: "login", component: LoginComponent },
   {
     path: "admin/home", component: HomeComponent, canActivate: [loginGuard],

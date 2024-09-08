@@ -8,6 +8,6 @@ import { MdbCollapseModule } from 'mdb-angular-ui-kit/collapse';
   templateUrl: './public-menu.component.html',
   styleUrl: './public-menu.component.css'
 })
-export class MenuComponent {
+export class publicMenuComponent {
 
 }
