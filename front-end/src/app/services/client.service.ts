@@ -41,6 +41,10 @@ export class ClientService {
     return this.http.get(this.API + "/name/" + name);
   }
 
+  findByNamePaged(value: string, pageIndex: number): Observable<any> {
+    return this.http.get(this.API + "/name/" + value + "?page=" + pageIndex);
+  }
+
   findByInstagram(instagram: string): Observable<any> {
     return this.http.get(this.API + "/instagram/" + instagram);
   }

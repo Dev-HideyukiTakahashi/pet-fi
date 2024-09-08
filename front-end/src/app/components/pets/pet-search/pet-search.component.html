@@ -19,7 +19,8 @@
               </select>
             </div>
             <mdb-form-control>
-              <input mdbInput type="text" id="form1" class="form-control" [(ngModel)]="value" />
+              <input mdbInput type="text" id="form1" class="form-control" [(ngModel)]="value"
+                (keyup.enter)="search()" />
               <label mdbLabel class="form-label" for="form1">Digite a busca</label>
             </mdb-form-control>
             <button type="button" class="btn btn-primary" (click)="search()">

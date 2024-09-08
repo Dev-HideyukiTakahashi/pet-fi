@@ -1,11 +1,15 @@
-.top-distance{
+.top-distance {
   margin-top: 8vh;
 }
 
-.bottom-distance{
+.bottom-distance {
   margin-bottom: 8vh;
 }
 
-input[type=number]::-webkit-inner-spin-button{
-    appearance: none; 
+input[type=number]::-webkit-inner-spin-button {
+  appearance: none;
+}
+
+.page-index {
+  cursor: pointer;
 }

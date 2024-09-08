@@ -17,7 +17,8 @@
                 <input mdbInput type="text" id="form1" class="form-control" value="Código" disabled="true" />
               </div>
               <mdb-form-control>
-                <input mdbInput type="text" id="form1" class="form-control" [(ngModel)]="value" />
+                <input mdbInput type="text" id="form1" class="form-control" [(ngModel)]="value"
+                  (keyup.enter)="findById(value)" />
                 <label mdbLabel class="form-label" for="form1">Digite o código</label>
               </mdb-form-control>
               <button type="button" class="btn btn-primary" (click)="findById(value)">

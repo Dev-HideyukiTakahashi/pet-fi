@@ -26,7 +26,6 @@ export class ClientSearchComponent {
   phoneClient!: string;
 
 
-
   searchOption = "Selecione";
   value!: string;
 
@@ -43,6 +42,13 @@ export class ClientSearchComponent {
     if (this.searchOption == "phone") { this.findClientByPhone(this.value) }
   }
 
+  findPaged(page: number) {
+    if (this.searchOption == "name") {
+      this.clientService.findByNamePaged(this.value, page).subscribe({
+        next: response => this.clients = response.content,
+      })
+    }
+  }
 
   findClientByPhone(value: string) {
     let phone = Number.parseInt(value);
@@ -65,7 +71,7 @@ export class ClientSearchComponent {
     else {
       this.clientService.findByName(name).subscribe({
         next: response => {
-          if (response.content.length > 0) { this.clients = response.content }
+          if (response.content.length > 0) { this.clients = response.content, this.totalPages = new Array(response.totalPages); }
           else { Swal.fire("Nome não localizado!"), this.value = "" }
         },
         error: e => { console.log(e.error.message) },
