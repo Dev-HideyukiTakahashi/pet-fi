@@ -46,7 +46,6 @@ export class ClientDetailsComponent {
     if (this.phoneOnlyNumber()) {
       Swal.fire("Telefone apenas números!");
     }
-
     else if (this.client.name == null || this.client.phone == null) {
       Swal.fire({
         icon: "error",
@@ -72,24 +71,40 @@ export class ClientDetailsComponent {
             icon: 'success',
             confirmButtonText: 'Ok'
           })
-
         }
         // CADASTRANDO UM NOVO CLIENT
         else {
           this.checkDDI();
           this.clientService.insert(client).subscribe({
-            next: response => this.router.navigate(["admin/home/clients"], { state: { newClient: this.client } }),
+            next: response => {
+              this.client.id = response.id,
+                this.registerFirstPet();
+            },
             error: e => console.log("Error : " + e.error.message),
           });
-          Swal.fire({
-            title: 'Sucesso!',
-            text: 'Novo cadastro realizado.',
-            icon: 'success',
-            confirmButtonText: 'Ok'
-          })
         }
       }
     }
+  }
+
+  registerFirstPet() {
+    Swal.fire({
+      title: "Cadastro de cliente realizado!",
+      text: "Deseja cadastrar um pet agora?",
+      icon: "success",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Sim",
+      cancelButtonText: "Não"
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.router.navigate(["admin/home/pet/new"], { state: { client: this.client } });
+      } else {
+        this.router.navigate(["admin/home/clients"], { state: { newClient: this.client } })
+      }
+    });
+
   }
 
   checkDDI() {

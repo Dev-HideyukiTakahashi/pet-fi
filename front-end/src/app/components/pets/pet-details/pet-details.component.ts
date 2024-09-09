@@ -49,7 +49,7 @@ export class PetDetailsComponent {
   }
 
   insert(client: Client, pet: Pets) {
-    if (pet.sex == "Sexo*" || pet.petType == "Pet*" || pet.name == null) {
+    if (pet.sex == "Sexo*" || pet.petType == "Pet*" || pet.name == null || pet.age == null) {
       Swal.fire({
         icon: "error",
         title: "Oops...",
