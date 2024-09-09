@@ -11,5 +11,7 @@ import com.lojapet.petfi.entities.Pet;
 public interface PetRepository extends JpaRepository<Pet, Long> {
 	
 	Page<Pet> findByNameContainingIgnoreCase( String name, PageRequest pageRequest);
+	Page<Pet> findByWantedAndCity(Boolean wanted, String city, PageRequest pageRequest);
+	Page<Pet> findByWanted(Boolean wanted, PageRequest pageRequest);
 
 }

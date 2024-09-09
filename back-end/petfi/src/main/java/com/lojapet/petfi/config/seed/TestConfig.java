@@ -57,17 +57,29 @@ public class TestConfig implements CommandLineRunner {
 		Client client8 = new Client(null, "Alex Brown", "1199999999", "https://www.facebook.com/", "alex", "São Paulo");
 		Client client9 = new Client(null, "Bob Green", "1199999999", "https://www.facebook.com/", "bob", "Diadema");
 
-		Pet pet1 = new Pet(null, "Banzé", Sex.Macho, "Castrado", age1, null, client1, PetType.CACHORRO);
-		Pet pet2 = new Pet(null, "Totó", Sex.Macho, "Agressivo", LocalDate.now(), null, client1, PetType.CACHORRO);
-		Pet pet3 = new Pet(null, "Carabina", Sex.Femea, "", LocalDate.now(), null, client2, PetType.CACHORRO);
+		Pet pet1 = new Pet(null, "Banzé", Sex.Macho, "Castrado", age1, null, client1, PetType.CACHORRO, "Diadema");
+		Pet pet2 = new Pet(null, "Totó", Sex.Macho, "Agressivo", LocalDate.now(), null, client1, PetType.CACHORRO, "Diadema");
+		pet2.setWanted(true);
+		Pet pet3 = new Pet(null, "Carabina", Sex.Femea, "", LocalDate.now(), null, client2, PetType.CACHORRO,"Santo André");
 		Pet pet4 = new Pet(null, "Mel", Sex.Femea, "Esperando filhote", LocalDate.now(), null, client3,
-				PetType.CACHORRO);
-		Pet pet5 = new Pet(null, "Babinha", Sex.Femea, "", LocalDate.now(), null, client5, PetType.CACHORRO);
-		Pet pet6 = new Pet(null, "Dio", Sex.Macho, "Dócil", LocalDate.now(), null, client6, PetType.CACHORRO);
-		Pet pet7 = new Pet(null, "Rhino", Sex.Macho, "", LocalDate.now(), null, client7, PetType.CACHORRO);
-		Pet pet8 = new Pet(null, "Heavy", Sex.Femea, "", LocalDate.now(), null, client8, PetType.CACHORRO);
-		Pet pet9 = new Pet(null, "Fan", Sex.Macho, "", LocalDate.now(), null, client9, PetType.CACHORRO);
-		Pet pet10 = new Pet(null, "Russo", Sex.Macho, "Agressivo", LocalDate.now(), null, client9, PetType.CACHORRO);
+				PetType.CACHORRO, "Diadema");
+		pet4.setWanted(true);
+		Pet pet5 = new Pet(null, "Babinha", Sex.Femea, "", LocalDate.now(), null, client5, PetType.CACHORRO, "Osasco");
+		Pet pet6 = new Pet(null, "Dio", Sex.Macho, "Dócil", LocalDate.now(), null, client6, PetType.CACHORRO, "Piraporinha");
+		Pet pet7 = new Pet(null, "Rhino", Sex.Macho, "", LocalDate.now(), null, client7, PetType.CACHORRO, "Diadema");
+		Pet pet8 = new Pet(null, "Heavy", Sex.Femea, "", LocalDate.now(), null, client8, PetType.CACHORRO, "Piraporinha");
+		pet8.setWanted(true);
+		Pet pet9 = new Pet(null, "Fan", Sex.Macho, "", LocalDate.now(), null, client9, PetType.CACHORRO, "Osasco");
+		Pet pet10 = new Pet(null, "Russo", Sex.Macho, "Agressivo", LocalDate.now(), null, client9, PetType.CACHORRO, "Piraporinha");
+		pet10.setWanted(true);
+		Pet pet11 = new Pet(null, "Russo2", Sex.Macho, "Agressivo", LocalDate.now(), null, client9, PetType.CACHORRO, "Piraporinha");
+		pet11.setWanted(true);
+		Pet pet12 = new Pet(null, "Russo3", Sex.Macho, "Agressivo", LocalDate.now(), null, client9, PetType.CACHORRO, "Piraporinha");
+		pet12.setWanted(true);
+		Pet pet13 = new Pet(null, "Russo4", Sex.Macho, "Agressivo", LocalDate.now(), null, client9, PetType.CACHORRO, "Piraporinha");
+		pet13.setWanted(true);
+		Pet pet14 = new Pet(null, "Russo5", Sex.Macho, "Agressivo", LocalDate.now(), null, client9, PetType.CACHORRO, "Piraporinha");
+		pet14.setWanted(true);
 
 		client1.addPet(pet1);
 		client1.addPet(pet2);
@@ -79,6 +91,11 @@ public class TestConfig implements CommandLineRunner {
 		client8.addPet(pet8);
 		client9.addPet(pet9);
 		client9.addPet(pet10);
+		client9.addPet(pet11);
+		client9.addPet(pet12);
+		client9.addPet(pet13);
+		client9.addPet(pet14);
+
 
 		loginRepository.save(user);
 		clientRepository.saveAll(

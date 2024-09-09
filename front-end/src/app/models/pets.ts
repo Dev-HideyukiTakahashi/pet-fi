@@ -13,4 +13,5 @@ export class Pets {
   client!: Client;
   age!: string;
   ageAsString!: string;
+  city !: string;
 }

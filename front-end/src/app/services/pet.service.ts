@@ -34,6 +34,26 @@ export class PetService {
     return this.http.delete(this.API + "/" + id);
   }
 
+  findAllPetsWantedAndCity(city: string): Observable<any> {
+    return this.http.get(this.API + "/cityWanted/true/" + city);
+  }
+
+  findAllPetsWantedAndCityPaged(page: number, city: string): Observable<any> {
+    return this.http.get(this.API + "/cityWanted/true/" + city + "?page=" + page);
+  }
+
+  findAllPetsWanted(): Observable<any> {
+    return this.http.get(this.API + "/wanted/true");
+  }
+
+  findAllPetsWantedPaged(page: number): Observable<any> {
+    return this.http.get(this.API + "/wanted/true?page=" + page);
+  }
+
+  findAllCities(): Observable<any> {
+    return this.http.get(this.API + "/cities");
+  }
+
 
 
 }

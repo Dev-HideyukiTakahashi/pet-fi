@@ -35,17 +35,6 @@ public class ClientService {
 		return list.map(client -> new ClientDTO(client));
 	}
 	
-	@Transactional
-	public List<String> findAllCities(){
-		List<String> cities = 
-				clientRepository.findAll()
-				.stream()
-				.map(x -> x.getCity())
-				.distinct()
-				.toList();
-		return cities;
-	}
-
 	@Transactional(readOnly = true)
 	public Page<ClientDTO> findAllByInstagram(PageRequest pageRequest, String instagram) {
 		Page<Client> list = clientRepository.findByInstagram(pageRequest, instagram);

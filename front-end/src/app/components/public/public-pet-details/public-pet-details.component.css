@@ -10,7 +10,7 @@ body {
   font-family: 'Courier New', Courier, monospace;
   background-image: url('front-end/src/assets/background.png');
   background-size: cover;
-  opacity: .7;
+  opacity: .8;
 }
 
 img {

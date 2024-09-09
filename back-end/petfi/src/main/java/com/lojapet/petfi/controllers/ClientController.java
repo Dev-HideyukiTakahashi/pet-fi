@@ -42,13 +42,6 @@ public class ClientController {
     Page<ClientDTO> list = clientService.findAllPaged(pageRequest);
     return ResponseEntity.ok(list);
   }
-  
-  @GetMapping(path = "/cities")
-  public ResponseEntity<List<String>> findAllCities(){
-	  List<String> cities = clientService.findAllCities();
-	  cities.forEach(System.out::println);
-	  return ResponseEntity.ok(cities);
-  }
 
   @GetMapping(path = "/name/{name}")
   public ResponseEntity<Page<ClientDTO>> findByName(

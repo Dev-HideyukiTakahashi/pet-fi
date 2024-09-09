@@ -36,6 +36,7 @@ public class Pet {
 	private String photo;
 	private Boolean wanted;
 	private PetType petType;
+	private String city;
 
 	@ManyToOne
 	@JoinColumn(name = "client_id")
@@ -45,8 +46,8 @@ public class Pet {
 
 	}
 
-	public Pet(Long id, String name, Sex sex, String additionalInformation, LocalDate age,String photo, Client client,
-			PetType petType ) {
+	public Pet(Long id, String name, Sex sex, String additionalInformation, LocalDate age, String photo, Client client,
+			PetType petType, String city) {
 		this.id = id;
 		this.name = name;
 		this.sex = sex;
@@ -56,6 +57,7 @@ public class Pet {
 		this.client = client;
 		this.petType = petType;
 		this.wanted = false;
+		this.city = city;
 	}
 
 	public Long getId() {
@@ -92,6 +94,14 @@ public class Pet {
 
 	public Pet(String qrcode) {
 		this.qrcode = qrcode;
+	}
+
+	public String getCity() {
+		return city;
+	}
+
+	public void setCity(String city) {
+		this.city = city;
 	}
 
 	public String getQrcode() {

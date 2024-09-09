@@ -10,12 +10,16 @@ body {
   font-family: 'Courier New', Courier, monospace;
   background-image: url('front-end/src/assets/background.png');
   background-size: cover;
-  opacity: .7;
+  opacity: .8;
 }
 
-img {
-  width: 50%;
+.photo {
+  width: 30%;
   display: block;
+}
+
+.petName {
+  text-transform: uppercase;
 }
 
 .card {
@@ -29,6 +33,19 @@ h1 {
   text-transform: uppercase;
   font-weight: bold;
   font-size: 38px;
+}
+
+p {
+  margin: 0;
+}
+
+.index {
+  margin-top: 8px;
+  font-size: 18px;
+  color: white;
+  font-weight: bold;
+  background-color: #4C4948;
+
 }
 
 @media (max-width: 770px) {

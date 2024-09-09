@@ -24,12 +24,13 @@ public class PetDTO {
 	private Client client;
 	private PetType petType;
 	private String ageAsString;
+	private String city;
 
 	public PetDTO() {
 	}
 
 	public PetDTO(Long id, String name, Sex sex, String additionalInformation, LocalDate age, String photo,
-			Boolean wanted, Client client, PetType petType) {
+			Boolean wanted, Client client, PetType petType, String city) {
 		this.id = id;
 		this.name = name;
 		this.sex = sex;
@@ -40,6 +41,7 @@ public class PetDTO {
 		this.client = client;
 		this.petType = petType;
 		this.qrcode = QRCODE + id;
+		this.city = city;
 	}
 
 	public PetDTO(Pet pet) {
@@ -54,6 +56,7 @@ public class PetDTO {
 		this.client = pet.getClient();
 		this.petType = pet.getPetType();
 		this.qrcode = QRCODE + pet.getId();
+		this.city = pet.getCity();
 	}
 
 	public Long getId() {
@@ -112,8 +115,12 @@ public class PetDTO {
 		this.photo = photo;
 	}
 
-	public Boolean isWanted() {
+	public Boolean getWanted() {
 		return wanted;
+	}
+
+	public void setWanted(Boolean wanted) {
+		this.wanted = wanted;
 	}
 
 	public Client getClient() {
@@ -157,6 +164,14 @@ public class PetDTO {
 		this.ageAsString = ageAsString;
 	}
 
+	public String getCity() {
+		return city;
+	}
+
+	public void setCity(String city) {
+		this.city = city;
+	}
+
 	public static Pet toPet(PetDTO dto) {
 		Pet pet = new Pet();
 		pet.setId(dto.getId());
@@ -166,9 +181,10 @@ public class PetDTO {
 		pet.setAge(dto.getAge());
 		pet.setQrcode(dto.getQrcode());
 		pet.setPhoto(dto.getPhoto());
-		pet.setWanted(dto.isWanted());
+		pet.setWanted(dto.getWanted());
 		pet.setClient(dto.getClient());
 		pet.setPetType(dto.getPetType());
+		pet.setCity(dto.getCity());
 		return pet;
 	}
 
