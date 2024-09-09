@@ -12,20 +12,18 @@ public class ClientDTO {
   private String phone;
   private String facebook;
   private String instagram;
-  private String city;
 
   private List<PetDTO2> pets = new ArrayList<>();
 
   public ClientDTO() {
   }
 
-  public ClientDTO(Long id, String name, String phone, String facebook, String instagram, String city) {
+  public ClientDTO(Long id, String name, String phone, String facebook, String instagram) {
     this.id = id;
     this.name = name;
     this.phone = phone;
     this.facebook = facebook;
     this.instagram = instagram;
-    this.city = city;
   }
 
   public ClientDTO(Client client) {
@@ -34,7 +32,6 @@ public class ClientDTO {
     this.phone = client.getPhone();
     this.facebook = client.getFacebook();
     this.instagram = client.getInstagram();
-    this.city = client.getCity();
     client.getPets().forEach(pet -> pets.add(new PetDTO2(pet)));
   }
 
@@ -44,7 +41,6 @@ public class ClientDTO {
     this.phone = client.getPhone();
     this.facebook = client.getFacebook();
     this.instagram = client.getInstagram();
-    this.city = client.getCity();
   }
 
   public Long getId() {
@@ -87,13 +83,6 @@ public class ClientDTO {
     this.instagram = instagram;
   }
 
-  public String getCity() {
-    return city;
-  }
-
-  public void setCity(String city) {
-    this.city = city;
-  }
 
   public List<PetDTO2> getPets() {
     return pets;
@@ -106,7 +95,6 @@ public class ClientDTO {
     client.setPhone(dto.getPhone());
     client.setFacebook(dto.getFacebook());
     client.setInstagram(dto.getInstagram());
-    client.setCity(dto.getCity());
     dto.getPets().forEach(pet -> client.addPet(PetDTO2.toPet(pet)));
     return client;
   }

@@ -24,7 +24,6 @@ public class Client {
   private String phone;
   private String facebook;
   private String instagram;
-  private String city;
 
   @JsonIgnore
   @OneToMany(mappedBy = "client", cascade = CascadeType.ALL)
@@ -33,13 +32,12 @@ public class Client {
   public Client() {
   }
 
-  public Client(Long id, String name, String phone, String facebook, String instagram, String city) {
+  public Client(Long id, String name, String phone, String facebook, String instagram) {
     this.id = id;
     this.name = name;
     this.phone = phone;
     this.facebook = facebook;
     this.instagram = instagram;
-    this.city = city;
   }
 
   public Long getId() {
@@ -80,14 +78,6 @@ public class Client {
 
   public void setInstagram(String instagram) {
     this.instagram = instagram;
-  }
-
-  public String getCity() {
-    return city;
-  }
-
-  public void setCity(String city) {
-    this.city = city;
   }
 
   public List<Pet> getPets() {

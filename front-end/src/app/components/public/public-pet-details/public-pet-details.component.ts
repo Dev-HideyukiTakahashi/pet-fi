@@ -20,20 +20,20 @@ export class PublicPetDetailsComponent {
   activatedRouter = inject(ActivatedRoute);
 
   pet = new Pets();
-  petProcurado: string = this.pet.wanted ? "Sim" : "Não";
+  petProcurado!: string;
 
 
   constructor() {
-
     let id = this.activatedRouter.snapshot.params['id'];
     if (id != null) {
       this.pet.client = new Client();
       this.petService.findById(id).subscribe({
-        next: response => { this.pet = response },
+        next: response => { this.pet = response, this.petProcurado = this.pet.wanted ? "Sim" : "Não" },
         error: err => console.log(err),
       });
     }
 
+    console.log(this.pet.wanted)
 
 
   }

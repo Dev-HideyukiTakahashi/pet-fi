@@ -54,7 +54,7 @@ public class PetDTO2 {
 		this.age = pet.getAge();
 		this.qrcode = pet.getQrcode();
 		this.photo = pet.getPhoto();
-		this.wanted = pet.isWanted();
+		this.wanted = pet.getWanted();
 		this.client = pet.getClient();
 		this.petType = pet.getPetType();
 		this.qrcode = QRCODE + pet.getId();

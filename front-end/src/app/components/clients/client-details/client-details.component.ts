@@ -47,7 +47,7 @@ export class ClientDetailsComponent {
       Swal.fire("Telefone apenas números!");
     }
 
-    else if (this.client.name == null || this.client.city == null || this.client.phone == null) {
+    else if (this.client.name == null || this.client.phone == null) {
       Swal.fire({
         icon: "error",
         title: "Oops...",

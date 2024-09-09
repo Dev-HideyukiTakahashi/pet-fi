@@ -42,43 +42,47 @@ public class TestConfig implements CommandLineRunner {
 		user.setPassword("$2a$12$.5Dv8FNNzikuB86JTV0WZe73kJqKXwYu4NFsD2Sl.33aCSv5SbPhy");
 		user.setRole("ADMIN");
 
-		Client client1 = new Client(null, "Maria Silva", "11966666666", "https://www.facebook.com/", "bella.samoieda",
-				"Diadema");
-		Client client2 = new Client(null, "João Silva", "11977777777", "https://www.facebook.com/", "bella.samoieda",
-				"São Bernardo do Campo");
-		Client client3 = new Client(null, "José Silva", "11988888888", "https://www.facebook.com/", "jose",
-				"Santo André");
-		Client client4 = new Client(null, "Gabriel Rocha", "1199999999", "https://www.facebook.com/", "gabriel",
-				"Diadema");
-		Client client5 = new Client(null, "Zé Carlos", "1199999999", "https://www.facebook.com/", "ze", "Santo André");
-		Client client6 = new Client(null, "Amanda", "1199999999", "https://www.facebook.com/", "amanda", "São Paulo");
-		Client client7 = new Client(null, "Teresa Nascimento", "1199999999", "https://www.facebook.com/", "teresa",
-				"Diadema");
-		Client client8 = new Client(null, "Alex Brown", "1199999999", "https://www.facebook.com/", "alex", "São Paulo");
-		Client client9 = new Client(null, "Bob Green", "1199999999", "https://www.facebook.com/", "bob", "Diadema");
+		Client client1 = new Client(null, "Maria Silva", "11966666666", "https://www.facebook.com/", "bella.samoieda");
+		Client client2 = new Client(null, "João Silva", "11977777777", "https://www.facebook.com/", "bella.samoieda");
+		Client client3 = new Client(null, "José Silva", "11988888888", "https://www.facebook.com/", "jose");
+		Client client4 = new Client(null, "Gabriel Rocha", "1199999999", "https://www.facebook.com/", "gabriel");
+		Client client5 = new Client(null, "Zé Carlos", "1199999999", "https://www.facebook.com/", "ze");
+		Client client6 = new Client(null, "Amanda", "1199999999", "https://www.facebook.com/", "amanda");
+		Client client7 = new Client(null, "Teresa Nascimento", "1199999999", "https://www.facebook.com/", "teresa");
+		Client client8 = new Client(null, "Alex Brown", "1199999999", "https://www.facebook.com/", "alex");
+		Client client9 = new Client(null, "Bob Green", "1199999999", "https://www.facebook.com/", "bob");
 
 		Pet pet1 = new Pet(null, "Banzé", Sex.Macho, "Castrado", age1, null, client1, PetType.CACHORRO, "Diadema");
-		Pet pet2 = new Pet(null, "Totó", Sex.Macho, "Agressivo", LocalDate.now(), null, client1, PetType.CACHORRO, "Diadema");
+		Pet pet2 = new Pet(null, "Totó", Sex.Macho, "Agressivo", LocalDate.now(), null, client1, PetType.CACHORRO,
+				"Diadema");
 		pet2.setWanted(true);
-		Pet pet3 = new Pet(null, "Carabina", Sex.Femea, "", LocalDate.now(), null, client2, PetType.CACHORRO,"Santo André");
+		Pet pet3 = new Pet(null, "Carabina", Sex.Femea, "", LocalDate.now(), null, client2, PetType.CACHORRO,
+				"Santo André");
 		Pet pet4 = new Pet(null, "Mel", Sex.Femea, "Esperando filhote", LocalDate.now(), null, client3,
 				PetType.CACHORRO, "Diadema");
 		pet4.setWanted(true);
 		Pet pet5 = new Pet(null, "Babinha", Sex.Femea, "", LocalDate.now(), null, client5, PetType.CACHORRO, "Osasco");
-		Pet pet6 = new Pet(null, "Dio", Sex.Macho, "Dócil", LocalDate.now(), null, client6, PetType.CACHORRO, "Piraporinha");
+		Pet pet6 = new Pet(null, "Dio", Sex.Macho, "Dócil", LocalDate.now(), null, client6, PetType.CACHORRO,
+				"Piraporinha");
 		Pet pet7 = new Pet(null, "Rhino", Sex.Macho, "", LocalDate.now(), null, client7, PetType.CACHORRO, "Diadema");
-		Pet pet8 = new Pet(null, "Heavy", Sex.Femea, "", LocalDate.now(), null, client8, PetType.CACHORRO, "Piraporinha");
+		Pet pet8 = new Pet(null, "Heavy", Sex.Femea, "", LocalDate.now(), null, client8, PetType.CACHORRO,
+				"Piraporinha");
 		pet8.setWanted(true);
 		Pet pet9 = new Pet(null, "Fan", Sex.Macho, "", LocalDate.now(), null, client9, PetType.CACHORRO, "Osasco");
-		Pet pet10 = new Pet(null, "Russo", Sex.Macho, "Agressivo", LocalDate.now(), null, client9, PetType.CACHORRO, "Piraporinha");
+		Pet pet10 = new Pet(null, "Russo", Sex.Macho, "Agressivo", LocalDate.now(), null, client9, PetType.CACHORRO,
+				"Piraporinha");
 		pet10.setWanted(true);
-		Pet pet11 = new Pet(null, "Russo2", Sex.Macho, "Agressivo", LocalDate.now(), null, client9, PetType.CACHORRO, "Piraporinha");
+		Pet pet11 = new Pet(null, "Russo2", Sex.Macho, "Agressivo", LocalDate.now(), null, client9, PetType.CACHORRO,
+				"Piraporinha");
 		pet11.setWanted(true);
-		Pet pet12 = new Pet(null, "Russo3", Sex.Macho, "Agressivo", LocalDate.now(), null, client9, PetType.CACHORRO, "Piraporinha");
+		Pet pet12 = new Pet(null, "Russo3", Sex.Macho, "Agressivo", LocalDate.now(), null, client9, PetType.CACHORRO,
+				"Piraporinha");
 		pet12.setWanted(true);
-		Pet pet13 = new Pet(null, "Russo4", Sex.Macho, "Agressivo", LocalDate.now(), null, client9, PetType.CACHORRO, "Piraporinha");
+		Pet pet13 = new Pet(null, "Russo4", Sex.Macho, "Agressivo", LocalDate.now(), null, client9, PetType.CACHORRO,
+				"Piraporinha");
 		pet13.setWanted(true);
-		Pet pet14 = new Pet(null, "Russo5", Sex.Macho, "Agressivo", LocalDate.now(), null, client9, PetType.CACHORRO, "Piraporinha");
+		Pet pet14 = new Pet(null, "Russo5", Sex.Macho, "Agressivo", LocalDate.now(), null, client9, PetType.CACHORRO,
+				"Piraporinha");
 		pet14.setWanted(true);
 
 		client1.addPet(pet1);
@@ -95,7 +99,6 @@ public class TestConfig implements CommandLineRunner {
 		client9.addPet(pet12);
 		client9.addPet(pet13);
 		client9.addPet(pet14);
-
 
 		loginRepository.save(user);
 		clientRepository.saveAll(

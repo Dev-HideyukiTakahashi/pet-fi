@@ -128,7 +128,7 @@ public class Pet {
 		this.photo = photo;
 	}
 
-	public Boolean isWanted() {
+	public Boolean getWanted() {
 		return wanted;
 	}
 

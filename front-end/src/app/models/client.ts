@@ -7,6 +7,5 @@ export class Client {
   phone!: string;
   facebook!: string;
   instagram!: string;
-  city!: string;
   pets: Pets[] = [];
 }

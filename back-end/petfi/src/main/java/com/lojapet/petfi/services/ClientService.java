@@ -78,7 +78,6 @@ public class ClientService {
 		client.setPhone(dto.getPhone());
 		client.setFacebook(dto.getFacebook());
 		client.setInstagram(dto.getInstagram());
-		client.setCity(dto.getCity());
 	}
 
 	public void deleteById(Long id) {
