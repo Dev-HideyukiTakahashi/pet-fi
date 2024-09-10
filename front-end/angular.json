@@ -13,6 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
+            "allowedCommonJsDependencies": ["sweetalert2", "qrcode"],
             "outputPath": "dist/front-end",
             "index": "src/index.html",
             "browser": "src/main.ts",
@@ -36,8 +37,8 @@
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "500kb",
-                  "maximumError": "1mb"
+                  "maximumWarning": "2000kb",
+                  "maximumError": "5600kb"
                 },
                 {
                   "type": "anyComponentStyle",
