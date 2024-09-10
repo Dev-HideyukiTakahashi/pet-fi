@@ -15,7 +15,7 @@ import com.lojapet.petfi.entities.enums.Sex;
  */
 public class PetDTO2 {
 
-	private static final String QRCODE = "http://localhost:8080/pets/";
+	private static final String QRCODE = "https://pet-fi.vercel.app/home/pets/";
 	private Long id;
 	private String name;
 	private Sex sex;
