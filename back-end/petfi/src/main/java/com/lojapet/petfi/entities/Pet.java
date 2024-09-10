@@ -32,7 +32,6 @@ public class Pet {
 
 	@Lob
 	@Basic(fetch = FetchType.LAZY)
-	@Column(name = "img", columnDefinition = "LONGBLOB")
 	private String photo;
 	private Boolean wanted;
 	private PetType petType;
