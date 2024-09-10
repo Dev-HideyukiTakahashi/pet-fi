@@ -28,7 +28,8 @@
 
           <img src="{{pet.photo}}" class="img-fluid img-fluid rounded photo">
           <label class="petName">{{pet.name}}</label>
-          <button type="button" class="btn btn-outline-light btn-rounded" mdbRipple rippleColor="dark">Detalhes</button>
+          <button type="button" class="btn btn-outline-light btn-rounded" mdbRipple rippleColor="dark"
+            (click)="details(pet.id)">Detalhes</button>
         </div>
       </div>
       }

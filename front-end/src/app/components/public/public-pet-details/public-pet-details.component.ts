@@ -32,10 +32,6 @@ export class PublicPetDetailsComponent {
         error: err => console.log(err),
       });
     }
-
-    console.log(this.pet.wanted)
-
-
   }
 
 

@@ -6,6 +6,7 @@ import { ClientService } from '../../../services/client.service';
 import { Pets } from '../../../models/pets';
 import { PetService } from '../../../services/pet.service';
 import Swal from 'sweetalert2';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-pet-list',
@@ -27,7 +28,7 @@ export class PublicPetListComponent {
   cities = new Set();
   pets: Pets[] = [];
 
-
+  router = inject(Router);
 
   constructor() {
 
@@ -93,6 +94,10 @@ export class PublicPetListComponent {
     obj.forEach(element => {
       this.cities.add(element);
     });
+  }
+
+  details(id: number) {
+    this.router.navigate(["home/pet/" + id])
   }
 
 }
