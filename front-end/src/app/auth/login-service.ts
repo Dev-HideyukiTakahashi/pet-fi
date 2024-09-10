@@ -4,6 +4,7 @@ import { Login } from '../models/login';
 import { Observable } from 'rxjs';
 import { jwtDecode, JwtPayload } from 'jwt-decode';
 import { User } from '../models/user';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +12,7 @@ import { User } from '../models/user';
 export class LoginService {
 
   http = inject(HttpClient);
-  API = "http://localhost:8080/login";
+  API = `${environment.API}login`;
 
   constructor() { }
 

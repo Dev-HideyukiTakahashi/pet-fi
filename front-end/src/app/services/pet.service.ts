@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { Pets } from '../models/pets';
 import { Observable } from 'rxjs';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +11,7 @@ export class PetService {
 
 
   http = inject(HttpClient);
-  API = "http://192.168.1.106:8080/pets";
+  API = `${environment.API}pets`;
 
   constructor() { }
 
