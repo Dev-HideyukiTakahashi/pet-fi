@@ -148,7 +148,6 @@
       <ul>
         <li><s>Configuração com banco de dados H2 para testes, profile TEST</s></li>
         <li><s>Criação das entidades e mapeamento Hibernate</s></li>
-        <li>Validações com Spring Validation.</li>
         <li><s>Criação de todos controllers, pelo menos com o método "find" para testar relacionamentos.
         </s></li>
         <li><s>Database seeding para testes.</s>
