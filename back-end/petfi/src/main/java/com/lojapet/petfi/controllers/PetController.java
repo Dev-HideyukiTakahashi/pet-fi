@@ -26,7 +26,7 @@ import com.lojapet.petfi.services.PetService;
 
 @RestController
 @RequestMapping(path = "/pets")
-@CrossOrigin("*")
+@CrossOrigin(origins = "https://pet-fi.vercel.app/**")
 public class PetController {
 
 	@Autowired
