@@ -10,7 +10,7 @@ import { environment } from '../../environments/environment';
 export class ClientService {
 
   http = inject(HttpClient);
-  API = `${environment.API}clients`;
+  API = "https://pet-fi-api.onrender.com/clients";
 
   constructor() { }
 

@@ -12,7 +12,7 @@ import { environment } from '../../environments/environment';
 export class LoginService {
 
   http = inject(HttpClient);
-  API = `${environment.API}login`;
+  API = "https://pet-fi-api.onrender.com/login";
 
   constructor() { }
 

@@ -11,7 +11,7 @@ export class PetService {
 
 
   http = inject(HttpClient);
-  API = `${environment.API}pets`;
+  API = "https://pet-fi-api.onrender.com/pets";
 
   constructor() { }
 
