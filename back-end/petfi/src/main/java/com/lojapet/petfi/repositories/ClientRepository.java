@@ -14,6 +14,6 @@ public interface ClientRepository extends JpaRepository<Client, Long> {
 
   Page<Client> findByInstagram(PageRequest pageRequest, String instagram);
 
-  Page<Client> findByPhone(PageRequest pageRequest, String phone);
+  Page<Client> findByPhoneContaining(PageRequest pageRequest, String phone);
 
 }

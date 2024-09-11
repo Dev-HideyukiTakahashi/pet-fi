@@ -43,7 +43,7 @@ public class ClientService {
 
 	@Transactional(readOnly = true)
 	public Page<ClientDTO> findAllByPhone(PageRequest pageRequest, String phone) {
-		Page<Client> list = clientRepository.findByPhone(pageRequest, phone);
+		Page<Client> list = clientRepository.findByPhoneContaining(pageRequest, phone);
 		return list.map(client -> new ClientDTO(client));
 	}
 
