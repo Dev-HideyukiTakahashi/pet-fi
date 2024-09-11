@@ -8,13 +8,15 @@
 <hr>
 </br>
 <div align="center">
-  <a href="#">//TODO link app</a>
+  <a href="https://pet-fi.vercel.app/">Link APP /public</a>
+  <p>Smartphone Layout</p>
 </div>
 </br>
 <div align="center">
-  <span>Login: admin / Senha: admin</span>
-  </br>
+  <a href="https://pet-fi.vercel.app/login">Link APP /admin</a>
+  <p>Login: admin // Senha: admin </p>
 </div>
+</br>
 <hr>
 </br>
 
@@ -202,8 +204,18 @@
   <details>
     <summary><strong>Imagens</strong></summary>
     </br>
+    <span>ADMIN</span>
     <hr>
-     <img src="" alt="TODO">
+     <img src="./resources/admin1.png" alt="">
+     <img src="./resources/admin2.png" alt="">
+     <img src="./resources/admin3.png" alt="">
+     <img src="./resources/admin4.png" alt="">
+    <hr>
+        </br>
+    <span>PUBLIC</span>
+    <hr>
+     <img src="./resources/public1.png" alt="">
+     <img src="./resources/public2.png" alt="">
     <hr>
     </details>
 </div>
@@ -211,5 +223,5 @@
 <hr>
 <div align="center">
   <h3>Tecnologias utilizadas</h3>
-  <p>Java, Spring Boot, Angular, Bootstrap, PostgreSQL, Git e Github.<p>
+  <p>Java, Spring Boot, Angular, MDB Angular, PostgreSQL, Git e Github.<p>
 </div>
