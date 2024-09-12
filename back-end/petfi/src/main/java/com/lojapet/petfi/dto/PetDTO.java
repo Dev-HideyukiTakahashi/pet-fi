@@ -147,14 +147,13 @@ public class PetDTO {
 
 		String age = "";
 
-		if (month != 0) {
-			age = month > 1 ? month + " meses" : month + " mes";
+		if (year != 0 && month != 0) {
+			age = year > 1 ? year + " anos" : year + " ano";
+			age += month > 1 ? " e " + month + " meses" : " e " + month + " mes";
 		}
 
-		if (year != 0 && month != 0) {
-			age += year > 1 ? " e " + year + " anos" : " e " + year + " ano";
-		} else {
-			age += year > 1 ? year + " anos" : year + " ano";
+		if (year == 0 && month != 0) {
+			age = month > 1 ? month + " meses" : month + " mes";
 		}
 
 		return age;
