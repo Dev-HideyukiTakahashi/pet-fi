@@ -8,8 +8,8 @@
 <hr>
 </br>
 <div align="center">
-  <a href="https://pet-fi-api.onrender.com">Link API (Necessário abrir a API antes do APP para requests no back-end)</a>
-  <p>API Rest</p>
+  <a href="https://pet-fi-api.onrender.com">Link API / deploy no render.com</a>
+  <p>API Rest (API não fica 24h online/plano free, pode ocorrer do back-end não funcionar)</p>
 </div>
 </br>
 <div align="center">
