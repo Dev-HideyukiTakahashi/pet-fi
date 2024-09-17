@@ -4,12 +4,13 @@
 
 <h1 align="center">Pet-Fi</h1>
 <hr>
-<h3 align="center">Aplicação para gerar um cadastro do pet na venda de uma coleira, possibilitando gerar um QR code para ser impresso na coleira com os dados.</h3>
+<h3 align="center">Pet fi é uma aplicação que gera um qrcode com todos os dados do pet e tutor para ser agregado a uma coleira.</h3>
+<h3 align="center">Caso o pet se perder ou fugir, basta apontar o celular no qrcode para obter os dados na web e entrar em contato com o tutor.</h3>
 <hr>
 </br>
 <div align="center">
   <a href="https://pet-fi-api.onrender.com">Link API / deploy no render.com</a>
-  <p>API Rest (API não fica 24h online/plano free, pode ocorrer do back-end não funcionar)</p>
+  <p>API Rest (deploy do back-end no plano free e não fica 24h online, por gentileza me contatar para colocar online - 11942051849)</p>
 </div>
 </br>
 <div align="center">
