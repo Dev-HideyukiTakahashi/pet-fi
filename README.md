@@ -4,7 +4,7 @@
 
 <h1 align="center">Pet-Fi</h1>
 <hr>
-<h3 align="center">Pet fi é uma aplicação que gera um qrcode com todos os dados do pet e tutor para ser agregado a uma coleira.</h3>
+<h3 align="center">Pet fi é uma aplicação autoral que gera um qrcode com todos os dados do pet e tutor para ser agregado a uma coleira.</h3>
 <h3 align="center">Caso o pet se perder ou fugir, basta apontar o celular no qrcode para obter os dados na web e entrar em contato com o tutor.</h3>
 <hr>
 </br>
