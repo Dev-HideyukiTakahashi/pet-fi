@@ -9,7 +9,7 @@
 <hr>
 </br>
 <div align="center">
-  <p>API Rest (deploy do back-end no plano free e não fica 24h online, por gentileza me contatar para colocar online - 11942051849)</p>
+  <p>API deploy render</p>
 </div>
 </br>
 <div align="center">
