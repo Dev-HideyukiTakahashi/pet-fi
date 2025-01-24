@@ -13,7 +13,7 @@
 </div>
 </br>
 <div align="center">
-  <a href="https://www.youtube.com/watch?v=SBPdmyJbkxY&ab">Link Youtube</a>
+  <a href="https://youtu.be/f7OnsD89svQ">Link Youtube</a>
   <p>Demonstração da aplicação no youtube</p>
 </div>
 </br>
